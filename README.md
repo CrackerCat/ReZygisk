@@ -1,26 +1,33 @@
-# Zygisk Next
+# ReZygisk
 
-Standalone implementation of Zygisk, providing Zygisk API support for KernelSU and a replacement of Magisk's built-in Zygisk.
+ReZygisk is a fork of Zygisk Next by Dr-TSNG, which is a standalone implementation of Zygisk, providing Zygisk API support for KernelSU, Magisk and futurely APatch.
 
-## Requirements
+It aims at the re-write of Zygisk Next to C, allowing also a more efficient and faster implementation of the Zygisk API with a more permissive license.
 
-### General
+## Features
 
-+ No multiple root implementation installed
+- Open Source
 
-### KernelSU
+## Dependencies
 
-+ Minimal KernelSU version: 10940
-+ Minimal KernelSU Manager (ksud) version: 11424
-+ Kernel has full SELinux patch support
+- TODOd
 
-### Magisk
+## Installation
 
-+ Minimal version: 26402
-+ Built-in Zygisk turned off
+WIP, do not install yet.
 
-## Compatibility
+## Usage
 
-`PROCESS_ON_DENYLIST` cannot be flagged correctly for isolated processes on Magisk DenyList currently.
+WIP
 
-Zygisk Next only guarantees the same behavior of Zygisk API, but will NOT ensure Magisk's internal features.
+## Support
+
+Any question related to ReZygisk or other PerformanC projects can be made in [PerformanC's Discord server](https://discord.gg/uPveNfTuCJ).
+
+## Contribution
+
+It is mandatory to follow the PerformanC's [contribution guidelines](https://github.com/PerformanC/contributing) to contribute to ReZygisk. Following its Security Policy, Code of Conduct and syntax standard.
+
+## License
+
+ReZygisk is licensed majoritaly under GPL, by Dr-TSNG, but also BSD 2-Clause License. You can read more about it on [Open Source Initiative](https://opensource.org/licenses/BSD-2-Clause).
