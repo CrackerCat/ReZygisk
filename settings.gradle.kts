@@ -16,7 +16,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ZygiskNext"
+rootProject.name = "ReZygisk"
 include(
     ":loader",
     ":module",

@@ -22,7 +22,7 @@ fn start() {
         companion::entry(fd);
         return;
     } else if args.len() == 2 && args[1] == "version" {
-        println!("Zygisk Next daemon {}", ZKSU_VERSION);
+        println!("ReZygisk daemon {}", ZKSU_VERSION);
         return;
     } else if args.len() == 2 && args[1] == "root" {
         root_impl::setup();
