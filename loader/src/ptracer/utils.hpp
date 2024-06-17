@@ -89,7 +89,7 @@ int fork_dont_care();
 
 void wait_for_trace(int pid, int* status, int flags);
 
-std::string parse_status(int status);
+void parse_status(int status, char *buf, size_t len);
 
 #define WPTEVENT(x) (x >> 16)
 
@@ -116,7 +116,7 @@ inline const char* sigabbrev_np(int sig) {
     return "(unknown)";
 }
 
-std::string get_program(int pid);
+int get_program(int pid, char *buf, size_t size);
 void *find_module_return_addr(std::vector<MapInfo> &info, std::string_view suffix);
 
 // pid = 0, fd != nullptr -> set to fd

@@ -359,7 +359,10 @@ uintptr_t remote_call(int pid, struct user_regs_struct &regs, uintptr_t func_add
         }
         return regs.REG_RET;
     } else {
-        LOGE("stopped by other reason %s at addr %p", parse_status(status).c_str(), (void*) regs.REG_IP);
+        char status_str[64];
+        parse_status(status, status_str, sizeof(status_str));
+
+        LOGE("stopped by other reason %s at addr %p", status_str, (void*) regs.REG_IP);
     }
     return 0;
 }
@@ -394,42 +397,45 @@ void wait_for_trace(int pid, int* status, int flags) {
             }
         }
         if (!WIFSTOPPED(*status)) {
-            LOGE("process %d not stopped for trace: %s, exit", pid, parse_status(*status).c_str());
+            char status_str[64];
+            parse_status(*status, status_str, sizeof(status_str));
+
+            LOGE("process %d not stopped for trace: %s, exit", pid, status_str);
             exit(1);
         }
         return;
     }
 }
 
-std::string parse_status(int status) {
-    std::ostringstream os;
-    os << "0x" << std::hex << status << std::dec << " ";
-    if (WIFEXITED(status)) {
-        os << "exited with " << WEXITSTATUS(status);
-    } else if (WIFSIGNALED(status)) {
-        os << "signaled with " << sigabbrev_np(WTERMSIG(status)) << "(" << WTERMSIG(status) << ")";
-    } else if (WIFSTOPPED(status)) {
-        os << "stopped by ";
-        auto stop_sig = WSTOPSIG(status);
-        os << "signal=" << sigabbrev_np(stop_sig) << "(" << stop_sig << "),";
-        os << "event=" << parse_ptrace_event(status);
-    } else {
-        os << "unknown";
-    }
-    return os.str();
+void parse_status(int status, char *buf, size_t len) {
+  snprintf(buf, len, "0x%x ", status);
+  if (WIFEXITED(status)) {
+    snprintf(buf + strlen(buf), len - strlen(buf), "exited with %d", WEXITSTATUS(status));
+  } else if (WIFSIGNALED(status)) {
+    snprintf(buf + strlen(buf), len - strlen(buf), "signaled with %s(%d)", sigabbrev_np(WTERMSIG(status)), WTERMSIG(status));
+  } else if (WIFSTOPPED(status)) {
+    snprintf(buf + strlen(buf), len - strlen(buf), "stopped by ");
+    auto stop_sig = WSTOPSIG(status);
+    snprintf(buf + strlen(buf), len - strlen(buf), "signal=%s(%d),", sigabbrev_np(stop_sig), stop_sig);
+    snprintf(buf + strlen(buf), len - strlen(buf), "event=%s", parse_ptrace_event(status));
+  } else {
+    snprintf(buf + strlen(buf), len - strlen(buf), "unknown");
+  }
 }
 
-std::string get_program(int pid) {
-    std::string path = "/proc/";
-    path += std::to_string(pid);
-    path += "/exe";
-    constexpr const auto SIZE = 256;
-    char buf[SIZE + 1];
-    auto sz = readlink(path.c_str(), buf, SIZE);
-    if (sz == -1) {
-        PLOGE("readlink /proc/%d/exe", pid);
-        return "";
-    }
-    buf[sz] = 0;
-    return buf;
+int get_program(int pid, char *buf, size_t size) {
+  char path[64];
+  snprintf(path, sizeof(path), "/proc/%d/exe", pid);
+
+  ssize_t sz = readlink(path, buf, size);
+
+  if (sz == -1) {
+    PLOGE("readlink /proc/%d/exe", pid);
+
+    return -1;
+  }
+
+  buf[sz] = 0;
+
+  return 0;
 }

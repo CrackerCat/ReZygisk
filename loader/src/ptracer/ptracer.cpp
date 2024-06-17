@@ -161,7 +161,10 @@ bool inject_on_main(int pid, const char *lib_path) {
 
         return true;
     } else {
-        LOGE("stopped by other reason: %s", parse_status(status).c_str());
+        char status_str[64];
+        parse_status(status, status_str, sizeof(status_str));
+
+        LOGE("stopped by other reason: %s", status_str);
     }
     return false;
 }
@@ -205,12 +208,18 @@ bool trace_zygote(int pid) {
                 ptrace(PTRACE_DETACH, pid, 0, SIGCONT);
             }
         } else {
-            LOGE("unknown state %s, not SIGTRAP + EVENT_STOP", parse_status(status).c_str());
+            char status_str[64];
+            parse_status(status, status_str, sizeof(status_str));
+
+            LOGE("unknown state %s, not SIGTRAP + EVENT_STOP", status_str);
             ptrace(PTRACE_DETACH, pid, 0, 0);
             return false;
         }
     } else {
-        LOGE("unknown state %s, not SIGSTOP + EVENT_STOP", parse_status(status).c_str());
+        char status_str[64];
+        parse_status(status, status_str, sizeof(status_str));
+
+        LOGE("unknown state %s, not SIGSTOP + EVENT_STOP", status_str);
         ptrace(PTRACE_DETACH, pid, 0, 0);
         return false;
     }
