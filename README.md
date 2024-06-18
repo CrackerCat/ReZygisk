@@ -4,6 +4,9 @@ ReZygisk is a fork of Zygisk Next by Dr-TSNG, which is a standalone implementati
 
 It aims at the re-write of Zygisk Next to C, allowing also a more efficient and faster implementation of the Zygisk API with a more permissive license.
 
+> [!NOTE]
+> This module/fork is WIP, only use .zip from the releases.
+
 ## Features
 
 - Open Source
