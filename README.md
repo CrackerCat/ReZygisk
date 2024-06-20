@@ -9,33 +9,15 @@ It aims at the re-write of Zygisk Next to C, allowing also a more efficient and 
 
 ## Features
 
-- FOSS
-- N/A compared to latest Zygisk Next *yet*.
+- Open Source
 
 ## Dependencies
 
-- rustc
-- Android NDK
+- rust
 
-### Rust side:
+### Rust-side:
 
-- android_logger
-- anyhow
-- bitflags
-- const_format
-- futures
-- konst
-- lazy_static
-- libc
-- log
-- memfd
-- num_enum
-- passfd
-- proc-maps
-
-### C++ side:
-
-- lsplt
+- 
 
 ## Installation
 
