@@ -11,7 +11,6 @@ Write here why you think this should be merged
 - [ ] The modified functions have been tested.
 - [ ] Used the same indentation as the rest of the project.
 - [ ] Updated documentation (changelog).
-- [ ] Is a documented feature by Discord.
 
 ## Additional information
 
