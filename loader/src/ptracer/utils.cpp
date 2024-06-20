@@ -22,10 +22,11 @@
 #include <cstring>
 #include <sys/stat.h>
 
-#include "utils.hpp"
-#include "logging.h"
 #include <sched.h>
 #include <fcntl.h>
+
+#include "utils.hpp"
+#include "logging.h"
 
 bool switch_mnt_ns(int pid, int *fd) {
     int nsfd, old_nsfd = -1;

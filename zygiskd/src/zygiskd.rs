@@ -268,6 +268,20 @@ fn handle_daemon_action(
             );
             stream.write_u32(flags.bits())?;
         }
+        DaemonSocketAction::GetInfo => {
+          let mut flags = ProcessFlags::empty();
+
+          match root_impl::get_impl() {
+              root_impl::RootImpl::KernelSU => flags |= ProcessFlags::PROCESS_ROOT_IS_KSU,
+              root_impl::RootImpl::Magisk => flags |= ProcessFlags::PROCESS_ROOT_IS_MAGISK,
+              _ => panic!("wrong root impl: {:?}", root_impl::get_impl()),
+          }
+
+          stream.write_u32(flags.bits())?;
+
+          let pid = unsafe { libc::getpid() };
+          stream.write_u32(pid as u32)?;
+        }
         DaemonSocketAction::ReadModules => {
             stream.write_usize(context.modules.len())?;
             for module in context.modules.iter() {

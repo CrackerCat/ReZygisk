@@ -18,10 +18,11 @@ namespace zygiskd {
 
     int Connect(uint8_t retry) {
         int fd = socket(PF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0);
-        struct sockaddr_un addr{
-                .sun_family = AF_UNIX,
-                .sun_path={0},
+        struct sockaddr_un addr = {
+          .sun_family = AF_UNIX,
+          .sun_path = { 0 },
         };
+
         auto socket_path = TMP_PATH + kCPSocketName;
         strcpy(addr.sun_path, socket_path.c_str());
         socklen_t socklen = sizeof(addr);
@@ -67,6 +68,7 @@ namespace zygiskd {
         }
         socket_utils::write_u8(fd, (uint8_t) SocketAction::GetProcessFlags);
         socket_utils::write_u32(fd, uid);
+
         return socket_utils::read_u32(fd);
     }
 
@@ -138,5 +140,30 @@ namespace zygiskd {
                 PLOGE("Failed to report system server started");
             }
         }
+    }
+
+    void GetInfo(struct zygote_info *info) {
+      /* TODO: Optimize and avoid re-connect twice here */
+      int fd = Connect(1);
+
+      if (fd != -1) {
+        info->running = true;
+
+        socket_utils::write_u8(fd, (uint8_t) SocketAction::GetInfo);
+
+        int flags = socket_utils::read_u32(fd);
+
+        if (flags & (1 << 29)) {
+          info->root_impl = ZYGOTE_ROOT_IMPL_KERNELSU;
+        } else if (flags & (1 << 30)) {
+          info->root_impl = ZYGOTE_ROOT_IMPL_MAGISK;
+        } else {
+          info->root_impl = ZYGOTE_ROOT_IMPL_NONE;
+        }
+
+        info->pid = socket_utils::read_u32(fd);
+
+        close(fd);
+      } else info->running = false;
     }
 }

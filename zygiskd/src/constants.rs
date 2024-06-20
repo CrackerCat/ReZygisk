@@ -27,6 +27,7 @@ pub enum DaemonSocketAction {
     PingHeartbeat,
     RequestLogcatFd,
     GetProcessFlags,
+    GetInfo,
     ReadModules,
     RequestCompanionSocket,
     GetModuleDir,

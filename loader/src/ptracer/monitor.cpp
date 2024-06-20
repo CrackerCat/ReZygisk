@@ -724,9 +724,9 @@ void init_monitor() {
   LOGI("exit");
 }
 
-void send_control_command(enum Command cmd) {
+int send_control_command(enum Command cmd) {
   int sockfd = socket(PF_UNIX, SOCK_DGRAM | SOCK_CLOEXEC, 0);
-  if (sockfd == -1) err(EXIT_FAILURE, "socket");
+  if (sockfd == -1) return -1;
 
   struct sockaddr_un addr = {
     .sun_family = AF_UNIX,
@@ -737,12 +737,9 @@ void send_control_command(enum Command cmd) {
   socklen_t socklen = sizeof(sa_family_t) + sun_path_len;
 
   ssize_t nsend = sendto(sockfd, (void *)&cmd, sizeof(cmd), 0, (sockaddr *)&addr, socklen);
-  if (nsend == -1) err(EXIT_FAILURE, "send");
-  else if (nsend != sizeof(cmd)) {
-    printf("[ReZygisk]: Failed to send data. Tried to send %zu bytes but only %zu were sent.\n", sizeof(cmd), nsend);
 
-    exit(1);
-  }
+  /* TODO: Should we close even when it fails? */
+  close(sockfd);
 
-  printf("[ReZygisk]: command sent\n");
+  return nsend != sizeof(cmd) ? -1 : 0;
 }

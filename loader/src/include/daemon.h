@@ -42,6 +42,18 @@ private:
     Fd fd_ = -1;
 };
 
+enum zygote_root_impl {
+  ZYGOTE_ROOT_IMPL_NONE,
+  ZYGOTE_ROOT_IMPL_KERNELSU,
+  ZYGOTE_ROOT_IMPL_MAGISK
+};
+
+struct zygote_info {
+  enum zygote_root_impl root_impl;
+  pid_t pid;
+  bool running;
+};
+
 namespace zygiskd {
 
     struct Module {
@@ -55,6 +67,7 @@ namespace zygiskd {
         PingHeartBeat,
         RequestLogcatFd,
         GetProcessFlags,
+        GetInfo,
         ReadModules,
         RequestCompanionSocket,
         GetModuleDir,
@@ -81,4 +94,6 @@ namespace zygiskd {
     void ZygoteRestart();
 
     void SystemServerStarted();
+
+    void GetInfo(struct zygote_info *info);
 }
