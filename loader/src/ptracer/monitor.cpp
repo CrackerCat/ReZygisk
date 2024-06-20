@@ -41,81 +41,103 @@ struct EventHandler {
 };
 
 struct EventLoop {
-private:
+  private:
     int epoll_fd_;
     bool running = false;
-public:
+  public:
     bool Init() {
-        epoll_fd_ = epoll_create(1);
-        if (epoll_fd_ == -1) {
-            PLOGE("failed to create");
-            return false;
-        }
-        return true;
+      epoll_fd_ = epoll_create(1);
+      if (epoll_fd_ == -1) {
+        PLOGE("failed to create");
+
+        return false;
+      }
+
+      return true;
     }
 
     void Stop() {
-        running = false;
+      running = false;
     }
 
     void Loop() {
-        running = true;
-        constexpr auto MAX_EVENTS = 2;
-        struct epoll_event events[MAX_EVENTS];
-        while (running) {
-            int nfds = epoll_wait(epoll_fd_, events, MAX_EVENTS, -1);
-            if (nfds == -1) {
-                if (errno != EINTR)
-                    PLOGE("epoll_wait");
-                continue;
-            }
-            for (int i = 0; i < nfds; i++) {
-                reinterpret_cast<EventHandler *>(events[i].data.ptr)->HandleEvent(*this,
-                                                                                  events[i].events);
-                if (!running) break;
-            }
+      running = true;
+
+      constexpr auto MAX_EVENTS = 2;
+      struct epoll_event events[MAX_EVENTS];
+
+      while (running) {
+        int nfds = epoll_wait(epoll_fd_, events, MAX_EVENTS, -1);
+        if (nfds == -1) {
+          if (errno != EINTR) PLOGE("epoll_wait");
+
+          continue;
         }
+
+        for (int i = 0; i < nfds; i++) {
+          reinterpret_cast<EventHandler *>(events[i].data.ptr)->HandleEvent(*this,
+                                                                            events[i].events);
+          if (!running) break;
+        }
+      }
     }
 
     bool RegisterHandler(EventHandler &handler, uint32_t events) {
-        struct epoll_event ev{};
-        ev.events = events;
-        ev.data.ptr = &handler;
-        if (epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, handler.GetFd(), &ev) == -1) {
-            PLOGE("failed to add event handler");
-            return false;
-        }
-        return true;
+      struct epoll_event ev{};
+      ev.events = events;
+      ev.data.ptr = &handler;
+      if (epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, handler.GetFd(), &ev) == -1) {
+        PLOGE("failed to add event handler");
+
+        return false;
+      }
+
+      return true;
     }
 
-    [[maybe_unused]] bool UnregisterHandler(EventHandler &handler) {
-        if (epoll_ctl(epoll_fd_, EPOLL_CTL_DEL, handler.GetFd(), NULL) == -1) {
-            PLOGE("failed to del event handler");
-            return false;
-        }
-        return true;
+    bool UnregisterHandler(EventHandler &handler) {
+      if (epoll_ctl(epoll_fd_, EPOLL_CTL_DEL, handler.GetFd(), NULL) == -1) {
+        PLOGE("failed to del event handler");
+
+        return false;
+      }
+
+      return true;
     }
 
     ~EventLoop() {
-        if (epoll_fd_ >= 0) close(epoll_fd_);
+      if (epoll_fd_ >= 0) close(epoll_fd_);
     }
 };
 
 static TracingState tracing_state = TRACING;
 static char prop_path[PATH_MAX];
 
-
 struct Status {
-    bool supported = false;
-    bool zygote_injected = false;
-    bool daemon_running = false;
-    pid_t daemon_pid = -1;
-    char *daemon_info;
-    char *daemon_error_info;
+  bool supported = false;
+  bool zygote_injected = false;
+  bool daemon_running = false;
+  pid_t daemon_pid = -1;
+  char *daemon_info;
+  char *daemon_error_info;
 };
 
-static Status status64;
-static Status status32;
+static Status status64 = {
+  .supported = false,
+  .zygote_injected = false,
+  .daemon_running = false,
+  .daemon_pid = -1,
+  .daemon_info = NULL,
+  .daemon_error_info = NULL
+};
+static Status status32 = {
+  .supported = false,
+  .zygote_injected = false,
+  .daemon_running = false,
+  .daemon_pid = -1,
+  .daemon_info = NULL,
+  .daemon_error_info = NULL
+};
 
 struct SocketHandler : public EventHandler {
   int sock_fd_;
@@ -157,155 +179,155 @@ struct SocketHandler : public EventHandler {
     };
 
     while (1) {
-        std::vector<uint8_t> buf;
-        buf.resize(sizeof(MsgHead), 0);
+      std::vector<uint8_t> buf;
+      buf.resize(sizeof(MsgHead), 0);
 
-        MsgHead &msg = *reinterpret_cast<MsgHead*>(buf.data());
+      MsgHead &msg = *reinterpret_cast<MsgHead*>(buf.data());
 
-        ssize_t real_size;
-        ssize_t nread = recv(sock_fd_, &msg, sizeof(msg), MSG_PEEK);
-        if (nread == -1) {
-          if (errno == EAGAIN) break;
+      ssize_t real_size;
+      ssize_t nread = recv(sock_fd_, &msg, sizeof(msg), MSG_PEEK);
+      if (nread == -1) {
+        if (errno == EAGAIN) break;
 
-          PLOGE("read socket");
-        }
+        PLOGE("read socket");
+      }
 
-        if (static_cast<size_t>(nread) < sizeof(Command)) {
-          LOGE("read %zu < %zu", nread, sizeof(Command));
-          continue;
-        }
+      if (static_cast<size_t>(nread) < sizeof(Command)) {
+        LOGE("read %zu < %zu", nread, sizeof(Command));
+        continue;
+      }
 
-        if (msg.cmd >= Command::DAEMON64_SET_INFO && msg.cmd != Command::SYSTEM_SERVER_STARTED) {
-          if (nread != sizeof(msg)) {
-            LOGE("cmd %d size %zu != %zu", msg.cmd, nread, sizeof(MsgHead));
-
-            continue;
-          }
-
-          real_size = sizeof(MsgHead) + msg.length;
-        } else {
-          if (nread != sizeof(Command)) {
-            LOGE("cmd %d size %zu != %zu", msg.cmd, nread, sizeof(Command));
-
-            continue;
-          }
-
-          real_size = sizeof(Command);
-        }
-
-        buf.resize(real_size);
-        nread = recv(sock_fd_, &msg, real_size, 0);
-
-        if (nread == -1) {
-          if (errno == EAGAIN) break;
-
-          PLOGE("recv");
-          continue;
-        }
-
-        if (nread != real_size) {
-          LOGE("real size %zu != %zu", real_size, nread);
+      if (msg.cmd >= Command::DAEMON64_SET_INFO && msg.cmd != Command::SYSTEM_SERVER_STARTED) {
+        if (nread != sizeof(msg)) {
+          LOGE("cmd %d size %zu != %zu", msg.cmd, nread, sizeof(MsgHead));
 
           continue;
         }
 
-        switch (msg.cmd) {
-          case START: {
-            if (tracing_state == STOPPING) tracing_state = TRACING;
-            else if (tracing_state == STOPPED) {
-              ptrace(PTRACE_SEIZE, 1, 0, PTRACE_O_TRACEFORK);
+        real_size = sizeof(MsgHead) + msg.length;
+      } else {
+        if (nread != sizeof(Command)) {
+          LOGE("cmd %d size %zu != %zu", msg.cmd, nread, sizeof(Command));
 
-              LOGI("start tracing init");
+          continue;
+        }
 
-              tracing_state = TRACING;
-            }
+        real_size = sizeof(Command);
+      }
 
-            updateStatus();
+      buf.resize(real_size);
+      nread = recv(sock_fd_, &msg, real_size, 0);
 
-            break;
+      if (nread == -1) {
+        if (errno == EAGAIN) break;
+
+        PLOGE("recv");
+        continue;
+      }
+
+      if (nread != real_size) {
+        LOGE("real size %zu != %zu", real_size, nread);
+
+        continue;
+      }
+
+      switch (msg.cmd) {
+        case START: {
+          if (tracing_state == STOPPING) tracing_state = TRACING;
+          else if (tracing_state == STOPPED) {
+            ptrace(PTRACE_SEIZE, 1, 0, PTRACE_O_TRACEFORK);
+
+            LOGI("start tracing init");
+
+            tracing_state = TRACING;
           }
-          case STOP: {
-            if (tracing_state == TRACING) {
-              LOGI("stop tracing requested");
 
-              tracing_state = STOPPING;
-              memcpy(monitor_stop_reason, "user requested", sizeof("user requested"));
+          updateStatus();
 
-              ptrace(PTRACE_INTERRUPT, 1, 0, 0);
-              updateStatus();
-            }
+          break;
+        }
+        case STOP: {
+          if (tracing_state == TRACING) {
+            LOGI("stop tracing requested");
 
-            break;
-          }
-          case EXIT: {
-            LOGI("prepare for exit ...");
-
-            tracing_state = EXITING;
+            tracing_state = STOPPING;
             memcpy(monitor_stop_reason, "user requested", sizeof("user requested"));
 
+            ptrace(PTRACE_INTERRUPT, 1, 0, 0);
             updateStatus();
-            loop.Stop();
-
-            break;
           }
-          case ZYGOTE64_INJECTED: {
-            status64.zygote_injected = true;
 
-            updateStatus();
-
-            break;
-          }
-          case ZYGOTE32_INJECTED: {
-            status32.zygote_injected = true;
-
-            updateStatus();
-
-            break;
-          }
-          case DAEMON64_SET_INFO: {
-            LOGD("received daemon64 info %s", msg.data);
-
-            status64.daemon_info = msg.data;
-            updateStatus();
-
-            break;
-          }
-          case DAEMON32_SET_INFO: {
-            LOGD("received daemon32 info %s", msg.data);
-
-            status32.daemon_info = msg.data;
-            updateStatus();
-
-            break;
-          }
-          case DAEMON64_SET_ERROR_INFO: {
-            LOGD("received daemon64 error info %s", msg.data);
-
-            status64.daemon_running = false;
-            status64.daemon_error_info = msg.data;
-            updateStatus();
-
-            break;
-          }
-          case DAEMON32_SET_ERROR_INFO: {
-            LOGD("received daemon32 error info %s", msg.data);
-
-            status32.daemon_running = false;
-            status32.daemon_error_info = msg.data;
-            updateStatus();
-
-            break;
-          }
-          case SYSTEM_SERVER_STARTED: {
-            LOGD("system server started, mounting prop");
-
-            if (mount(prop_path, "/data/adb/modules/zygisksu/module.prop", NULL, MS_BIND, NULL) == -1) {
-              PLOGE("failed to mount prop");
-            }
-
-            break;
-          }
+          break;
         }
+        case EXIT: {
+          LOGI("prepare for exit ...");
+
+          tracing_state = EXITING;
+          memcpy(monitor_stop_reason, "user requested", sizeof("user requested"));
+
+          updateStatus();
+          loop.Stop();
+
+          break;
+        }
+        case ZYGOTE64_INJECTED: {
+          status64.zygote_injected = true;
+
+          updateStatus();
+
+          break;
+        }
+        case ZYGOTE32_INJECTED: {
+          status32.zygote_injected = true;
+
+          updateStatus();
+
+          break;
+        }
+        case DAEMON64_SET_INFO: {
+          LOGD("received daemon64 info %s", msg.data);
+
+          status64.daemon_info = msg.data;
+          updateStatus();
+
+          break;
+        }
+        case DAEMON32_SET_INFO: {
+          LOGD("received daemon32 info %s", msg.data);
+
+          status32.daemon_info = msg.data;
+          updateStatus();
+
+          break;
+        }
+        case DAEMON64_SET_ERROR_INFO: {
+          LOGD("received daemon64 error info %s", msg.data);
+
+          status64.daemon_running = false;
+          status64.daemon_error_info = msg.data;
+          updateStatus();
+
+          break;
+        }
+        case DAEMON32_SET_ERROR_INFO: {
+          LOGD("received daemon32 error info %s", msg.data);
+
+          status32.daemon_running = false;
+          status32.daemon_error_info = msg.data;
+          updateStatus();
+
+          break;
+        }
+        case SYSTEM_SERVER_STARTED: {
+          LOGD("system server started, mounting prop");
+
+          if (mount(prop_path, "/data/adb/modules/zygisksu/module.prop", NULL, MS_BIND, NULL) == -1) {
+            PLOGE("failed to mount prop");
+          }
+
+          break;
+        }
+      }
     }
   }
 
@@ -316,20 +338,25 @@ struct SocketHandler : public EventHandler {
 
 constexpr int MAX_RETRY_COUNT = 5;
 
-#define CREATE_ZYGOTE_START_COUNTER(abi) \
-struct timespec last_zygote##abi{.tv_sec = 0, .tv_nsec = 0}; \
-int count_zygote##abi = 0; \
-bool should_stop_inject##abi() { \
-    struct timespec now{}; \
-    clock_gettime(CLOCK_MONOTONIC, &now); \
-    if (now.tv_sec - last_zygote##abi.tv_sec < 30) { \
-        count_zygote##abi++; \
-    } else { \
-        count_zygote##abi = 0; \
-    } \
-    last_zygote##abi = now; \
-    return count_zygote##abi >= MAX_RETRY_COUNT; \
-}
+#define CREATE_ZYGOTE_START_COUNTER(abi)             \
+  struct timespec last_zygote##abi = {               \
+    .tv_sec = 0,                                     \
+    .tv_nsec = 0                                     \
+  };                                                 \
+                                                     \
+  int count_zygote ## abi = 0;                       \
+  bool should_stop_inject ## abi() {                 \
+    struct timespec now = {};                        \
+    clock_gettime(CLOCK_MONOTONIC, &now);            \
+    if (now.tv_sec - last_zygote ## abi.tv_sec < 30) \
+      count_zygote ## abi++;                         \
+    else                                             \
+      count_zygote ## abi = 0;                       \
+                                                     \
+    last_zygote##abi = now;                          \
+                                                     \
+    return count_zygote##abi >= MAX_RETRY_COUNT;     \
+  }
 
 CREATE_ZYGOTE_START_COUNTER(64)
 CREATE_ZYGOTE_START_COUNTER(32)
@@ -360,6 +387,8 @@ static bool ensure_daemon_created(bool is_64bit) {
 
       exit(1);
     } else {
+      LOGI("daemon%s started with pid %d", is_64bit ? "64" : "32", pid);
+
       status.supported = true;
       status.daemon_pid = pid;
       status.daemon_running = true;
@@ -367,23 +396,25 @@ static bool ensure_daemon_created(bool is_64bit) {
       return true;
     }
   } else {
+    LOGI("daemon%s already started with pid %d", is_64bit ? "64" : "32", status.daemon_pid);
+
     return status.daemon_running;
   }
 }
 
-#define CHECK_DAEMON_EXIT(abi)                                                \
-  if (status##abi.supported && pid == status64.daemon_pid) {                  \
-    char status_str[64];                                                      \
-    parse_status(status, status_str, sizeof(status_str));                     \
-                                                                              \
-    LOGW("daemon" #abi "pid %d exited: %s", pid, status_str);                 \
-    status##abi.daemon_running = false;                                       \
-                                                                              \
-    if (status##abi.daemon_error_info[0] == '\0')                             \
-      memcpy(status##abi.daemon_error_info, status_str, strlen(status_str));  \
-                                                                              \
-    updateStatus();                                                           \
-    continue;                                                                 \
+#define CHECK_DAEMON_EXIT(abi)                                               \
+  if (status##abi.supported && pid == status64.daemon_pid) {                 \
+    char status_str[64];                                                     \
+    parse_status(status, status_str, sizeof(status_str));                    \
+                                                                             \
+    LOGW("daemon" #abi "pid %d exited: %s", pid, status_str);                \
+    status##abi.daemon_running = false;                                      \
+                                                                             \
+    if (status##abi.daemon_error_info[0] == '\0')                            \
+      memcpy(status##abi.daemon_error_info, status_str, strlen(status_str)); \
+                                                                             \
+    updateStatus();                                                          \
+    continue;                                                                \
   }
 
 #define PRE_INJECT(abi, is_64)                                                         \
@@ -605,7 +636,9 @@ struct SigChldHandler : public EventHandler {
 };
 
 static char pre_section[1024];
+static int pre_section_len = 0;
 static char post_section[1024];
+static int post_section_len = 0;
 
 #define WRITE_STATUS_ABI(suffix)                                                  \
   if (status ## suffix.supported) {                                               \
@@ -616,7 +649,7 @@ static char post_section[1024];
     else strcat(status_text, "❌ not injected,");                                 \
                                                                                   \
     strcat(status_text, " daemon" #suffix ":");                                   \
-    if (status ## suffix .daemon_running) {                                       \
+    if (status ## suffix.daemon_running) {                                       \
       strcat(status_text, "😋 running");                                          \
                                                                                   \
       if (status ## suffix.daemon_info[0] != '\0') {                              \
@@ -637,7 +670,7 @@ static char post_section[1024];
 
 static void updateStatus() {
   FILE *prop = fopen(prop_path, "w");
-  char status_text[64] = "monitor: ";
+  char status_text[256] = "monitor: ";
 
   switch (tracing_state) {
     case TRACING: {
@@ -671,6 +704,8 @@ static void updateStatus() {
   WRITE_STATUS_ABI(32)
 
   fprintf(prop, "%s[%s] %s", pre_section, status_text, post_section);
+
+  fclose(prop);
 }
 
 static bool prepare_environment() {
@@ -686,18 +721,64 @@ static bool prepare_environment() {
     return false;
   }
 
-  char line[1024];
-  ssize_t len = fread(line, 1, sizeof(line), orig_prop);
-  /* TODO: Check if this part translation is correct.
-            Old approach may be a callback approach that gets called
-              every new line
-  */
-  if ((unsigned long)len > (sizeof("description") - 1) && strncmp(line, "description=", sizeof("description") - 1) == 0) {
-    strcat(post_section, "description=");
-    strcat(post_section, line + sizeof("description"));
-  } else {
-    strcat(pre_section, line);
+  const char field_name[] = "description=";
+
+  /* TODO: improve this code */
+  int i = 1;
+  while (1) {
+    int int_char = fgetc(orig_prop);
+    if (int_char == EOF) break;
+
+    pre_section[pre_section_len] = (char)int_char;
+    pre_section[pre_section_len + 1] = '\0';
+    pre_section_len++;
+
+    if ((char)int_char != field_name[0]) continue;
+
+    while (1) {
+      int int_char2 = fgetc(orig_prop);
+      if (int_char2 == EOF) break;
+
+      if ((char)int_char2 == field_name[i]) {
+        i++;
+
+        if (i == (int)(sizeof(field_name) - 1)) {
+          pre_section[pre_section_len] = (char)int_char2;
+          pre_section[pre_section_len + 1] = '\0';
+          pre_section_len++;
+      
+          while (1) {
+            int int_char3 = fgetc(orig_prop);
+            if (int_char3 == EOF) break;
+
+            post_section[post_section_len] = (char)int_char3;
+            post_section[post_section_len + 1] = '\0';
+            post_section_len++;
+
+            i++;
+          }
+
+          break;
+        } else {
+          pre_section[pre_section_len] = (char)int_char2;
+          pre_section[pre_section_len + 1] = '\0';
+          pre_section_len++;
+
+          continue;
+        }
+      } else {
+        pre_section[pre_section_len] = (char)int_char2;
+        pre_section[pre_section_len + 1] = '\0';
+        pre_section_len++;
+
+        i = 1;
+
+        break;
+      }
+    }
   }
+
+  fclose(orig_prop);
 
   updateStatus();
 
