@@ -10,6 +10,7 @@
 #else
 #define LOG_TAG "zygisk-ptrace32"
 #endif
+
 #include "logging.h"
 
 struct MapInfo {

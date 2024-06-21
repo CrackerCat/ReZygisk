@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 void init_monitor();
+
 bool trace_zygote(int pid);
 
 enum Command {
@@ -21,6 +22,6 @@ enum Command {
   SYSTEM_SERVER_STARTED = 10
 };
 
-void send_control_command(enum Command cmd);
+int send_control_command(enum Command cmd);
 
 #endif /* MAIN_HPP */

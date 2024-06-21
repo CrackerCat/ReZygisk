@@ -94,14 +94,12 @@ ui_print "- Extracting module files"
 extract "$ZIPFILE" 'module.prop'     "$MODPATH"
 extract "$ZIPFILE" 'post-fs-data.sh' "$MODPATH"
 extract "$ZIPFILE" 'service.sh'      "$MODPATH"
-extract "$ZIPFILE" 'zygisk-ctl.sh'   "$MODPATH"
 extract "$ZIPFILE" 'mazoku'          "$MODPATH"
 mv "$TMPDIR/sepolicy.rule" "$MODPATH"
 
 mkdir "$MODPATH/bin"
 mkdir "$MODPATH/lib"
 mkdir "$MODPATH/lib64"
-mv "$MODPATH/zygisk-ctl.sh" "$MODPATH/bin/zygisk-ctl"
 
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then
   ui_print "- Extracting x86 libraries"
