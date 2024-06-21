@@ -13,7 +13,7 @@
 #include <sys/mount.h>
 #include <fcntl.h>
 
-#include "main.h"
+#include "monitor.h"
 #include "utils.hpp"
 #include "files.hpp"
 #include "misc.hpp"
@@ -324,6 +324,8 @@ struct SocketHandler : public EventHandler {
           if (mount(prop_path, "/data/adb/modules/zygisksu/module.prop", NULL, MS_BIND, NULL) == -1) {
             PLOGE("failed to mount prop");
           }
+
+          umount2(prop_path, MNT_DETACH);
 
           break;
         }
