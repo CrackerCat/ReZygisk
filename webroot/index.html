@@ -10,9 +10,10 @@
     <script src="js/main.js" type="module"></script>
   </head>
   <body>
+    <div class="error_mode"></div>
     <div class="header">ReZygisk</div>
-    <div name="ghost" style="padding: 40px 0px;"></div>
-    <div name="version" class="bright card">
+    <div style="padding: 40px 0px;"></div>
+    <div id="info_card" class="bright card">
       <div class="brightc content" style="display: flex; align-items: center;">
         <div id="rezygisk_icon_state" class="brightc">
           <img class="brightc" src="assets/mark.svg">
@@ -39,11 +40,11 @@
       </div>
     </div>
 
-    <div name="version" class="dim card" id="modules_list">
+    <div id="modules_list" class="dim card" style="display: none;">
       <!-- N/A -->
     </div>
 
-    <div name="version" class="dim card">
+    <div id="rezygisk_settings" class="dim card" style="display: none;">
       <div class="dimc content" style="font-size: 1.2em;">
         Settings
       </div>

@@ -2,10 +2,13 @@ import { exec, toast, fullScreen } from './kernelsu.js';
 
 (async () => {
   fullScreen(true)
-
-  const rezygisk_icon_state = document.getElementById('rezygisk_icon_state')
+  const rootCss = document.querySelector(':root');
   const rezygisk_state = document.getElementById('rezygisk_state')
+  const rezygisk_settings = document.getElementById("rezygisk_settings")
+  const rezygisk_icon_state = document.getElementById('rezygisk_icon_state')
   /* TODO: Implement rezygisk state */
+  rezygisk_settings.removeAttribute("style")
+  rootCss.style.setProperty('--bright', '#3a4857');
   rezygisk_state.innerHTML = 'ReZygisk is functioning!'
   rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/tick.svg">'
 
@@ -44,6 +47,7 @@ import { exec, toast, fullScreen } from './kernelsu.js';
   const { errno: errnoModules, stdout: stdoutModules, stderr: stderrModules } = await exec('find /data/adb/modules -type d -name zygisk -exec dirname {} \\;')
 
   if (errnoModules === 0) {
+    modules_list.removeAttribute("style")
     const modules = stdoutModules.split('\n')
 
     modules_list.innerHTML += 

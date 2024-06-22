@@ -1,3 +1,9 @@
+:root {
+  --bright: #8d1d19;
+  --dim: #1d2327;
+  --error: #8d1d19;
+}
+
 * {
   background-color: #181c20;
   color: #fff;
@@ -44,18 +50,18 @@ a {
 }
 
 .bright {
-  border: 5px solid #3a4857;
-  background: #3a4857;
+  border: 5px solid var(--bright);
+  background: var(--bright);
 }
 .brightc {
-  background: #3a4857;
+  background: var(--bright);
 }
 
 .dim {
-  border: 5px solid #1d2327;
-  background: #1d2327;
+  border: 5px solid var(--dim);
+  background: var(--dim);
 }
 
 .dimc {
-  background: #1d2327;
+  background: var(--dim);
 }
