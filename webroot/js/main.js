@@ -3,9 +3,11 @@ import { exec, toast, fullScreen } from './kernelsu.js';
 (async () => {
   fullScreen(true)
 
+  const rezygisk_icon_state = document.getElementById('rezygisk_icon_state')
   const rezygisk_state = document.getElementById('rezygisk_state')
   /* TODO: Implement rezygisk state */
   rezygisk_state.innerHTML = 'ReZygisk is functioning!'
+  rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/tick.svg">'
 
   const code_version = document.getElementById('version_code')
   const root_impl = document.getElementById('root_impl')
