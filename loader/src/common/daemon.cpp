@@ -153,7 +153,9 @@ namespace zygiskd {
 
         int flags = socket_utils::read_u32(fd);
 
-        if (flags & (1 << 29)) {
+        if (flags & (1 << 27)) {
+          info->root_impl = ZYGOTE_ROOT_IMPL_APATCH;
+        } else if (flags & (1 << 29)) {
           info->root_impl = ZYGOTE_ROOT_IMPL_KERNELSU;
         } else if (flags & (1 << 30)) {
           info->root_impl = ZYGOTE_ROOT_IMPL_MAGISK;
