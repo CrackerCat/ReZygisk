@@ -1,6 +1,6 @@
 # ReZygisk
 
-ReZygisk is a fork of Zygisk Next by Dr-TSNG, which is a standalone implementation of Zygisk, providing Zygisk API support for KernelSU, Magisk and futurely APatch.
+ReZygisk is a fork of Zygisk Next by Dr-TSNG, which is a standalone implementation of Zygisk, providing Zygisk API support for KernelSU, Magisk and APatch.
 
 It aims at the re-write of Zygisk Next to C, allowing also a more efficient and faster implementation of the Zygisk API with a more permissive license.
 
