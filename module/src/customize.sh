@@ -100,6 +100,14 @@ mv "$TMPDIR/sepolicy.rule" "$MODPATH"
 mkdir "$MODPATH/bin"
 mkdir "$MODPATH/lib"
 mkdir "$MODPATH/lib64"
+mkdir "$MODPATH/webroot"
+
+ui_print "- Extracting webroot"
+extract "$ZIPFILE" 'webroot/index.html' "$MODPATH/webroot" true
+extract "$ZIPFILE" 'webroot/assets/tick.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
+extract "$ZIPFILE" 'webroot/js/main.js' "$MODPATH/webroot/js" true
+extract "$ZIPFILE" 'webroot/js/kernelsu.js' "$MODPATH/webroot/js" true
 
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then
   ui_print "- Extracting x86 libraries"

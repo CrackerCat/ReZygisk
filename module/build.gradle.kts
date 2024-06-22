@@ -84,6 +84,9 @@ androidComponents.onVariants { variant ->
         into("lib") {
             from(project(":loader").layout.buildDirectory.file("intermediates/stripped_native_libs/$variantLowered/out/lib"))
         }
+        into("webroot") {
+            from("${rootProject.projectDir}/webroot")
+        }
 
         val root = moduleDir.get()
 
@@ -156,6 +159,12 @@ androidComponents.onVariants { variant ->
                         Pair(
                             root.file("bin/zygiskd64").asFile,
                             root.file("bin/$abi64/zygiskd").asFile
+                        )
+                    )
+                    set.add(
+                        Pair(
+                            root.file("webroot/index.html").asFile,
+                            null
                         )
                     )
                     sig.initSign(privKey)
