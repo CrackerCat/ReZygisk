@@ -161,12 +161,15 @@ androidComponents.onVariants { variant ->
                             root.file("bin/$abi64/zygiskd").asFile
                         )
                     )
-                    set.add(
-                        Pair(
-                            root.file("webroot/index.html").asFile,
-                            null
-                        )
-                    )
+                    set.add(Pair(root.file("webroot/index.html").asFile, null))
+                    set.add(Pair(root.file("webroot/js/main.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/kernelsu.js").asFile, null))
+                    set.add(Pair(root.file("webroot/fonts/ProductSans-Regular.ttf").asFile, null))
+                    set.add(Pair(root.file("webroot/fonts/ProductSans-Italic.ttf").asFile, null))
+                    set.add(Pair(root.file("webroot/css/index.css").asFile, null))
+                    set.add(Pair(root.file("webroot/css/fonts.css").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/mark.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/tick.svg").asFile, null))
                     sig.initSign(privKey)
                     set.forEach { it.first.sha(it.second) }
                     val signFile = root.file(name).asFile
