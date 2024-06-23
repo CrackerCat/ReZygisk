@@ -113,6 +113,7 @@ namespace {
         PROCESS_ON_DENYLIST = zygisk::StateFlag::PROCESS_ON_DENYLIST,
 
         PROCESS_IS_MANAGER = (1u << 28),
+        PROCESS_ROOT_IS_APATCH = (1u << 27),
         PROCESS_ROOT_IS_KSU = (1u << 29),
         PROCESS_ROOT_IS_MAGISK = (1u << 30),
         PROCESS_IS_SYS_UI = (1u << 31),

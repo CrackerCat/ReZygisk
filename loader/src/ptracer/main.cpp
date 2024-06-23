@@ -108,6 +108,11 @@ int main(int argc, char **argv) {
 
         break;
       }
+      case ZYGOTE_ROOT_IMPL_APATCH: {
+        printf("Root implementation: APatch\n");
+        
+        break;
+      }
       case ZYGOTE_ROOT_IMPL_KERNELSU: {
         printf("Root implementation: KernelSU\n");
 
