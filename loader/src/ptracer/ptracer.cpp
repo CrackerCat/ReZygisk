@@ -8,8 +8,6 @@
 #include <string>
 #include <sys/mman.h>
 #include <sys/wait.h>
-#include <cstdlib>
-#include <cstdio>
 #include <dlfcn.h>
 #include <signal.h>
 #include <sys/system_properties.h>

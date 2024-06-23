@@ -57,7 +57,7 @@ struct ZygiskContext {
     JNIEnv *env;
     union {
         void *ptr;
-        AppSpecializeArgs_v3 *app;
+        AppSpecializeArgs_v5 *app;
         ServerSpecializeArgs_v1 *server;
     } args;
 
@@ -199,10 +199,11 @@ DCL_HOOK_FUNC(int, pthread_attr_destroy, void *target) {
 void initialize_jni_hook();
 
 DCL_HOOK_FUNC(char *, strdup, const char *s) {
-    if (s == "com.android.internal.os.ZygoteInit"sv) {
-        LOGV("strdup %s\n", s);
-        initialize_jni_hook();
+  if (strcmp(s, "com.android.internal.os.ZygoteInit") == 0) {
+      LOGV("strdup %s\n", s);
+      initialize_jni_hook();
     }
+
     return old_strdup(s);
 }
 
@@ -736,10 +737,15 @@ void hook_functions() {
 
     ino_t android_runtime_inode = 0;
     dev_t android_runtime_dev = 0;
+    /* TODO by ThePedroo: Implement injection via native bridge */
+    // ino_t native_bridge_inode = 0;
+    // dev_t native_bridge_dev = 0;
+
     for (auto &map : lsplt::MapInfo::Scan()) {
         if (map.path.ends_with("libandroid_runtime.so")) {
             android_runtime_inode = map.inode;
             android_runtime_dev = map.dev;
+
             break;
         }
     }

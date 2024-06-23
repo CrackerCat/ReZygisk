@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# keep sync with https://github.com/topjohnwu/Magisk/blob/master/native/src/core/zygisk/gen_jni_hooks.py
-
 primitives = ['jint', 'jboolean', 'jlong']
 
 class JType:
@@ -89,7 +87,7 @@ class ForkAndSpec(JNIHook):
         return 'nativeForkAndSpecialize'
 
     def init_args(self):
-        return 'AppSpecializeArgs_v3 args(uid, gid, gids, runtime_flags, rlimits, mount_external, se_info, nice_name, instruction_set, app_data_dir);'
+        return 'AppSpecializeArgs_v5 args(uid, gid, gids, runtime_flags, rlimits, mount_external, se_info, nice_name, instruction_set, app_data_dir);'
 
     def body(self):
         decl = ''
