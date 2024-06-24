@@ -273,6 +273,12 @@ struct SocketHandler : public EventHandler {
         case DAEMON64_SET_INFO: {
           LOGD("received daemon64 info %s", msg.data);
 
+          /* Will only happen if somehow the daemon restarts */
+          if (status64.daemon_info != NULL) {
+            free(status64.daemon_info);
+            status64.daemon_info = NULL;
+          }
+
           status64.daemon_info = (char *)malloc(msg.length);
           memcpy(status64.daemon_info, msg.data, msg.length - 1);
           status64.daemon_info[msg.length - 1] = '\0';
@@ -283,6 +289,11 @@ struct SocketHandler : public EventHandler {
         }
         case DAEMON32_SET_INFO: {
           LOGD("received daemon32 info %s", msg.data);
+
+          if (status32.daemon_info != NULL) {
+            free(status32.daemon_info);
+            status32.daemon_info = NULL;
+          }
 
           status32.daemon_info = (char *)malloc(msg.length);
           memcpy(status32.daemon_info, msg.data, msg.length - 1);
@@ -297,6 +308,11 @@ struct SocketHandler : public EventHandler {
 
           status64.daemon_running = false;
 
+          if (status64.daemon_error_info != NULL) {
+            free(status64.daemon_error_info);
+            status64.daemon_error_info = NULL;
+          }
+
           status64.daemon_error_info = (char *)malloc(msg.length);
           memcpy(status64.daemon_error_info, msg.data, msg.length - 1);
           status64.daemon_error_info[msg.length - 1] = '\0';
@@ -309,6 +325,11 @@ struct SocketHandler : public EventHandler {
           LOGD("received daemon32 error info %s", msg.data);
 
           status32.daemon_running = false;
+
+          if (status32.daemon_error_info != NULL) {
+            free(status32.daemon_error_info);
+            status32.daemon_error_info = NULL;
+          }
           
           status32.daemon_error_info = (char *)malloc(msg.length);
           memcpy(status32.daemon_error_info, msg.data, msg.length - 1);
@@ -797,6 +818,11 @@ void init_monitor() {
   looper.RegisterHandler(socketHandler, EPOLLIN | EPOLLET);
   looper.RegisterHandler(ptraceHandler, EPOLLIN | EPOLLET);
   looper.Loop();
+
+  if (status64.daemon_info != NULL) free(status64.daemon_info);
+  if (status64.daemon_error_info != NULL) free(status64.daemon_error_info);
+  if (status32.daemon_info != NULL) free(status32.daemon_info);
+  if (status32.daemon_error_info != NULL) free(status32.daemon_error_info);
 
   LOGI("exit");
 }
