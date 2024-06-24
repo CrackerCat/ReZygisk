@@ -29,7 +29,7 @@ enum TracingState {
   EXITING
 };
 
-char monitor_stop_reason[32];
+static char monitor_stop_reason[32];
 
 constexpr char SOCKET_NAME[] = "init_monitor";
 
@@ -122,22 +122,8 @@ struct Status {
   char *daemon_error_info;
 };
 
-static Status status64 = {
-  .supported = false,
-  .zygote_injected = false,
-  .daemon_running = false,
-  .daemon_pid = -1,
-  .daemon_info = NULL,
-  .daemon_error_info = NULL
-};
-static Status status32 = {
-  .supported = false,
-  .zygote_injected = false,
-  .daemon_running = false,
-  .daemon_pid = -1,
-  .daemon_info = NULL,
-  .daemon_error_info = NULL
-};
+static Status status64;
+static Status status32;
 
 struct SocketHandler : public EventHandler {
   int sock_fd_;
@@ -182,7 +168,7 @@ struct SocketHandler : public EventHandler {
       std::vector<uint8_t> buf;
       buf.resize(sizeof(MsgHead), 0);
 
-      MsgHead &msg = *reinterpret_cast<MsgHead*>(buf.data());
+      MsgHead &msg = *((MsgHead *)buf.data());
 
       ssize_t real_size;
       ssize_t nread = recv(sock_fd_, &msg, sizeof(msg), MSG_PEEK);
@@ -192,7 +178,7 @@ struct SocketHandler : public EventHandler {
         PLOGE("read socket");
       }
 
-      if (static_cast<size_t>(nread) < sizeof(Command)) {
+      if ((size_t)nread < sizeof(Command)) {
         LOGE("read %zu < %zu", nread, sizeof(Command));
         continue;
       }
@@ -251,7 +237,7 @@ struct SocketHandler : public EventHandler {
             LOGI("stop tracing requested");
 
             tracing_state = STOPPING;
-            memcpy(monitor_stop_reason, "user requested", sizeof("user requested"));
+            strcpy(monitor_stop_reason, "user requested");
 
             ptrace(PTRACE_INTERRUPT, 1, 0, 0);
             updateStatus();
@@ -263,7 +249,7 @@ struct SocketHandler : public EventHandler {
           LOGI("prepare for exit ...");
 
           tracing_state = EXITING;
-          memcpy(monitor_stop_reason, "user requested", sizeof("user requested"));
+          strcpy(monitor_stop_reason, "user requested");
 
           updateStatus();
           loop.Stop();
@@ -287,7 +273,16 @@ struct SocketHandler : public EventHandler {
         case DAEMON64_SET_INFO: {
           LOGD("received daemon64 info %s", msg.data);
 
-          status64.daemon_info = msg.data;
+          /* Will only happen if somehow the daemon restarts */
+          if (status64.daemon_info != NULL) {
+            free(status64.daemon_info);
+            status64.daemon_info = NULL;
+          }
+
+          status64.daemon_info = (char *)malloc(msg.length);
+          memcpy(status64.daemon_info, msg.data, msg.length - 1);
+          status64.daemon_info[msg.length - 1] = '\0';
+
           updateStatus();
 
           break;
@@ -295,7 +290,15 @@ struct SocketHandler : public EventHandler {
         case DAEMON32_SET_INFO: {
           LOGD("received daemon32 info %s", msg.data);
 
-          status32.daemon_info = msg.data;
+          if (status32.daemon_info != NULL) {
+            free(status32.daemon_info);
+            status32.daemon_info = NULL;
+          }
+
+          status32.daemon_info = (char *)malloc(msg.length);
+          memcpy(status32.daemon_info, msg.data, msg.length - 1);
+          status32.daemon_info[msg.length - 1] = '\0';
+
           updateStatus();
 
           break;
@@ -304,7 +307,16 @@ struct SocketHandler : public EventHandler {
           LOGD("received daemon64 error info %s", msg.data);
 
           status64.daemon_running = false;
-          status64.daemon_error_info = msg.data;
+
+          if (status64.daemon_error_info != NULL) {
+            free(status64.daemon_error_info);
+            status64.daemon_error_info = NULL;
+          }
+
+          status64.daemon_error_info = (char *)malloc(msg.length);
+          memcpy(status64.daemon_error_info, msg.data, msg.length - 1);
+          status64.daemon_error_info[msg.length - 1] = '\0';
+
           updateStatus();
 
           break;
@@ -313,7 +325,16 @@ struct SocketHandler : public EventHandler {
           LOGD("received daemon32 error info %s", msg.data);
 
           status32.daemon_running = false;
-          status32.daemon_error_info = msg.data;
+
+          if (status32.daemon_error_info != NULL) {
+            free(status32.daemon_error_info);
+            status32.daemon_error_info = NULL;
+          }
+          
+          status32.daemon_error_info = (char *)malloc(msg.length);
+          memcpy(status32.daemon_error_info, msg.data, msg.length - 1);
+          status32.daemon_error_info[msg.length - 1] = '\0';
+
           updateStatus();
 
           break;
@@ -364,16 +385,16 @@ CREATE_ZYGOTE_START_COUNTER(64)
 CREATE_ZYGOTE_START_COUNTER(32)
 
 static bool ensure_daemon_created(bool is_64bit) {
-  Status status = is_64bit ? status64 : status32;
+  Status *status = is_64bit ? &status64 : &status32;
   if (is_64bit) {
     LOGD("new zygote started, unmounting prop ...");
 
     umount2("/data/adb/modules/zygisksu/module.prop", MNT_DETACH);
   }
 
-  status.zygote_injected = false;
+  status->zygote_injected = false;
 
-  if (status.daemon_pid == -1) {
+  if (status->daemon_pid == -1) {
     pid_t pid = fork();
     if (pid < 0) {
       PLOGE("create daemon%s", is_64bit ? "64" : "32");
@@ -389,18 +410,14 @@ static bool ensure_daemon_created(bool is_64bit) {
 
       exit(1);
     } else {
-      LOGI("daemon%s started with pid %d", is_64bit ? "64" : "32", pid);
-
-      status.supported = true;
-      status.daemon_pid = pid;
-      status.daemon_running = true;
+      status->supported = true;
+      status->daemon_pid = pid;
+      status->daemon_running = true;
 
       return true;
     }
   } else {
-    LOGI("daemon%s already started with pid %d", is_64bit ? "64" : "32", status.daemon_pid);
-
-    return status.daemon_running;
+    return status->daemon_running;
   }
 }
 
@@ -638,41 +655,38 @@ struct SigChldHandler : public EventHandler {
 };
 
 static char pre_section[1024];
-static int pre_section_len = 0;
 static char post_section[1024];
-static int post_section_len = 0;
 
-#define WRITE_STATUS_ABI(suffix)                                                  \
-  if (status ## suffix.supported) {                                               \
-    strcat(status_text, " zygote" #suffix ":");                                   \
-                                                                                  \
-    if (tracing_state != TRACING) strcat(status_text, "❓ unknown,");             \
-    else if (status##suffix.zygote_injected) strcat(status_text, "😋 injected,"); \
-    else strcat(status_text, "❌ not injected,");                                 \
-                                                                                  \
-    strcat(status_text, " daemon" #suffix ":");                                   \
-    if (status ## suffix.daemon_running) {                                       \
-      strcat(status_text, "😋 running");                                          \
-                                                                                  \
-      if (status ## suffix.daemon_info[0] != '\0') {                              \
-        strcat(status_text, "(");                                                 \
-        strcat(status_text, status ## suffix.daemon_info);                        \
-        strcat(status_text, ")");                                                 \
-      }                                                                           \
-    } else {                                                                      \
-      strcat(status_text, "❌ crashed");                                          \
-                                                                                  \
-      if (status ## suffix.daemon_error_info[0] != '\0') {                        \
-        strcat(status_text, "(");                                                 \
-        strcat(status_text, status ## suffix.daemon_error_info);                  \
-        strcat(status_text, ")");                                                 \
-      }                                                                           \
-    }                                                                             \
+#define WRITE_STATUS_ABI(suffix)                                                     \
+  if (status ## suffix.supported) {                                                  \
+    strcat(status_text, " zygote" # suffix ":");                                     \
+    if (tracing_state != TRACING) strcat(status_text, "❓ unknown, ");               \
+    else if (status ## suffix.zygote_injected) strcat(status_text, "😋 injected, "); \
+    else strcat(status_text, "❌ not injected, ");                                   \
+                                                                                     \
+    strcat(status_text, " daemon" # suffix ":");                                     \
+    if (status ## suffix.daemon_running) {                                           \
+      strcat(status_text, "😋running");                                              \
+                                                                                     \
+      if (status ## suffix.daemon_info != NULL) {                                    \
+        strcat(status_text, "(");                                                    \
+        strcat(status_text, status ## suffix.daemon_info);                           \
+        strcat(status_text, ")");                                                    \
+      }                                                                              \
+    } else {                                                                         \
+      strcat(status_text, "❌ crashed ");                                            \
+                                                                                     \
+      if (status ## suffix.daemon_error_info != NULL) {                              \
+        strcat(status_text, "(");                                                    \
+        strcat(status_text, status ## suffix.daemon_error_info);                     \
+        strcat(status_text, ")");                                                    \
+      }                                                                              \
+    }                                                                                \
   }
 
 static void updateStatus() {
   FILE *prop = fopen(prop_path, "w");
-  char status_text[256] = "monitor: ";
+  char status_text[1024] = "monitor: ";
 
   switch (tracing_state) {
     case TRACING: {
@@ -680,9 +694,7 @@ static void updateStatus() {
 
       break;
     }
-    case STOPPING: {
-      [[fallthrough]];
-    }
+    case STOPPING: [[fallthrough]];
     case STOPPED: {
       strcat(status_text, "❌ stopped");
 
@@ -696,11 +708,11 @@ static void updateStatus() {
   }
 
   if (tracing_state != TRACING && monitor_stop_reason[0] != '\0') {
-    size_t status_text_len = strlen(status_text);
-    snprintf(status_text + status_text_len, sizeof(status_text) - status_text_len, "(%s)", monitor_stop_reason);
+    strcat(status_text, "(");
+    strcat(status_text, monitor_stop_reason);
+    strcat(status_text, ")");
   }
-
-  strcat(status_text, ", ");
+  strcat(status_text, ",");
 
   WRITE_STATUS_ABI(64)
   WRITE_STATUS_ABI(32)
@@ -724,6 +736,9 @@ static bool prepare_environment() {
   }
 
   const char field_name[] = "description=";
+
+  int pre_section_len = 0;
+  int post_section_len = 0;
 
   /* TODO: improve this code */
   int i = 1;
@@ -803,6 +818,11 @@ void init_monitor() {
   looper.RegisterHandler(socketHandler, EPOLLIN | EPOLLET);
   looper.RegisterHandler(ptraceHandler, EPOLLIN | EPOLLET);
   looper.Loop();
+
+  if (status64.daemon_info != NULL) free(status64.daemon_info);
+  if (status64.daemon_error_info != NULL) free(status64.daemon_error_info);
+  if (status32.daemon_info != NULL) free(status32.daemon_info);
+  if (status32.daemon_error_info != NULL) free(status32.daemon_error_info);
 
   LOGI("exit");
 }
