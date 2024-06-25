@@ -22,6 +22,7 @@ function setDark() {
   rootCss.style.setProperty('--font', '#ffffff')
   rootCss.style.setProperty('--desc', '#c9c9c9')
   rootCss.style.setProperty('--spliter', '#283136')
+  rootCss.style.setProperty('--dim', '#1d2327')
   sys_theme = setData('dark')
   button.innerHTML = '<img src="assets/dark.svg">'
   return
@@ -32,6 +33,7 @@ function setLight() {
   rootCss.style.setProperty('--font', '#2c2c2c')
   rootCss.style.setProperty('--desc', '#444444')
   rootCss.style.setProperty('--spliter', '#4f6069')
+  rootCss.style.setProperty('--dim', '#b9b9b9')
   sys_theme = setData('light')
   button.innerHTML = light_icon
   return
