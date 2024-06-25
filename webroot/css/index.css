@@ -6,6 +6,7 @@
   --bright: #8d1d19;
   --dim: #1d2327;
   --error: #8d1d19;
+  --icon: #283136;
   /* Locked Color */
   --lock-desc: #c9c9c9;
   --lock: #fff;
@@ -27,7 +28,10 @@ a {
 
 /* Components */
 .header {
+  display: flex;
   position: fixed;
+  align-items: center;
+  justify-content: space-between;
   left: 0;
   right: 0;
   padding: 25px 15px;

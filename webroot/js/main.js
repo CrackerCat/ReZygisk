@@ -51,7 +51,7 @@ import { fullScreen, exec, toast } from './kernelsu.js';
 
     rezygisk_settings.removeAttribute('style')
     rootCss.style.setProperty('--bright', '#ffd000');
-    rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/warning.svg">'
+    rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/warn.svg">'
   }
 
   const modules_list = document.getElementById('modules_list')
