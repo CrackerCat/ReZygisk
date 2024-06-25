@@ -33,7 +33,7 @@ function setLight() {
   rootCss.style.setProperty('--font', '#2c2c2c')
   rootCss.style.setProperty('--desc', '#444444')
   rootCss.style.setProperty('--spliter', '#4f6069')
-  rootCss.style.setProperty('--dim', '#b9b9b9')
+  rootCss.style.setProperty('--dim', '#e0e0e0')
   sys_theme = setData('light')
   button.innerHTML = light_icon
   return
