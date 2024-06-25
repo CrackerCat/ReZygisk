@@ -10,7 +10,7 @@ if (!sys_theme) sys_theme = setData('dark')
 
 if (sys_theme === 'light') setLight()
 
-button.addEventListener('click', (event) => {
+button.addEventListener('click', () => {
   switch (sys_theme) {
     case 'dark': setLight(); break;
     case 'light': setDark(); break;
