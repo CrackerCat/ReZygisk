@@ -104,10 +104,22 @@ mkdir "$MODPATH/webroot"
 
 ui_print "- Extracting webroot"
 extract "$ZIPFILE" 'webroot/index.html' "$MODPATH/webroot" true
-extract "$ZIPFILE" 'webroot/assets/tick.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
+
 extract "$ZIPFILE" 'webroot/js/main.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/kernelsu.js' "$MODPATH/webroot/js" true
+extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
+
+extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
+extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
+
+extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
+extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
+
+extract "$ZIPFILE" 'webroot/assets/mark.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/tick.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/warn.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/light.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/dark.svg' "$MODPATH/webroot/assets" true
 
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then
   ui_print "- Extracting x86 libraries"
