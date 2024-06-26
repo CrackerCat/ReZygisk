@@ -120,6 +120,7 @@ extract "$ZIPFILE" 'webroot/assets/tick.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/warn.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/light.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/dark.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/module.svg' "$MODPATH/webroot/assets" true
 
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then
   ui_print "- Extracting x86 libraries"

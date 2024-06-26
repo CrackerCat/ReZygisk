@@ -66,16 +66,19 @@ import { fullScreen, exec, toast } from './kernelsu.js';
     modules_list.removeAttribute('style')
 
     modules_list.innerHTML += 
-     `<div class="dimc content" style="font-size: 1.2em;">
-        Modules (${modules.length})
+     `<div class="dimc" style="font-size: 1.2em; display: flex; align-items: center;">
+        <div id="modules_list_icon" class="dimc">
+          <img class="dimc" src="assets/module.svg">
+        </div>
+        <div class="dimc" style="padding-bottom: 4px; padding-left: 5px;">Modules (${modules.length})</div>
       </div>
-      <br/>`
+      `
 
-    for (const module of modules) {
+    for ( i = 0; i < modules.length; i++) {
+      const module = modules[i]
       const lsZygiskCmd = await exec(`ls ${module}/zygisk`)
       if (lsZygiskCmd.errno !== 0) {
         toast(`ls ${module}/zygisk error (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
-
         continue
       }
 
@@ -92,10 +95,10 @@ import { fullScreen, exec, toast } from './kernelsu.js';
         const name = lines.find(line => line.includes('name=')).split('=')[1]
 
         modules_list.innerHTML += 
-        `<div class="dimc content spliter liste" style="padding-top: 3px; padding-bottom: 13px;">
-          <div class="dimc">${name}</div>
-          <div class="dimc">${bitsUsed.join(' / ')}</div>
-        </div>`
+          `<div class="dimc content ${i + 1 !== modules.length ? "spliter" : ""}" style="padding-top: 10px; padding-bottom: 13px;">
+            <div class="dimc">${name}</div>
+            <div class="dimc" style="font-size: 0.9em;">Arch: ${bitsUsed.join(' / ')}</div>
+          </div>`
       } else {
         toast(`cat ${module} error (${catCmd.errno}): ${catCmd.stderr}`)
       }
