@@ -74,8 +74,9 @@ import { fullScreen, exec, toast } from './kernelsu.js';
       </div>
       `
 
-    for ( i = 0; i < modules.length; i++) {
-      const module = modules[i]
+    let index = 0
+    for (const module of modules) {
+      index += 1
       const lsZygiskCmd = await exec(`ls ${module}/zygisk`)
       if (lsZygiskCmd.errno !== 0) {
         toast(`ls ${module}/zygisk error (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
@@ -83,8 +84,8 @@ import { fullScreen, exec, toast } from './kernelsu.js';
       }
 
       const bitsUsed = []
-      if (lsZygiskCmd.stdout.split('\n').find((line) => [ 'arm64-v8a.so', 'x86_64.so' ].includes(line))) bitsUsed.push('64')
-      if (lsZygiskCmd.stdout.split('\n').find((line) => [ 'armeabi-v7a.so', 'x86.so' ].includes(line))) bitsUsed.push('32')
+      if (lsZygiskCmd.stdout.split('\n').find((line) => [ 'armeabi-v7a.so', 'x86.so' ].includes(line))) bitsUsed.push('32 bit')
+      if (lsZygiskCmd.stdout.split('\n').find((line) => [ 'arm64-v8a.so', 'x86_64.so' ].includes(line))) bitsUsed.push('64 bit')
 
       if (bitsUsed.length === 0) bitsUsed.push('N/A')
 
@@ -95,10 +96,10 @@ import { fullScreen, exec, toast } from './kernelsu.js';
         const name = lines.find(line => line.includes('name=')).split('=')[1]
 
         modules_list.innerHTML += 
-          `<div class="dimc content ${i + 1 !== modules.length ? "spliter" : ""}" style="padding-top: 10px; padding-bottom: 13px;">
-            <div class="dimc">${name}</div>
-            <div class="dimc" style="font-size: 0.9em;">Arch: ${bitsUsed.join(' / ')}</div>
-          </div>`
+        `<div class="dimc content ${index !== modules.length ? "spliter" : ""}" style="padding-top: 10px; padding-bottom: 13px;">
+          <div class="dimc">${name}</div>
+          <div class="dimc" style="font-size: 0.9em;">Arch: ${bitsUsed.join(' / ')}</div>
+        </div>`
       } else {
         toast(`cat ${module} error (${catCmd.errno}): ${catCmd.stderr}`)
       }
