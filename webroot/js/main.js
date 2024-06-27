@@ -63,6 +63,7 @@ import { fullScreen, exec, toast } from './kernelsu.js';
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/warn.svg">'
   }
 
+  const modules_card = document.getElementById('modules_card')
   const modules_list = document.getElementById('modules_list')
 
   const findModulesCmd = await exec('find /data/adb/modules -type d -name zygisk -exec dirname {} \\;')
@@ -72,7 +73,7 @@ import { fullScreen, exec, toast } from './kernelsu.js';
 
     if (modules.length === 0) return;
 
-    modules_list.removeAttribute('style')
+    modules_card.removeAttribute('style')
 
     let index = 0
     for (const module of modules) {
