@@ -9,9 +9,6 @@ import { fullScreen, exec, toast } from './kernelsu.js';
 
   fullScreen(true)
 
-  // Code below is for hiding loading screen
-  loading_screen.style.display = 'none';
-
   const rootCss = document.querySelector(':root')
   const rezygisk_state = document.getElementById('rezygisk_state')
   const rezygisk_settings = document.getElementById('rezygisk_settings')
@@ -71,7 +68,10 @@ import { fullScreen, exec, toast } from './kernelsu.js';
   if (findModulesCmd.errno === 0) {
     const modules = findModulesCmd.stdout.split('\n')
 
-    if (modules.length === 0) return;
+    if (modules.length === 0) {
+      loading_screen.style.display = 'none';
+      return;
+    }
 
     modules_card.removeAttribute('style')
 
@@ -108,4 +108,5 @@ import { fullScreen, exec, toast } from './kernelsu.js';
   } else {
     toast(`find error (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
   }
+  loading_screen.style.display = 'none';
 })()
