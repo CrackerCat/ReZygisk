@@ -63,15 +63,15 @@ import { fullScreen, exec, toast } from './kernelsu.js';
   const modules_card = document.getElementById('modules_card')
   const modules_list = document.getElementById('modules_list')
 
+  // For hiding loading screen
+  loading_screen.style.display = 'none';
+
   const findModulesCmd = await exec('find /data/adb/modules -type d -name zygisk -exec dirname {} \\;')
 
   if (findModulesCmd.errno === 0) {
     const modules = findModulesCmd.stdout.split('\n')
 
-    if (modules.length === 0) {
-      loading_screen.style.display = 'none';
-      return;
-    }
+    if (modules.length === 0) return;
 
     modules_card.removeAttribute('style')
 
@@ -108,5 +108,4 @@ import { fullScreen, exec, toast } from './kernelsu.js';
   } else {
     toast(`find error (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
   }
-  loading_screen.style.display = 'none';
 })()

@@ -7,10 +7,11 @@
   --dim: #1d2327;
   --error: #8d1d19;
   --icon: #48565e;
-  --icon-bc: #313a3f;
+  --icon-bc: #2b3338;
   /* Locked Color */
   --lock-desc: #c9c9c9;
   --lock: #fff;
+  --test: #c4a000;
 }
 
 * {
@@ -93,10 +94,16 @@ a {
   display: flex;
 }
 
+.center {
+  justify-content: center;
+  align-self: center;
+  display: flex;
+}
+
 .list {
   max-height: 25px;
   overflow-y: hidden; 
-  transition: max-height 0.25s ease-out;
+  transition: max-height 0.25s ease-in-out;
 }
 
 .full {
@@ -106,6 +113,42 @@ a {
 .expander {
   transform: rotate(0deg);
   transition: 0.2s ease-out;
+}
+
+.button_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+}
+
+.button {
+  /* width: 2em; */
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 30px;
+  transition: transform 0.07s ease-in-out;
+}
+
+.button:active {
+  transform: scale(90%) 
+}
+
+.small_card {
+  margin-top: 10px;
+  background: var(--icon-bc);
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.small_card_bg {
+  background: var(--icon-bc);
+}
+
+.small_card_bg_in {
+  background: var(--icon);
 }
 
 /* Card type */

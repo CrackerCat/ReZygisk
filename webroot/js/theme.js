@@ -43,6 +43,8 @@ function setDark() {
   rootCss.style.setProperty('--desc', '#c9c9c9')
   rootCss.style.setProperty('--spliter', '#283136')
   rootCss.style.setProperty('--dim', '#1d2327')
+  rootCss.style.setProperty('--icon', '#48565e')
+  rootCss.style.setProperty('--icon-bc', '#313a3f')
   sys_theme = setData('dark')
   settings_icon.innerHTML = '<img class="dimc" src="assets/settings.svg">'
   expand_clicker.innerHTML = '<img class="dimc" src="assets/expand.svg">'
@@ -57,6 +59,8 @@ function setLight() {
   rootCss.style.setProperty('--desc', '#444444')
   rootCss.style.setProperty('--spliter', '#4f6069')
   rootCss.style.setProperty('--dim', '#e0e0e0')
+  rootCss.style.setProperty('--icon', '#acacac')
+  rootCss.style.setProperty('--icon-bc', '#c9c9c9')
   sys_theme = setData('light')
   settings_icon.innerHTML = light_settings_icon
   expand_clicker.innerHTML = light_expand_icon

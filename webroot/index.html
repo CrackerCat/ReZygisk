@@ -7,14 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="js/theme.js" type="module"></script>
     <script src="js/list.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/index.css">
-    <script src="js/main.js" type="module"></script>
   </head>
   <body>
+    <!-- Loading screen -->
     <div class="loading_screen">
       <div class="loader"></div>
     </div>
+
+    <!-- Headers -->
     <div class="header">
       <div>ReZygisk</div>
       <div id="theme-switcher" style="color: black;">
@@ -22,6 +25,8 @@
       </div>
     </div>
     <div style="padding: 40px 0px;"></div>
+
+    <!-- Info card -->
     <div id="info_card" class="bright card">
       <div class="brightc content" style="display: flex; align-items: center;">
         <div id="rezygisk_icon_state" class="brightc">
@@ -49,7 +54,9 @@
       </div>
     </div>
 
+    <!-- Module list card -->
     <div id="module_card" class="dim card list" style="display: none;">
+      <!-- Module list card header -->
       <div class="dimc liste">
         <div class="dimc" style="font-size: 1.2em; display: flex; align-items: center;">
           <div id="modules_list_icon" class="dimc">
@@ -65,12 +72,15 @@
         </div>
       </div>
 
+      <!-- Module list card body -->
       <div id="modules_list" class="dimc" style="width: 100%;">
         <!-- N/A -->
       </div>
     </div>
 
+    <!-- Settings card -->
     <div id="rezygisk_settings" class="dim card" style="display: none;">
+      <!-- Settings card header -->
       <div class="dimc" style="align-items: center; display: flex;">
         <div class="dimc" id="setting_icon">
           <img class="dimc" src="assets/settings.svg">
@@ -79,6 +89,25 @@
           Settings
         </div>
       </div>
+      <!-- Settings card body (Daemon32) -->
+      <div class="small_card">
+        <div class="small_card_bg content" style="font-size: 1.1em; padding-left: 5px; padding-top: 6px; padding-bottom: 14px;">Daemon (32 bit)</div>
+        <div class="small_card_bg content button_list">
+          <div class="center button">Stop</div>
+          <div class="center button">Start</div>
+          <div class="center button">Restart</div>
+        </div>
+      </div>
+      <!-- Settings card body (Daemon64) -->
+      <div class="small_card" style="margin-top: 15px;">
+        <div class="small_card_bg content" style="font-size: 1.1em; padding-left: 5px; padding-top: 6px; padding-bottom: 14px;">Daemon (64 bit)</div>
+        <div class="small_card_bg content button_list">
+          <div class="center button">Stop</div>
+          <div class="center button">Start</div>
+          <div class="center button">Restart</div>
+        </div>
+      </div>
     </div>
+
   </body>
 </html>
