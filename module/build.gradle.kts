@@ -166,6 +166,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/main.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/kernelsu.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/theme.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/list.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/fonts/ProductSans-Regular.ttf").asFile, null))
                     set.add(Pair(root.file("webroot/fonts/ProductSans-Italic.ttf").asFile, null))
@@ -179,6 +180,8 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/assets/light.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/dark.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/module.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/expand.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/settings.svg").asFile, null))
                     sig.initSign(privKey)
                     set.forEach { it.first.sha(it.second) }
                     val signFile = root.file(name).asFile

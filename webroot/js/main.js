@@ -1,7 +1,16 @@
 import { fullScreen, exec, toast } from './kernelsu.js';
 
 (async () => {
+  const loading_screen = document.getElementsByClassName('loading_screen')[0]
+  // Testing enviroment
+  // setTimeout(() => {
+  //   loading_screen.style.display = 'none';
+  // }, 3000)
+
   fullScreen(true)
+
+  // Code below is for hiding loading screen
+  loading_screen.style.display = 'none';
 
   const rootCss = document.querySelector(':root')
   const rezygisk_state = document.getElementById('rezygisk_state')
@@ -65,15 +74,6 @@ import { fullScreen, exec, toast } from './kernelsu.js';
 
     modules_list.removeAttribute('style')
 
-    modules_list.innerHTML += 
-     `<div class="dimc" style="font-size: 1.2em; display: flex; align-items: center;">
-        <div id="modules_list_icon" class="dimc">
-          <img class="dimc" src="assets/module.svg">
-        </div>
-        <div class="dimc" style="padding-bottom: 4px; padding-left: 5px;">Modules (${modules.length})</div>
-      </div>
-      `
-
     let index = 0
     for (const module of modules) {
       index += 1
@@ -96,16 +96,14 @@ import { fullScreen, exec, toast } from './kernelsu.js';
         const name = lines.find(line => line.includes('name=')).split('=')[1]
 
         modules_list.innerHTML += 
-        `<div class="dimc content ${index !== modules.length ? "spliter" : ""}" style="padding-top: 10px; padding-bottom: 13px;">
-          <div class="dimc">${name}</div>
+        `<div class="dimc ${index !== modules.length ? "spliter" : ""}" style="padding-top: 13px; padding-bottom: 13px;">
+          <div class="dimc" style="font-size: 1.1em;">${name}</div>
           <div class="dimc" style="font-size: 0.9em;">Arch: ${bitsUsed.join(' / ')}</div>
         </div>`
       } else {
         toast(`cat ${module} error (${catCmd.errno}): ${catCmd.stderr}`)
       }
     }
-
-    modules_list.innerHTML += '</div>'
   } else {
     toast(`find error (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
   }

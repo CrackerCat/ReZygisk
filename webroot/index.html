@@ -6,11 +6,15 @@
     <meta name="viewport" content="viewport-fit=cover" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="js/theme.js" type="module"></script>
+    <script src="js/list.js" type="module"></script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/index.css">
     <script src="js/main.js" type="module"></script>
   </head>
   <body>
+    <div class="loading_screen">
+      <div class="loader"></div>
+    </div>
     <div class="header">
       <div>ReZygisk</div>
       <div id="theme-switcher" style="color: black;">
@@ -45,13 +49,35 @@
       </div>
     </div>
 
-    <div id="modules_list" class="dim card" style="display: none;">
-      <!-- N/A -->
+    <div id="module_card" class="dim card list" style="display: none;">
+      <div class="dimc liste">
+        <div class="dimc" style="font-size: 1.2em; display: flex; align-items: center;">
+          <div id="modules_list_icon" class="dimc">
+            <img class="dimc" src="assets/module.svg">
+          </div>
+          <div class="dimc" style="padding-bottom: 4px; padding-left: 5px;">Modules</div>
+        </div>
+
+        <div id="expand_clicker" class="dimc">
+          <div id="expand_clicker_icon" class="dimc expander" style="max-height: 24px;">
+            <img class="dimc" src="assets/expand.svg">
+          </div>
+        </div>
+      </div>
+
+      <div id="modules_list" class="dimc" style="width: 100%;">
+        <!-- N/A -->
+      </div>
     </div>
 
     <div id="rezygisk_settings" class="dim card" style="display: none;">
-      <div class="dimc content" style="font-size: 1.2em;">
-        Settings
+      <div class="dimc" style="align-items: center; display: flex;">
+        <div class="dimc" id="setting_icon">
+          <img class="dimc" src="assets/settings.svg">
+        </div>
+        <div class="dimc content" style="padding-left: 5px; font-size: 1.2em;">
+          Settings
+        </div>
       </div>
     </div>
   </body>
