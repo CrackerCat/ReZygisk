@@ -45,6 +45,7 @@ function setDark() {
   rootCss.style.setProperty('--dim', '#1d2327')
   rootCss.style.setProperty('--icon', '#48565e')
   rootCss.style.setProperty('--icon-bc', '#313a3f')
+  rootCss.style.setProperty('--button', 'var(--background)')
   sys_theme = setData('dark')
   settings_icon.innerHTML = '<img class="dimc" src="assets/settings.svg">'
   expand_clicker.innerHTML = '<img class="dimc" src="assets/expand.svg">'
@@ -61,6 +62,7 @@ function setLight() {
   rootCss.style.setProperty('--dim', '#e0e0e0')
   rootCss.style.setProperty('--icon', '#acacac')
   rootCss.style.setProperty('--icon-bc', '#c9c9c9')
+  rootCss.style.setProperty('--button', '#b3b3b3')
   sys_theme = setData('light')
   settings_icon.innerHTML = light_settings_icon
   expand_clicker.innerHTML = light_expand_icon

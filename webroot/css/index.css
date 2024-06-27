@@ -8,10 +8,11 @@
   --error: #8d1d19;
   --icon: #48565e;
   --icon-bc: #2b3338;
+  --small-card: var(--icon-bc);
+  --button: var(--background);
   /* Locked Color */
   --lock-desc: #c9c9c9;
   --lock: #fff;
-  --test: #c4a000;
 }
 
 * {
@@ -127,6 +128,7 @@ a {
   padding-bottom: 1em;
   border-radius: 30px;
   transition: transform 0.07s ease-in-out;
+  background-color: var(--button);
 }
 
 .button:active {
@@ -135,7 +137,7 @@ a {
 
 .small_card {
   margin-top: 10px;
-  background: var(--icon-bc);
+  background: var(--small-card);
   border-radius: 15px;
   padding-top: 5px;
   padding-left: 10px;
@@ -144,7 +146,7 @@ a {
 }
 
 .small_card_bg {
-  background: var(--icon-bc);
+  background: var(--small-card);
 }
 
 .small_card_bg_in {
