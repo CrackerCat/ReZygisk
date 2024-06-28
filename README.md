@@ -9,7 +9,7 @@ It aims at the modernization and re-write of the codebase to C (from C++ and Rus
 
 ## Why?
 
-The latest releases of Zygisk NExt are not open-source, reserving entirely the code for its developers. Not only that limits our ability to contribute to the project, but also impossibilitates the audit of the code, which is a major concern for security, as Zygisk Next is a module that runs with superuser (root) privileges, having access to the entire system.
+The latest releases of Zygisk Next are not open-source, reserving entirely the code for its developers. Not only that limits our ability to contribute to the project, but also impossibilitates the audit of the code, which is a major concern for security, as Zygisk Next is a module that runs with superuser (root) privileges, having access to the entire system.
 
 The Zygisk Next developers are famous and trusted in the Android community, however this doesn't mean that the code is not malicious or vulnerable. We (PerformanC) understand they have their reasons to keep the code closed-source, but we believe that contrary.
 
