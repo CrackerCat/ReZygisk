@@ -6,7 +6,8 @@
     <meta name="viewport" content="viewport-fit=cover" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="js/theme.js" type="module"></script>
-    <script src="js/list.js" type="module"></script>
+    <script src="js/list/module.js" type="module"></script>
+    <script src="js/list/settings.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/index.css">
@@ -65,8 +66,8 @@
           <div class="dimc" style="padding-bottom: 4px; padding-left: 5px;">Modules</div>
         </div>
 
-        <div id="expand_clicker" class="dimc">
-          <div id="expand_clicker_icon" class="dimc expander" style="max-height: 24px;">
+        <div class="dimc">
+          <div id="module_expand_icon" class="dimc expander" style="max-height: 24px;">
             <img class="dimc" src="assets/expand.svg">
           </div>
         </div>
@@ -79,14 +80,22 @@
     </div>
 
     <!-- Settings card -->
-    <div id="rezygisk_settings" class="dim card" style="display: none;">
+    <div id="rezygisk_settings" class="dim card list" style="display: none;">
       <!-- Settings card header -->
-      <div class="dimc" style="align-items: center; display: flex;">
-        <div class="dimc" id="setting_icon">
-          <img class="dimc" src="assets/settings.svg">
+      <div class="dimc" style="align-items: center; display: flex; justify-content: space-between; padding-bottom: 10px;">
+        <div class="dimc" style="align-items: center; display: flex;">
+          <div class="dimc" id="setting_icon">
+            <img class="dimc" src="assets/settings.svg">
+          </div>
+          <div class="dimc content" style="padding-left: 5px; font-size: 1.2em;">
+            Settings
+          </div>
         </div>
-        <div class="dimc content" style="padding-left: 5px; font-size: 1.2em;">
-          Settings
+
+        <div class="dimc">
+          <div id="settings_expand_icon" class="dimc expander" style="margin-bottom: 4px; max-height: 24px;">
+            <img class="dimc" src="assets/expand.svg">
+          </div>
         </div>
       </div>
       <!-- Settings card body (Daemon32) -->

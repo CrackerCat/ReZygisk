@@ -24,7 +24,8 @@ const button = document.getElementById('theme-switcher')
 
 /* INFO: Changes the icons to match the theme */
 const module_list_icon = document.getElementById('modules_list_icon')
-const expand_clicker = document.getElementById('expand_clicker_icon')
+const module_expand = document.getElementById('module_expand_icon')
+const settings_expand = document.getElementById('settings_expand_icon')
 const settings_icon = document.getElementById('setting_icon')
 
 let sys_theme = localStorage.getItem('system-theme')
@@ -52,7 +53,8 @@ function setDark() {
   sys_theme = setData('dark')
 
   settings_icon.innerHTML = '<img class="dimc" src="assets/settings.svg">'
-  expand_clicker.innerHTML = '<img class="dimc" src="assets/expand.svg">'
+  module_expand.innerHTML = '<img class="dimc" src="assets/expand.svg">'
+  settings_expand.innerHTML = '<img class="dimc" src="assets/expand.svg">'
   button.innerHTML = '<img src="assets/dark.svg">'
   module_list_icon.innerHTML = '<img class="dimc" src="assets/module.svg">'
 }
@@ -70,7 +72,8 @@ function setLight() {
   sys_theme = setData('light')
 
   settings_icon.innerHTML = light_settings_icon
-  expand_clicker.innerHTML = light_expand_icon
+  module_expand.innerHTML = light_expand_icon
+  settings_expand.innerHTML = light_expand_icon
   button.innerHTML = light_icon
   module_list_icon.innerHTML = light_module_icon
 }

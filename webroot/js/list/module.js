@@ -1,6 +1,6 @@
-const button = document.getElementById('expand_clicker')
-const icon = document.getElementById('expand_clicker_icon')
-const card = document.getElementById('module_card')
+const button = document.getElementById('modules_card')
+const icon = document.getElementById('module_expand_icon')
+const card = document.getElementById('modules_card')
 
 let sys_module_mode = localStorage.getItem('system-module-mode')
 if (!sys_module_mode) sys_module_mode = setData('closed')

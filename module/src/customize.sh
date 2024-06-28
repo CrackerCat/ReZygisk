@@ -108,7 +108,8 @@ extract "$ZIPFILE" 'webroot/index.html' "$MODPATH/webroot" true
 extract "$ZIPFILE" 'webroot/js/main.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/kernelsu.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
-extract "$ZIPFILE" 'webroot/js/list.js' "$MODPATH/webroot/js" true
+extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
 
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
