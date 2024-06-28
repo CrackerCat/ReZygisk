@@ -18,9 +18,11 @@ const light_settings_icon = `
     <path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z"/>
   </svg>
 `
+
 const rootCss = document.querySelector(':root')
 const button = document.getElementById('theme-switcher')
-// Icon have to change color
+
+/* INFO: Changes the icons to match the theme */
 const module_list_icon = document.getElementById('modules_list_icon')
 const expand_clicker = document.getElementById('expand_clicker_icon')
 const settings_icon = document.getElementById('setting_icon')
@@ -35,7 +37,7 @@ button.addEventListener('click', () => {
     case 'dark': setLight(); break;
     case 'light': setDark(); break;
   }
-});
+})
 
 function setDark() {
   rootCss.style.setProperty('--background', '#181c20')
@@ -46,12 +48,13 @@ function setDark() {
   rootCss.style.setProperty('--icon', '#48565e')
   rootCss.style.setProperty('--icon-bc', '#313a3f')
   rootCss.style.setProperty('--button', 'var(--background)')
+
   sys_theme = setData('dark')
+
   settings_icon.innerHTML = '<img class="dimc" src="assets/settings.svg">'
   expand_clicker.innerHTML = '<img class="dimc" src="assets/expand.svg">'
   button.innerHTML = '<img src="assets/dark.svg">'
   module_list_icon.innerHTML = '<img class="dimc" src="assets/module.svg">'
-  return
 }
 
 function setLight() {
@@ -63,15 +66,17 @@ function setLight() {
   rootCss.style.setProperty('--icon', '#acacac')
   rootCss.style.setProperty('--icon-bc', '#c9c9c9')
   rootCss.style.setProperty('--button', '#b3b3b3')
+
   sys_theme = setData('light')
+
   settings_icon.innerHTML = light_settings_icon
   expand_clicker.innerHTML = light_expand_icon
   button.innerHTML = light_icon
   module_list_icon.innerHTML = light_module_icon
-  return
 }
 
 function setData(mode) {
   localStorage.setItem('system-theme', mode)
+
   return localStorage.getItem('system-theme')
 }

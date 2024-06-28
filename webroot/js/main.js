@@ -2,10 +2,6 @@ import { fullScreen, exec, toast } from './kernelsu.js';
 
 (async () => {
   const loading_screen = document.getElementsByClassName('loading_screen')[0]
-  // Testing enviroment
-  // setTimeout(() => {
-  //   loading_screen.style.display = 'none';
-  // }, 3000)
 
   fullScreen(true)
 
@@ -50,21 +46,21 @@ import { fullScreen, exec, toast } from './kernelsu.js';
     rezygisk_state.innerHTML = 'ReZygisk is fully functioning!'
 
     rezygisk_settings.removeAttribute('style')
-    rootCss.style.setProperty('--bright', '#3a4857');
+    rootCss.style.setProperty('--bright', '#3a4857')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/tick.svg">'
   } else {
     rezygisk_state.innerHTML = 'ReZygisk is partially functioning!'
 
     rezygisk_settings.removeAttribute('style')
-    rootCss.style.setProperty('--bright', '#ffd000');
+    rootCss.style.setProperty('--bright', '#ffd000')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/warn.svg">'
   }
 
   const modules_card = document.getElementById('modules_card')
   const modules_list = document.getElementById('modules_list')
 
-  // For hiding loading screen
-  loading_screen.style.display = 'none';
+  /* INFO: This hides the throbber screen */
+  loading_screen.style.display = 'none'
 
   const findModulesCmd = await exec('find /data/adb/modules -type d -name zygisk -exec dirname {} \\;')
 
@@ -78,9 +74,11 @@ import { fullScreen, exec, toast } from './kernelsu.js';
     let index = 0
     for (const module of modules) {
       index += 1
+
       const lsZygiskCmd = await exec(`ls ${module}/zygisk`)
       if (lsZygiskCmd.errno !== 0) {
         toast(`ls ${module}/zygisk error (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
+
         continue
       }
 
@@ -97,7 +95,7 @@ import { fullScreen, exec, toast } from './kernelsu.js';
         const name = lines.find(line => line.includes('name=')).split('=')[1]
 
         modules_list.innerHTML += 
-        `<div class="dimc ${index !== modules.length ? "spliter" : ""}" style="padding-top: 13px; padding-bottom: 13px;">
+        `<div class="dimc ${index !== modules.length ? 'spliter' : ''}" style="padding-top: 13px; padding-bottom: 13px;">
           <div class="dimc" style="font-size: 1.1em;">${name}</div>
           <div class="dimc" style="font-size: 0.9em;">Arch: ${bitsUsed.join(' / ')}</div>
         </div>`
