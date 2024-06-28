@@ -1,13 +1,13 @@
-const button = document.getElementById('modules_card')
+const button = document.getElementById('modules_header')
 const icon = document.getElementById('module_expand_icon')
 const card = document.getElementById('modules_card')
 
 let sys_module_mode = localStorage.getItem('system-module-mode')
-if (!sys_module_mode) sys_module_mode = setData('closed')
+sys_module_mode = setData('closed')
 
 button.addEventListener("click", () => {
   if (sys_module_mode == "closed") {
-    sys_module_mode = setData('opend')
+    sys_module_mode = setData('opened')
     icon.style.transform = 'rotate(180deg)'
     card.style.maxHeight = `${card.scrollHeight}px`
 

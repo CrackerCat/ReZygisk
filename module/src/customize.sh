@@ -108,8 +108,15 @@ extract "$ZIPFILE" 'webroot/index.html' "$MODPATH/webroot" true
 extract "$ZIPFILE" 'webroot/js/main.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/kernelsu.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
+
 extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
+
+extract "$ZIPFILE" 'webroot/js/lang/en_US.js' "$MODPATH/webroot/js/lang" true
+extract "$ZIPFILE" 'webroot/js/lang/vi_VN.js' "$MODPATH/webroot/js/lang" true
+extract "$ZIPFILE" 'webroot/js/lang/index.js' "$MODPATH/webroot/js/lang" true
+
+extract "$ZIPFILE" 'webroot/js/modal/lang.js' "$MODPATH/webroot/js/modal" true
 
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
@@ -125,6 +132,8 @@ extract "$ZIPFILE" 'webroot/assets/dark.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/module.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/expand.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/settings.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/close.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/lang.svg' "$MODPATH/webroot/assets" true
 
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then
   ui_print "- Extracting x86 libraries"

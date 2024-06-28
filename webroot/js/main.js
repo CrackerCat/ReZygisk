@@ -1,7 +1,7 @@
 import { fullScreen, exec, toast } from './kernelsu.js';
 
 (async () => {
-  const loading_screen = document.getElementsByClassName('loading_screen')[0]
+  const loading_screen = document.getElementById('loading_screen')
 
   fullScreen(true)
 
@@ -97,7 +97,7 @@ import { fullScreen, exec, toast } from './kernelsu.js';
         modules_list.innerHTML += 
         `<div class="dimc ${index !== modules.length ? 'spliter' : ''}" style="padding-top: 13px; padding-bottom: 13px;">
           <div class="dimc" style="font-size: 1.1em;">${name}</div>
-          <div class="dimc" style="font-size: 0.9em;">Arch: ${bitsUsed.join(' / ')}</div>
+          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">Arch: ${bitsUsed.join(' / ')}</div>
         </div>`
       } else {
         toast(`cat ${module} error (${catCmd.errno}): ${catCmd.stderr}`)

@@ -29,7 +29,7 @@ a {
   text-decoration: none !important;
 }
 
-.loading_screen {
+.full_screen {
   position: fixed;
   width: 100%;
   height: 100%;
