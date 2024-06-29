@@ -66,13 +66,13 @@
         <div class="brightc lock" style="font-size: 1.1em">Root Implementation</div>
         <div class="brightc desc lockd" id="root_impl" style="font-size: 0.9em; margin-top: 3px;">Unknown</div>
       </div>
-      <div class="brightc content">
+      <div class="brightc content" id="zygote64">
         <div class="brightc lock" style="font-size: 1.1em">Zygote64</div>
-        <div class="brightc desc lockd" id="is_zygote64_injected" style="font-size: 0.9em; margin-top: 3px;">Unknown</div>
+        <div class="brightc desc lockd" id="zygote64_status" style="font-size: 0.9em; margin-top: 3px;">Unknown</div>
       </div>
-      <div class="brightc content lock">
+      <div class="brightc content lock" id="zygote32">
         <div class="brightc lock" style="font-size: 1.1em">Zygote32</div>
-        <div class="brightc desc lockd" id="is_zygote32_injected" style="font-size: 0.9em; margin-top: 3px;">Unknown</div>
+        <div class="brightc desc lockd" id="zygote32_status" style="font-size: 0.9em; margin-top: 3px;">Unknown</div>
       </div>
     </div>
 
@@ -120,7 +120,7 @@
         </div>
       </div>
       <!-- INFO: Settings card body (Daemon32) -->
-      <div class="small_card">
+      <div class="small_card" id="daemon64">
         <div class="small_card_bg content" style="font-size: 1.1em; padding-left: 5px; padding-top: 6px; padding-bottom: 14px;">Daemon (32 bit)</div>
         <div class="small_card_bg content button_list">
           <div class="center button">Stop</div>
@@ -129,7 +129,7 @@
         </div>
       </div>
       <!-- INFO: Settings card body (Daemon64) -->
-      <div class="small_card" style="margin-top: 15px;">
+      <div class="small_card" style="margin-top: 15px;" id="daemon32">
         <div class="small_card_bg content" style="font-size: 1.1em; padding-left: 5px; padding-top: 6px; padding-bottom: 14px;">Daemon (64 bit)</div>
         <div class="small_card_bg content button_list">
           <div class="center button">Stop</div>
