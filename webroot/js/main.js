@@ -52,7 +52,7 @@ import { fullScreen, exec, toast } from './kernelsu.js';
     rezygisk_state.innerHTML = 'ReZygisk is partially functioning!'
 
     rezygisk_settings.removeAttribute('style')
-    rootCss.style.setProperty('--bright', '#ffd000')
+    rootCss.style.setProperty('--bright', '#766000')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/warn.svg">'
   }
 
