@@ -275,6 +275,7 @@ fn handle_daemon_action(
           match root_impl::get_impl() {
               root_impl::RootImpl::KernelSU => flags |= ProcessFlags::PROCESS_ROOT_IS_KSU,
               root_impl::RootImpl::Magisk => flags |= ProcessFlags::PROCESS_ROOT_IS_MAGISK,
+              root_impl::RootImpl::APatch => flags |= ProcessFlags::PROCESS_ROOT_IS_APATCH,
               _ => panic!("wrong root impl: {:?}", root_impl::get_impl()),
           }
 
