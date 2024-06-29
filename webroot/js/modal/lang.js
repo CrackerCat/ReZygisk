@@ -7,15 +7,18 @@ sys_module_mode = setData('closed')
 
 button.addEventListener('click', () => {
   target.style.display = 'block'
+
   sys_module_mode = setData('opened')
 })
 
 close_button.addEventListener('click', () => {
   target.style.display = 'none'
+
   sys_module_mode = setData('closed')
 })
 
 function setData(mode) {
   localStorage.setItem('lang-modal', mode)
+
   return localStorage.getItem('lang-modal')
 }

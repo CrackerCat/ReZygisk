@@ -5,8 +5,8 @@ const card = document.getElementById('rezygisk_settings')
 let sys_module_mode = localStorage.getItem('system-settings-expand-mode')
 setData('closed')
 
-button.addEventListener("click", () => {
-  if (sys_module_mode == "closed") {
+button.addEventListener('click', () => {
+  if (sys_module_mode === 'closed') {
     sys_module_mode = setData('opened')
     icon.style.transform = 'rotate(180deg)'
     card.style.maxHeight = `${card.scrollHeight}px`
@@ -21,5 +21,6 @@ button.addEventListener("click", () => {
 
 function setData(mode) {
   localStorage.setItem('system-settings-expand-mode', mode)
+
   return localStorage.getItem('system-settings-expand-mode')
 }
