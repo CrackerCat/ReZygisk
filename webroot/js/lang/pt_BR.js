@@ -25,5 +25,12 @@ export const pt_BR = {
       stop: 'Parar',
       exit: 'Sair'
     }
-  }
+  },
+  cmdErrors: {
+    ptrace64: 'Erro ao executar zygisk-ptrace64',
+    ptrace32: 'Erro ao executar zygisk-ptrace32',
+    ls: 'Erro ao listar arquivos na pasta zygisk do módulo',
+    cat: 'Erro ao ler module.prop do módulo',
+    find: 'Erro ao encontrar módulos que usam o zygisk'
+  },
 }

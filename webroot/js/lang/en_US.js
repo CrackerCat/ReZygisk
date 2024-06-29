@@ -25,5 +25,12 @@ export const en_US = {
       stop: 'Stop',
       exit: 'Exit'
     }
-  }
+  },
+  cmdErrors: {
+    ptrace64: 'Error while executing zygisk-ptrace64',
+    ptrace32: 'Error while executing zygisk-ptrace32',
+    ls: 'Error while listing files in zygisk folder of module',
+    cat: 'Error while reading module.prop from module',
+    find: 'Error while finding zygisk modules'
+  },
 }

@@ -4,5 +4,6 @@ import { pt_BR } from './pt_BR.js'
 
 export const lang = {
   vi_VN,
-  en_US
+  en_US,
+  pt_BR
 }
