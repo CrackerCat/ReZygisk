@@ -78,8 +78,8 @@ function setDark() {
 
 function setLight() {
   rootCss.style.setProperty('--background', '#eff1f6')
-  rootCss.style.setProperty('--font', '#2c2c2c')
-  rootCss.style.setProperty('--desc', '#444444')
+  rootCss.style.setProperty('--font', '#181c20')
+  rootCss.style.setProperty('--desc', '#484d53')
   rootCss.style.setProperty('--spliter', '#4f6069')
   rootCss.style.setProperty('--dim', '#e0e0e0')
   rootCss.style.setProperty('--icon', '#acacac')

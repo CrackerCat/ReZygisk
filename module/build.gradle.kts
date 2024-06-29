@@ -169,6 +169,7 @@ androidComponents.onVariants { variant ->
 
                     set.add(Pair(root.file("webroot/js/list/module.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/list/settings.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/list/lang.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/lang/en_US.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/lang/vi_VN.js").asFile, null))

@@ -111,6 +111,7 @@ extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
 
 extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/list/lang.js' "$MODPATH/webroot/js/list" true
 
 extract "$ZIPFILE" 'webroot/js/lang/en_US.js' "$MODPATH/webroot/js/lang" true
 extract "$ZIPFILE" 'webroot/js/lang/vi_VN.js' "$MODPATH/webroot/js/lang" true
