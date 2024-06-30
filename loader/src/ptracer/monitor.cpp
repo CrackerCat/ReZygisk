@@ -346,8 +346,6 @@ struct SocketHandler : public EventHandler {
             PLOGE("failed to mount prop");
           }
 
-          umount2(prop_path, MNT_DETACH);
-
           break;
         }
       }
@@ -387,7 +385,7 @@ CREATE_ZYGOTE_START_COUNTER(32)
 static bool ensure_daemon_created(bool is_64bit) {
   Status *status = is_64bit ? &status64 : &status32;
   if (is_64bit) {
-    LOGD("new zygote started, unmounting prop ...");
+    LOGD("new zygote started.");
 
     umount2("/data/adb/modules/zygisksu/module.prop", MNT_DETACH);
   }
