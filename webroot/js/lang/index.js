@@ -9,5 +9,5 @@ export const lang = {
   pt_BR,
   ro_RO,
   ru_RU,
-  vi_VN,
+  vi_VN
 }

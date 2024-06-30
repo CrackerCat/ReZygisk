@@ -3,7 +3,7 @@
 export const en_US = {
   langName: 'English (United States)',
   langModal: {
-    header: "Choose your new language"
+    header: 'Choose your new language'
   },
   infoCard: {
     status: {
@@ -25,7 +25,7 @@ export const en_US = {
     arch: 'Arch: '
   },
   settings: {
-    header: "Settings",
+    header: 'Settings',
     daemonButton: {
       start: 'Start',
       stop: 'Stop',
@@ -38,5 +38,5 @@ export const en_US = {
     ls: 'Error while listing files in zygisk folder of module',
     cat: 'Error while reading module.prop from module',
     find: 'Error while finding zygisk modules'
-  },
+  }
 }

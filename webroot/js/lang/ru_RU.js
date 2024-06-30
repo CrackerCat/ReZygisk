@@ -3,7 +3,7 @@
 export const ru_RU = {
   langName: 'Русский (Россия)',
   langModal: {
-    header: "Выберите Ваш новый язык"
+    header: 'Выберите Ваш новый язык'
   },
   infoCard: {
     status: {
@@ -25,10 +25,10 @@ export const ru_RU = {
     arch: 'Архи-ра: '
   },
   settings: {
-    header: "Настройки",
+    header: 'Настройки',
     daemonButton: {
       start: 'Старт',
-      stop: 'Пауза,
+      stop: 'Пауза',
       exit: 'Стоп'
     }
   },
@@ -38,5 +38,5 @@ export const ru_RU = {
     ls: 'Ошибка перечисления файлов в zygisk папке модуля',
     cat: 'Ошибка чтения module.prop модуля',
     find: 'Ошибка обнаружения zygisk модулей'
-  },
+  }
 }

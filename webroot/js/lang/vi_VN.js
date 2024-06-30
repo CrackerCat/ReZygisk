@@ -3,7 +3,7 @@
 export const vi_VN = {
   langName: 'Tiếng Việt',
   langModal: {
-    header: "Chọn ngôn ngữ mới của bạn"
+    header: 'Chọn ngôn ngữ mới của bạn'
   },
   infoCard: {
     status: {
@@ -25,11 +25,19 @@ export const vi_VN = {
     arch: 'Loại: '
   },
   settings: {
-    header: "Cài đặt",
+    header: 'Cài đặt',
     daemonButton: {
       start: 'Chạy',
       stop: 'Dừng',
       exit: 'Thoát'
     }
+  },
+  /* INFO: Not translated */
+  cmdErrors: {
+    ptrace64: 'Error while executing zygisk-ptrace64',
+    ptrace32: 'Error while executing zygisk-ptrace32',
+    ls: 'Error while listing files in zygisk folder of module',
+    cat: 'Error while reading module.prop from module',
+    find: 'Error while finding zygisk modules'
   }
 }

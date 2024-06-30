@@ -16,11 +16,12 @@ for (const lang_key of key_list) {
     </div>`
 }
 
-document.addEventListener('click', function (event) {
-  if (!event.target.getAttribute('lang_section')) return
+document.addEventListener('click', (event) => {
+  if (!event.target.getAttribute('lang_section')) return;
+
   setNewLang(event.target.id)
 
   target.style.display = 'none'
   localStorage.setItem('/cache/modal/language/state', 'closed')
   localStorage.setItem('/system/language', event.target.id)
-}, false);
+}, false)

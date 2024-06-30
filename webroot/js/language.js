@@ -18,8 +18,16 @@ const daemon64_exit_button = document.getElementById('daemon64_exit_button')
 /* INFO: lang modal */
 const lang_modal_title = document.getElementById('lang_modal_title')
 
+/* INFO: Variable fields */
+const rezygisk_state = document.getElementById('rezygisk_state')
+
+const zygote32_status_div = document.getElementById('zygote32_status')
+const zygote64_status_div = document.getElementById('zygote64_status')
+
 export function setNewLang(locate) {
+  const old_translations = lang[localStorage.getItem('/system/language')]
   const new_lang = lang[locate]
+
   /* INFO: info card */
   version_info_title.innerHTML = new_lang.infoCard.version
   root_info_title.innerHTML = new_lang.infoCard.root
@@ -28,13 +36,85 @@ export function setNewLang(locate) {
   /* INFO: settings card */
   settings_card_title.innerHTML = new_lang.settings.header
   /* INFO: daemon32 small card */
-  daemon32_stop_button.innerHTML = new_lang.settings.daemonButton.stop
-  daemon32_start_button.innerHTML = new_lang.settings.daemonButton.start
-  daemon32_exit_button.innerHTML = new_lang.settings.daemonButton.exit
+  if (daemon32_stop_button) { /* INFO: Not all devices have 32-bit support */
+    daemon32_stop_button.innerHTML = new_lang.settings.daemonButton.stop
+    daemon32_start_button.innerHTML = new_lang.settings.daemonButton.start
+    daemon32_exit_button.innerHTML = new_lang.settings.daemonButton.exit
+  }
   /* INFO: daemon64 small card */
-  daemon64_stop_button.innerHTML = new_lang.settings.daemonButton.stop
-  daemon64_start_button.innerHTML = new_lang.settings.daemonButton.start
-  daemon64_exit_button.innerHTML = new_lang.settings.daemonButton.exit
+  if (daemon64_stop_button) { /* INFO: Not all devices have 64-bit support */
+    daemon64_stop_button.innerHTML = new_lang.settings.daemonButton.stop
+    daemon64_start_button.innerHTML = new_lang.settings.daemonButton.start
+    daemon64_exit_button.innerHTML = new_lang.settings.daemonButton.exit
+  }
   /* INFO: lang modal */
   lang_modal_title.innerHTML = new_lang.langModal.header
+
+  /* INFO: Translate variables */
+  switch (rezygisk_state.innerHTML) {
+    case old_translations.infoCard.status.ok: {
+      rezygisk_state.innerHTML = new_lang.infoCard.status.ok
+
+      break
+    }
+    case old_translations.infoCard.status.partially: {
+      rezygisk_state.innerHTML = new_lang.infoCard.status.partially
+
+      break
+    }
+    case old_translations.infoCard.status.notWorking: {
+      rezygisk_state.innerHTML = new_lang.infoCard.status.notWorking
+
+      break
+    }
+    case old_translations.infoCard.status.unknown: {
+      rezygisk_state.innerHTML = new_lang.infoCard.status.unknown
+
+      break
+    }
+  }
+
+  if (zygote32_status_div) {
+    switch (zygote32_status_div.innerHTML) {
+      case old_translations.infoCard.zygote.injected: {
+        zygote32_status_div.innerHTML = new_lang.infoCard.zygote.injected
+
+        break
+      }
+      case old_translations.infoCard.zygote.notInjected: {
+        zygote32_status_div.innerHTML = new_lang.infoCard.zygote.notInjected
+
+        break
+      }
+      case old_translations.infoCard.zygote.unknown: {
+        zygote32_status_div.innerHTML = new_lang.infoCard.zygote.unknown
+
+        break
+      }
+    }
+  }
+
+  if (zygote64_status_div) {
+    switch (zygote64_status_div.innerHTML) {
+      case old_translations.infoCard.zygote.injected: {
+        zygote64_status_div.innerHTML = new_lang.infoCard.zygote.injected
+
+        break
+      }
+      case old_translations.infoCard.zygote.notInjected: {
+        zygote64_status_div.innerHTML = new_lang.infoCard.zygote.notInjected
+
+        break
+      }
+      case old_translations.infoCard.zygote.unknown: {
+        zygote64_status_div.innerHTML = new_lang.infoCard.zygote.unknown
+
+        break
+      }
+    }
+  }
+}
+
+export function getTranslations(locate) {
+  return lang[locate]
 }

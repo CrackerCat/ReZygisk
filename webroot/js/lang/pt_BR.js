@@ -3,7 +3,7 @@
 export const pt_BR = {
   langName: 'Português (Brasil)',
   langModal: {
-    header: "Choose your new language"
+    header: 'Escolha sua nova língua'
   },
   infoCard: {
     status: {
@@ -25,7 +25,7 @@ export const pt_BR = {
     arch: 'Arquitetura: '
   },
   settings: {
-    header: "Configurações",
+    header: 'Configurações',
     daemonButton: {
       start: 'Iniciar',
       stop: 'Parar',
@@ -38,5 +38,5 @@ export const pt_BR = {
     ls: 'Erro ao listar arquivos na pasta zygisk do módulo',
     cat: 'Erro ao ler module.prop do módulo',
     find: 'Erro ao encontrar módulos que usam o zygisk'
-  },
+  }
 }

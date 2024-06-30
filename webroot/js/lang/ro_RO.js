@@ -3,7 +3,7 @@
 export const ro_RO = {
   langName: 'Română (România)',
   langModal: {
-    header: "Alegeți limba prestabilită"
+    header: 'Alegeți limba prestabilită'
   },
   infoCard: {
     status: {
@@ -25,7 +25,7 @@ export const ro_RO = {
     arch: 'Arhitectură: '
   },
   settings: {
-    header: "Setări",
+    header: 'Setări',
     daemonButton: {
       start: 'Start',
       stop: 'Stop',
@@ -38,5 +38,5 @@ export const ro_RO = {
     ls: 'Eroare în timpul listării fișierelor din folderul Zygisk al modulului',
     cat: 'Eroare în timpul citirii fișierului module.prop din modul',
     find: 'Eroare la găsirea modulelor Zygisk'
-  },
+  }
 }

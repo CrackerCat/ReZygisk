@@ -1,5 +1,5 @@
 import { fullScreen, exec, toast } from './kernelsu.js'
-import { setNewLang } from './language.js'
+import { setNewLang, getTranslations } from './language.js'
 
 (async () => {
   const EXPECTED = 1
@@ -8,6 +8,11 @@ import { setNewLang } from './language.js'
   fullScreen(true)
 
   let sys_lang = localStorage.getItem('/system/language')
+
+  if (!sys_lang) sys_lang = setLangData('en_US')
+  if (sys_lang !== 'en_US') setNewLang(sys_lang)
+
+  const translations = getTranslations(sys_lang)
 
   const loading_screen = document.getElementById('loading_screen')
 
@@ -32,9 +37,6 @@ import { setNewLang } from './language.js'
   let zygote64_status = EXPECTED
   let zygote32_status = EXPECTED
 
-  if (!sys_lang) sys_lang = setLangData("en_US")
-  if (sys_lang !== "en_US") setNewLang(sys_lang)
-
   const ptrace64Cmd = await exec('/data/adb/modules/zygisksu/bin/zygisk-ptrace64 info')
 
   if (ptrace64Cmd.errno === 0) {
@@ -44,14 +46,18 @@ import { setNewLang } from './language.js'
     code_version.innerHTML = lines[0].split('Tracer ')[1].split('-')[0]
     root_impl.innerHTML = lines[4].split(': ')[1]
 
-    zygote64_status_div.innerHTML = lines[5].split(': ')[1] === 'yes' ? 'Injected' : 'Not Injected'
+    if (lines[5].split(': ')[1] === 'yes') {
+      zygote64_status_div.innerHTML = translations.infoCard.zygote.injected
+    } else {
+      zygote64_status_div.innerHTML = translations.infoCard.zygote.notInjected
 
-    if (zygote64_status_div.innerHTML === 'Not Injected') zygote64_status = UNEXPECTED_FAIL
+      zygote64_status = UNEXPECTED_FAIL
+    }
   } else if (ptrace64Cmd.stderr.includes('cannot execute binary file: Exec format error')) {
     zygote64_div.remove()
     daemon64_div.remove()
   } else {
-    toast(`zygisk-ptrace64 error (${ptrace64Cmd.errno}): ${ptrace64Cmd.stderr}`)
+    toast(`${translations.cmdErrors.ptrace64} (${ptrace64Cmd.errno}): ${ptrace64Cmd.stderr}`)
 
     zygote64_status = UNEXPECTED_FAIL
   }
@@ -65,32 +71,36 @@ import { setNewLang } from './language.js'
     code_version.innerHTML = lines[0].split('Tracer ')[1].split('-')[0]
     root_impl.innerHTML = lines[4].split(': ')[1]
 
-    zygote32_status_div.innerHTML = lines[5].split(': ')[1] === 'yes' ? 'Injected' : 'Not Injected'
+    if (lines[5].split(': ')[1] === 'yes') {
+      zygote32_status_div.innerHTML = translations.infoCard.zygote.injected
+    } else {
+      zygote32_status_div.innerHTML = translations.infoCard.zygote.notInjected
 
-    if (zygote32_status_div.innerHTML === 'Not Injected') zygote32_status = UNEXPECTED_FAIL
+      zygote32_status = UNEXPECTED_FAIL
+    }
   } else if (ptrace32Cmd.stderr.includes('not executable: 32-bit ELF file')) {
     zygote32_div.remove()
     daemon32_div.remove()
   } else {
-    toast(`zygisk-ptrace32 error (${ptrace32Cmd.errno}): ${ptrace32Cmd.stderr}`)
+    toast(`${translations.cmdErrors.ptrace32} (${ptrace32Cmd.errno}): ${ptrace32Cmd.stderr}`)
 
     zygote32_status = UNEXPECTED_FAIL
   }
 
   if (zygote32_status === EXPECTED && zygote64_status === EXPECTED) {
-    rezygisk_state.innerHTML = 'ReZygisk is fully functioning!'
+    rezygisk_state.innerHTML = translations.infoCard.status.ok
 
     rezygisk_settings.removeAttribute('style')
     rootCss.style.setProperty('--bright', '#3a4857')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/tick.svg">'
   } else if (zygote64_status === EXPECTED ^ zygote32_status.innerHTML === EXPECTED) {
-    rezygisk_state.innerHTML = 'ReZygisk is partially functioning!'
+    rezygisk_state.innerHTML = translations.infoCard.status.partially
 
     rezygisk_settings.removeAttribute('style')
     rootCss.style.setProperty('--bright', '#766000')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/warn.svg">'
   } else {
-    rezygisk_state.innerHTML = 'ReZygisk is not functioning!'
+    rezygisk_state.innerHTML = translations.infoCard.status.notWorking
   }
 
   const modules_card = document.getElementById('modules_card')
@@ -114,7 +124,7 @@ import { setNewLang } from './language.js'
 
       const lsZygiskCmd = await exec(`ls ${module}/zygisk`)
       if (lsZygiskCmd.errno !== 0) {
-        toast(`ls ${module}/zygisk error (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
+        toast(`${translations.cmdErrors.js} ${module} (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
 
         continue
       }
@@ -134,14 +144,14 @@ import { setNewLang } from './language.js'
         modules_list.innerHTML += 
         `<div class="dimc ${index !== modules.length ? 'spliter' : ''}" style="padding-top: 13px; padding-bottom: 13px;">
           <div class="dimc" style="font-size: 1.1em;">${name}</div>
-          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">Arch: ${bitsUsed.join(' / ')}</div>
+          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">${translations.moduleCard.arch}: ${bitsUsed.join(' / ')}</div>
         </div>`
       } else {
-        toast(`cat ${module} error (${catCmd.errno}): ${catCmd.stderr}`)
+        toast(`${translations.cmdErrors.cat} ${module} (${catCmd.errno}): ${catCmd.stderr}`)
       }
     }
   } else {
-    toast(`find error (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
+    toast(`${translations.cmdErrors.find}: ${findModulesCmd.stderr}`)
   }
 })()
 
