@@ -40,7 +40,7 @@ const settings_icon = document.getElementById('setting_icon')
 const lang_switcher = document.getElementById('lang_switcher')
 const close_icons = document.getElementsByClassName('close_icon')
 
-let sys_theme = localStorage.getItem('system-theme')
+let sys_theme = localStorage.getItem('/system/theme')
 if (!sys_theme) sys_theme = setData('dark')
 
 if (sys_theme === 'light') setLight()
@@ -101,7 +101,7 @@ function setLight() {
 }
 
 function setData(mode) {
-  localStorage.setItem('system-theme', mode)
+  localStorage.setItem('/system/theme', mode)
 
-  return localStorage.getItem('system-theme')
+  return localStorage.getItem('/system/theme')
 }

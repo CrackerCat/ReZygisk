@@ -1,5 +1,10 @@
+/* INFO: Translated by @RainyXeon */
+
 export const vi_VN = {
   langName: 'Tiếng Việt',
+  langModal: {
+    header: "Chọn ngôn ngữ mới của bạn"
+  },
   infoCard: {
     status: {
       unknown: 'ReZygisk đang ở trạng thái không xác định!',
@@ -20,6 +25,7 @@ export const vi_VN = {
     arch: 'Loại: '
   },
   settings: {
+    header: "Cài đặt",
     daemonButton: {
       start: 'Chạy',
       stop: 'Dừng',

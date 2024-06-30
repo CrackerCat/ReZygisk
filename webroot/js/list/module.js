@@ -2,7 +2,7 @@ const button = document.getElementById('modules_header')
 const icon = document.getElementById('module_expand_icon')
 const card = document.getElementById('modules_card')
 
-let sys_module_mode = localStorage.getItem('system-module-mode')
+let sys_module_mode = localStorage.getItem('/cache/list/module/state')
 sys_module_mode = setData('closed')
 
 button.addEventListener('click', () => {
@@ -20,7 +20,7 @@ button.addEventListener('click', () => {
 })
 
 function setData(mode) {
-  localStorage.setItem('system-module-mode', mode)
+  localStorage.setItem('/cache/list/module/state', mode)
 
-  return localStorage.getItem('system-module-mode')
+  return localStorage.getItem('/cache/list/module/state')
 }

@@ -1,5 +1,10 @@
+/* INFO: Translated by @PerformanC (The PerformanC Organization) */
+
 export const en_US = {
   langName: 'English (United States)',
+  langModal: {
+    header: "Choose your new language"
+  },
   infoCard: {
     status: {
       unknown: 'ReZygisk is at an unknown state!',
@@ -20,6 +25,7 @@ export const en_US = {
     arch: 'Arch: '
   },
   settings: {
+    header: "Settings",
     daemonButton: {
       start: 'Start',
       stop: 'Stop',

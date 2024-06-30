@@ -166,6 +166,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/main.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/kernelsu.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/theme.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/language.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/list/module.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/list/settings.js").asFile, null))
@@ -177,11 +178,7 @@ androidComponents.onVariants { variant ->
 
                     set.add(Pair(root.file("webroot/js/modal/lang.js").asFile, null))
 
-                    set.add(Pair(root.file("webroot/fonts/ProductSans-Regular.ttf").asFile, null))
-                    set.add(Pair(root.file("webroot/fonts/ProductSans-Italic.ttf").asFile, null))
-
                     set.add(Pair(root.file("webroot/css/index.css").asFile, null))
-                    set.add(Pair(root.file("webroot/css/fonts.css").asFile, null))
                     
                     set.add(Pair(root.file("webroot/assets/mark.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/tick.svg").asFile, null))

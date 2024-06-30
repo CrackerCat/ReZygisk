@@ -1,5 +1,10 @@
+/* INFO: Translated by @ThePedroo */
+
 export const pt_BR = {
   langName: 'Português (Brasil)',
+  langModal: {
+    header: "Choose your new language"
+  },
   infoCard: {
     status: {
       unknown: 'ReZygisk está em um estado desconhecido!',
@@ -20,6 +25,7 @@ export const pt_BR = {
     arch: 'Arquitetura: '
   },
   settings: {
+    header: "Configurações",
     daemonButton: {
       start: 'Iniciar',
       stop: 'Parar',

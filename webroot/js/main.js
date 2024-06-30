@@ -1,10 +1,13 @@
 import { fullScreen, exec, toast } from './kernelsu.js'
-
-const EXPECTED = 1
-const UNEXPECTED_FAIL = 2
+import { setNewLang } from './language.js'
 
 (async () => {
+  const EXPECTED = 1
+  const UNEXPECTED_FAIL = 2
+
   fullScreen(true)
+
+  let sys_lang = localStorage.getItem('/system/language')
 
   const loading_screen = document.getElementById('loading_screen')
 
@@ -28,6 +31,9 @@ const UNEXPECTED_FAIL = 2
 
   let zygote64_status = EXPECTED
   let zygote32_status = EXPECTED
+
+  if (!sys_lang) sys_lang = setLangData("en_US")
+  if (sys_lang !== "en_US") setNewLang(sys_lang)
 
   const ptrace64Cmd = await exec('/data/adb/modules/zygisksu/bin/zygisk-ptrace64 info')
 
@@ -138,3 +144,9 @@ const UNEXPECTED_FAIL = 2
     toast(`find error (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
   }
 })()
+
+function setLangData(mode) {
+  localStorage.setItem('/system/language', mode)
+
+  return localStorage.getItem('/system/language')
+}

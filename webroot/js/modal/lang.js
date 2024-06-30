@@ -2,7 +2,7 @@ const button = document.getElementById('lang_switcher')
 const target = document.getElementById('lang_modal')
 const close_button = document.getElementById('lang_modal_close')
 
-let sys_module_mode = localStorage.getItem('lang-modal')
+let sys_module_mode = localStorage.getItem('/cache/modal/language/state')
 sys_module_mode = setData('closed')
 
 button.addEventListener('click', () => {
@@ -18,7 +18,7 @@ close_button.addEventListener('click', () => {
 })
 
 function setData(mode) {
-  localStorage.setItem('lang-modal', mode)
+  localStorage.setItem('/cache/modal/language/state', mode)
 
-  return localStorage.getItem('lang-modal')
+  return localStorage.getItem('/cache/modal/language/state')
 }

@@ -2,8 +2,8 @@ const button = document.getElementById('settings_header')
 const icon = document.getElementById('settings_expand_icon')
 const card = document.getElementById('rezygisk_settings')
 
-let sys_module_mode = localStorage.getItem('system-settings-expand-mode')
-setData('closed')
+let sys_module_mode = localStorage.getItem('/cache/list/settings/state')
+sys_module_mode = setData('closed')
 
 button.addEventListener('click', () => {
   if (sys_module_mode === 'closed') {
@@ -20,7 +20,7 @@ button.addEventListener('click', () => {
 })
 
 function setData(mode) {
-  localStorage.setItem('system-settings-expand-mode', mode)
+  localStorage.setItem('/cache/list/settings/state', mode)
 
-  return localStorage.getItem('system-settings-expand-mode')
+  return localStorage.getItem('/cache/list/settings/state')
 }
