@@ -14,18 +14,15 @@ int main(int argc, char **argv) {
   if (getenv("TMP_PATH") == NULL) {
     tmp_path_type = SBIN_AS_TMP_PATH;
 
-    FILE *fp = fopen("/sbin", "r");
-    if (fp == NULL) {
+    if (access("/sbin", F_OK) == -1) {
       tmp_path_type = DEBUG_RAMDISK_AS_TMP_PATH;
 
-      fp = fopen("/debug_ramdisk", "r");
-
-      if (fp == NULL) {
+      if (access("/debug_ramdisk", F_OK) == -1) {
         printf("Cannot find TMP_PATH. You should make an issue about that.\n");
 
         return 1;
-      } else fclose(fp);
-    } else fclose(fp);
+      }
+    }
   } else {
     tmp_path_type = CUSTOM_TMP_PATH;
   }
