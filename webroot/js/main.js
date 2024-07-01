@@ -10,7 +10,7 @@ import { setNewLang, getTranslations } from './language.js'
   let sys_lang = localStorage.getItem('/system/language')
 
   if (!sys_lang) sys_lang = setLangData('en_US')
-  if (sys_lang !== 'en_US') setNewLang(sys_lang)
+  if (sys_lang !== 'en_US') setNewLang(sys_lang, true)
 
   const translations = getTranslations(sys_lang)
 
@@ -144,7 +144,10 @@ import { setNewLang, getTranslations } from './language.js'
         modules_list.innerHTML += 
         `<div class="dimc ${index !== modules.length ? 'spliter' : ''}" style="padding-top: 13px; padding-bottom: 13px;">
           <div class="dimc" style="font-size: 1.1em;">${name}</div>
-          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">${translations.moduleCard.arch}: ${bitsUsed.join(' / ')}</div>
+          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
+            <div class="dimc arch_desc">${translations.moduleCard.arch}</div>
+            <div class="dimc" style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
+          </div>
         </div>`
       } else {
         toast(`${translations.cmdErrors.cat} ${module} (${catCmd.errno}): ${catCmd.stderr}`)

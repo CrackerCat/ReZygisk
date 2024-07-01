@@ -38,5 +38,8 @@ export const en_US = {
     ls: 'Error while listing files in zygisk folder of module',
     cat: 'Error while reading module.prop from module',
     find: 'Error while finding zygisk modules'
+  },
+  global: {
+    unknown: 'Unknown'
   }
 }

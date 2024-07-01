@@ -38,5 +38,8 @@ export const pt_BR = {
     ls: 'Erro ao listar arquivos na pasta zygisk do módulo',
     cat: 'Erro ao ler module.prop do módulo',
     find: 'Erro ao encontrar módulos que usam o zygisk'
+  },
+  global: {
+    unknown: 'Desconhecido'
   }
 }

@@ -38,5 +38,8 @@ export const ro_RO = {
     ls: 'Eroare în timpul listării fișierelor din folderul Zygisk al modulului',
     cat: 'Eroare în timpul citirii fișierului module.prop din modul',
     find: 'Eroare la găsirea modulelor Zygisk'
+  },
+  global: {
+    unknown: 'Necunoscut'
   }
 }

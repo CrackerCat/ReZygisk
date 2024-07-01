@@ -32,12 +32,14 @@ export const vi_VN = {
       exit: 'Thoát'
     }
   },
-  /* INFO: Not translated */
   cmdErrors: {
-    ptrace64: 'Error while executing zygisk-ptrace64',
-    ptrace32: 'Error while executing zygisk-ptrace32',
-    ls: 'Error while listing files in zygisk folder of module',
-    cat: 'Error while reading module.prop from module',
-    find: 'Error while finding zygisk modules'
+    ptrace64: 'Đã xảy ra lỗi khi chạy zygisk-ptrace64',
+    ptrace32: 'Đã xảy ra lỗi khi chạy zygisk-ptrace32',
+    ls: 'Đã xảy ra lỗi khi liệt kê tệp tin của mô đun trong thư mục zygisk',
+    cat: 'Đã xảy ra lỗi khi đọc tệp tin module.prop từ mô đun',
+    find: 'Đã xảy ra lỗi khi tìm mô đun thuộc zygisk'
+  },
+  global: {
+    unknown: 'Không xác định'
   }
 }

@@ -38,5 +38,8 @@ export const ru_RU = {
     ls: 'Ошибка перечисления файлов в zygisk папке модуля',
     cat: 'Ошибка чтения module.prop модуля',
     find: 'Ошибка обнаружения zygisk модулей'
+  },
+  global: {
+    unknown: 'Неизвестно'
   }
 }
