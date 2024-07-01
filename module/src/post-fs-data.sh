@@ -28,6 +28,10 @@ create_sys_perm() {
 
 export TMP_PATH=/data/adb/rezygisk
 
+if [ -d $TMP_PATH ]; then
+  rm -rf $TMP_PATH
+fi
+
 create_sys_perm $TMP_PATH
 
 if [ -f $MODDIR/lib64/libzygisk.so ];then

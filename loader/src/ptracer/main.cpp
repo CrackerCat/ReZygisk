@@ -4,10 +4,6 @@
 #include "utils.hpp"
 #include "daemon.h"
 
-#define CUSTOM_TMP_PATH 0
-#define SBIN_AS_TMP_PATH 1
-#define DEBUG_RAMDISK_AS_TMP_PATH 2
-
 int main(int argc, char **argv) {
   zygiskd::Init("/data/adb/rezygisk");
 
