@@ -13,6 +13,14 @@ body:
       required: true
 
   - type: textarea
+    id: modules
+    attributes:
+      label: Modules
+      description: "The modules you're using following the format: moduleName by authorName version x.x.x"
+    validations:
+      required: true
+
+  - type: textarea
     id: description
     attributes:
       label: Description
@@ -27,6 +35,14 @@ body:
       description: Steps to reproduce the behavior.
     validations:
       required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: If applicable, add logs AS A FILE to help solve the issue. Most of the time it will be from logcat on boot.
+    validations:
+      required: false
 
   - type: checkboxes
     id: terms
