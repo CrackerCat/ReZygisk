@@ -53,7 +53,7 @@ WIP
 
 ## Support
 
-Any question related to ReZygisk or other PerformanC projects can be made in [PerformanC's Discord server](https://discord.gg/uPveNfTuCJ).
+Any question related to ReZygisk or other PerformanC projects can be made in [PerformanC's Discord server](https://discord.gg/uPveNfTuCJ). You can also find support in [ReZygisk Telegram chat](https://t.me/rezygiskchat) or in [The PerformanC Organization telegram chat](t.me/performancorg).
 
 ## Contribution
 
