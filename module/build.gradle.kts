@@ -24,7 +24,7 @@ val moduleId: String by rootProject.extra
 val moduleName: String by rootProject.extra
 val verCode: Int by rootProject.extra
 val verName: String by rootProject.extra
-val minApatchVersion: Int by rootProject.extra
+val minAPatchVersion: Int by rootProject.extra
 val minKsuVersion: Int by rootProject.extra
 val minKsudVersion: Int by rootProject.extra
 val maxKsuVersion: Int by rootProject.extra
@@ -70,7 +70,7 @@ androidComponents.onVariants { variant ->
             include("customize.sh", "post-fs-data.sh", "service.sh", "uninstall.sh")
             val tokens = mapOf(
                 "DEBUG" to if (buildTypeLowered == "debug") "true" else "false",
-                "MIN_APATCH_VERSION" to "$minApatchVersion",
+                "MIN_APATCH_VERSION" to "$minAPatchVersion",
                 "MIN_KSU_VERSION" to "$minKsuVersion",
                 "MIN_KSUD_VERSION" to "$minKsudVersion",
                 "MAX_KSU_VERSION" to "$maxKsuVersion",
@@ -216,7 +216,7 @@ androidComponents.onVariants { variant ->
         }
     }
 
-    val installApatchTask = task<Exec>("installApatch$variantCapped") {
+    val installAPatchTask = task<Exec>("installAPatch$variantCapped") {
         group = "module"
         dependsOn(pushTask)
         commandLine("adb", "shell", "su", "-c", "/data/adb/apd module install /data/local/tmp/$zipFileName")
@@ -228,9 +228,9 @@ androidComponents.onVariants { variant ->
         commandLine("adb", "shell", "su", "-M", "-c", "magisk --install-module /data/local/tmp/$zipFileName")
     }
 
-    task<Exec>("installKpatchAndReboot$variantCapped") {
+    task<Exec>("installAPatchAndReboot$variantCapped") {
         group = "module"
-        dependsOn(installApatchTask)
+        dependsOn(installAPatchTask)
         commandLine("adb", "reboot")
     }
 

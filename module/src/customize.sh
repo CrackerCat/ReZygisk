@@ -36,11 +36,11 @@ if [ "$BOOTMODE" ] && [ "$KSU" ]; then
     abort    "*********************************************************"
   fi
   elif [ "$BOOTMODE" ] && [ "$APATCH" ]; then
-    ui_print "- Installing from Apatch app"
+    ui_print "- Installing from APatch app"
     if ! [ "$APATCH_VER_CODE" ] || [ "$APATCH_VER_CODE" -lt "$MIN_APATCH_VERSION" ]; then
       ui_print "*********************************************************"
-      ui_print "! Apatch version is too old!"
-      ui_print "! Please update Apatch to latest version"
+      ui_print "! APatch version is too old!"
+      ui_print "! Please update APatch to latest version"
       abort    "*********************************************************"
     fi
 elif [ "$BOOTMODE" ] && [ "$MAGISK_VER_CODE" ]; then
