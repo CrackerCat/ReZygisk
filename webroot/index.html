@@ -15,14 +15,17 @@
   </head>
   <body id="main_body">
     <!-- INFO: Loading screen -->
-    <div id="loading_screen" class="full_screen">
+    <div id="loading_screen" class="load_screen">
       <div class="loader"></div>
     </div>
     
     <!-- INFO: Modal list -->
-    <div id="lang_modal" class="full_screen" style="display: none;">
-      <div id="lang_modal_close" class="close_icon" style="margin-top: 20px; margin-left: 20px;">
-        <img src="assets/close.svg">
+    <div id="lang_modal" class="full_screen" style="top: 100%;">
+      <div class="liste" style="margin-top: 20px; margin-left: 20px;">
+        <div style="margin-left: 20px;"></div>
+        <div id="lang_modal_close" class="close_icon icon_animation" style="margin-right: 20px; width: 40px; height: 40px;">
+          <img src="assets/close.svg">
+        </div>
       </div>
       <div style="padding-left: 25px;">
         <h1 id="lang_modal_title">Choose your new language</h1>
@@ -36,10 +39,10 @@
     <div class="header">
       <div>ReZygisk</div>
       <div style="display: flex; align-items: center;">
-        <div id="lang_switcher">
+        <div id="lang_switcher" class="icon_animation">
           <img src="assets/lang.svg">
         </div>
-        <div id="theme_switcher" style="margin-left: 10px;">
+        <div id="theme_switcher" class="icon_animation" style="margin-left: 10px;">
           <img src="assets/dark.svg">
         </div>
       </div>

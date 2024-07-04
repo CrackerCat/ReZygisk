@@ -21,7 +21,7 @@ document.addEventListener('click', (event) => {
 
   setNewLang(event.target.id)
 
-  target.style.display = 'none'
+  target.style.top = '100%'
   localStorage.setItem('/cache/modal/language/state', 'closed')
   localStorage.setItem('/system/language', event.target.id)
 }, false)

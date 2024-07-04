@@ -6,13 +6,13 @@ let sys_module_mode = localStorage.getItem('/cache/modal/language/state')
 sys_module_mode = setData('closed')
 
 button.addEventListener('click', () => {
-  target.style.display = 'block'
+  target.style.top = '0%'
 
   sys_module_mode = setData('opened')
 })
 
 close_button.addEventListener('click', () => {
-  target.style.display = 'none'
+  target.style.top = '100%'
 
   sys_module_mode = setData('closed')
 })
