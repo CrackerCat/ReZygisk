@@ -125,7 +125,7 @@ export async function setNewLanguage(locate, initialize) {
 }
 
 export async function getTranslations(locate) {
-  const translateData = await fetch(`./languages/${locate}/main.json`)
+  const translateData = await fetch(`./lang/${locate}/main.json`)
     .catch(error => reject(error))
   return await translateData.json()
 }
