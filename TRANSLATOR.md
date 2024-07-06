@@ -4,3 +4,7 @@
 - **ro_RO** by [@ExtremeXT](https://github.com/ExtremeXT)
 - **ru_RU** by [@Emulond](https://github.com/Emulond)
 - **vi_VN** by [@RainyXeon](https://github.com/RainyXeon)
+
+
+> [!NOTE]
+> Want to add your translation? Go to [Crowdin](https://crowdin.com/project/rezygisk) and translate!
