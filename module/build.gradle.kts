@@ -170,13 +170,15 @@ androidComponents.onVariants { variant ->
 
                     set.add(Pair(root.file("webroot/js/list/module.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/list/settings.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/list/lang.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/list/language.js").asFile, null))
 
-                    set.add(Pair(root.file("webroot/js/lang/en_US.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/lang/vi_VN.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/lang/index.js").asFile, null))
+                    set.add(Pair(root.file("webroot/languages/en_US/main.json").asFile, null))
+                    set.add(Pair(root.file("webroot/languages/pt_BR/main.json").asFile, null))
+                    set.add(Pair(root.file("webroot/languages/ro_RO/main.json").asFile, null))
+                    set.add(Pair(root.file("webroot/languages/ru_RU/main.json").asFile, null))
+                    set.add(Pair(root.file("webroot/languages/vi_VN/main.json").asFile, null))
 
-                    set.add(Pair(root.file("webroot/js/modal/lang.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/modal/language.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/css/index.css").asFile, null))
                     

@@ -112,13 +112,15 @@ extract "$ZIPFILE" 'webroot/js/language.js' "$MODPATH/webroot/js" true
 
 extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
-extract "$ZIPFILE" 'webroot/js/list/lang.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/list/language.js' "$MODPATH/webroot/js/list" true
 
-extract "$ZIPFILE" 'webroot/js/lang/en_US.js' "$MODPATH/webroot/js/lang" true
-extract "$ZIPFILE" 'webroot/js/lang/vi_VN.js' "$MODPATH/webroot/js/lang" true
-extract "$ZIPFILE" 'webroot/js/lang/index.js' "$MODPATH/webroot/js/lang" true
+extract "$ZIPFILE" 'webroot/languages/en_US/main.json' "$MODPATH/webroot/languages/en_US" true
+extract "$ZIPFILE" 'webroot/languages/pt_BR/main.json' "$MODPATH/webroot/languages/pt_BR" true
+extract "$ZIPFILE" 'webroot/languages/ro_RO/main.json' "$MODPATH/webroot/languages/ro_RO" true
+extract "$ZIPFILE" 'webroot/languages/ru_RU/main.json' "$MODPATH/webroot/languages/en_US" true
+extract "$ZIPFILE" 'webroot/languages/vi_VN/main.json' "$MODPATH/webroot/languages/vi_VN" true
 
-extract "$ZIPFILE" 'webroot/js/modal/lang.js' "$MODPATH/webroot/js/modal" true
+extract "$ZIPFILE" 'webroot/js/modal/language.js' "$MODPATH/webroot/js/modal" true
 
 extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
 

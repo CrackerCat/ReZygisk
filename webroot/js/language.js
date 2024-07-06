@@ -1,5 +1,3 @@
-import { lang } from './lang/index.js'
-
 /* INFO: info card */
 const version_info_title = document.getElementById('version_info_title')
 const version_code = document.getElementById('version_code')
@@ -26,9 +24,9 @@ const rezygisk_state = document.getElementById('rezygisk_state')
 const zygote32_status_div = document.getElementById('zygote32_status')
 const zygote64_status_div = document.getElementById('zygote64_status')
 
-export function setNewLang(locate, initialize) {
-  const old_translations = lang[initialize ? 'en_US' : localStorage.getItem('/system/language')]
-  const new_lang = lang[locate]
+export async function setNewLanguage(locate, initialize) {
+  const old_translations = await getTranslations(initialize ? 'en_US' : localStorage.getItem('/system/language'))
+  const new_lang = await getTranslations(locate)
 
   /* INFO: info card */
   version_info_title.innerHTML = new_lang.infoCard.version
@@ -126,6 +124,16 @@ export function setNewLang(locate, initialize) {
   }
 }
 
-export function getTranslations(locate) {
-  return lang[locate]
+export async function getTranslations(locate) {
+  const translateData = await fetch(`./languages/${locate}/main.json`)
+    .catch(error => reject(error))
+  return await translateData.json()
 }
+
+export const avaliableLanguages = [
+  "en_US", /* INFO: Translated by @PerformanC (The PerformanC Organization) */
+  "pt_BR", /* INFO: Translated by @ThePedroo */
+  "ro_RO", /* INFO: Translated by @ExtremeXT */
+  "ru_RU", /* INFO: Translated by Emulond Argent (@Emulond) */
+  "vi_VN", /* INFO: Translated by @RainyXeon (unexpected unresolved) */
+]

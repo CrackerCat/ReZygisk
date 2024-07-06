@@ -1,5 +1,5 @@
 import { fullScreen, exec, toast } from './kernelsu.js'
-import { setNewLang, getTranslations } from './language.js'
+import { setNewLanguage, getTranslations } from './language.js'
 
 (async () => {
   const EXPECTED = 1
@@ -10,9 +10,9 @@ import { setNewLang, getTranslations } from './language.js'
   let sys_lang = localStorage.getItem('/system/language')
 
   if (!sys_lang) sys_lang = setLangData('en_US')
-  if (sys_lang !== 'en_US') setNewLang(sys_lang, true)
+  if (sys_lang !== 'en_US') await setNewLanguage(sys_lang, true)
 
-  const translations = getTranslations(sys_lang)
+  const translations = await getTranslations(sys_lang)
 
   const loading_screen = document.getElementById('loading_screen')
 

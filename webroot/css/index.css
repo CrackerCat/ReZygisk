@@ -171,6 +171,14 @@ a {
   transform: scale(80%) 
 }
 
+.element_animation {
+  transition: transform 0.15 ease-in-out;
+}
+
+.element_animation:active {
+  transform: scale(95%) 
+}
+
 /* Card type */
 .bright {
   border: 5px solid var(--bright);
