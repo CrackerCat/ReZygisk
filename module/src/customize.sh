@@ -109,12 +109,12 @@ extract "$ZIPFILE" 'webroot/js/main.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/kernelsu.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/language.js' "$MODPATH/webroot/js" true
+extract "$ZIPFILE" 'webroot/js/light.icon.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/restoreError.js' "$MODPATH/webroot/js/list" true
 
 extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/language.js' "$MODPATH/webroot/js/list" true
-extract "$ZIPFILE" 'webroot/js/list/light.icon.js' "$MODPATH/webroot/js/list" true
-extract "$ZIPFILE" 'webroot/js/list/restoreError.js' "$MODPATH/webroot/js/list" true
 
 extract "$ZIPFILE" 'webroot/lang/en_US.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/ja_JP.json' "$MODPATH/webroot/lang" true
