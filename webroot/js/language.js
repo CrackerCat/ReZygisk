@@ -130,8 +130,10 @@ export async function getTranslations(locate) {
   return await translateData.json()
 }
 
+/* INFO: This list is in alphabetical order. */
 export const avaliableLanguages = [
   "en_US", /* INFO: Translated by @PerformanC (The PerformanC Organization) */
+  "ja_JP", /* INFO: Translated by @Fyphen1223 */
   "pt_BR", /* INFO: Translated by @ThePedroo */
   "ro_RO", /* INFO: Translated by @ExtremeXT */
   "ru_RU", /* INFO: Translated by Emulond Argent (@Emulond) */
