@@ -11,6 +11,8 @@
     <script src="js/list/language.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
     <script src="js/modal/language.js" type="module"></script>
+    <script src="js/modal/errorHistory.js" type="module"></script>
+    <script src="js/restoreError.js" type="module"></script>
     <link rel="stylesheet" href="css/index.css">
   </head>
   <body id="main_body">
@@ -19,7 +21,7 @@
       <div class="loader"></div>
     </div>
     
-    <!-- INFO: Modal list -->
+    <!-- INFO: Language Modal -->
     <div id="lang_modal" class="full_screen" style="top: 100%;">
       <div class="liste" style="margin-top: 20px; margin-left: 20px;">
         <div style="margin-left: 20px;"></div>
@@ -35,6 +37,25 @@
       </div>
     </div>
 
+    <!-- INFO: Error History Modal -->
+    <div id="errorh_modal" class="full_screen" style="top: 100%;">
+      <div class="liste" style="margin-top: 20px; margin-left: 20px;">
+        <div style="margin-left: 20px;"></div>
+        <div id="errorh_modal_close" class="close_icon icon_animation" style="margin-right: 20px; width: 40px; height: 40px;">
+          <img src="assets/close.svg">
+        </div>
+      </div>
+      <div style="padding-left: 25px; display: flex; align-items: center; justify-content: space-between; padding-right: 25px;">
+        <h1 id="errorh_modal_title">Error History</h1>
+        <div class="icon_animation" id="errorh_copy">
+          <img src="assets/content.svg">
+        </div>
+      </div>
+      <div style="margin-left: 25px; margin-right: 25px; height: 100%;">
+        <textarea id="errorh_panel" disabled class="errorh_textarea" placeholder="No error log recorded here!"></textarea>
+      </div>
+    </div>
+    
     <!-- INFO: Headers -->
     <div class="header">
       <div>ReZygisk</div>
@@ -137,6 +158,19 @@
           <div id="daemon64_stop_button" class="center button">Stop</div>
           <div id="daemon64_start_button" class="center button">Start</div>
           <div id="daemon64_exit_button" class="center button">Exit</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO: Get error logs button card -->
+    <div id="rezygisk_errorh" class="dim card list card_animation">
+      <!-- INFO: Settings card header -->
+      <div class="dimc" style="align-items: center; display: flex;">
+        <div class="dimc" id="logs_icon">
+          <img class="dimc" src="assets/error.svg">
+        </div>
+        <div id="errorh_card_title" class="dimc content" style="padding-left: 5px; font-size: 1.2em;">
+          Error History
         </div>
       </div>
     </div>

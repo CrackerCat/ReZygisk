@@ -39,5 +39,9 @@
   },
   "global": {
     "unknown": "Không xác định"
+  },
+  "errorHistory": {
+    "header": "Lịch sử lỗi",
+    "placeholder": "Không có lỗi nào đã được ghi lại ở đây!"
   }
 }

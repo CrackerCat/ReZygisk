@@ -16,6 +16,11 @@ const daemon32_exit_button = document.getElementById('daemon32_exit_button')
 const daemon64_stop_button = document.getElementById('daemon64_stop_button')
 const daemon64_start_button = document.getElementById('daemon64_start_button')
 const daemon64_exit_button = document.getElementById('daemon64_exit_button')
+/* INFO: error history button card */
+const errorh_card_title = document.getElementById('errorh_card_title')
+/* INFO: error history modal */
+const errorh_modal_title = document.getElementById('errorh_modal_title')
+const errorh_panel = document.getElementById('errorh_panel')
 /* INFO: lang modal */
 const lang_modal_title = document.getElementById('lang_modal_title')
 /* INFO: Variable fields */
@@ -54,6 +59,13 @@ export async function setNewLanguage(locate, initialize) {
   }
   /* INFO: lang modal */
   lang_modal_title.innerHTML = new_lang.langModal.header
+
+  /* INFO: error history button card */
+  errorh_card_title.innerHTML = new_lang.errorHistory.header
+
+  /* INFO: error history modal */
+  errorh_modal_title.innerHTML = new_lang.errorHistory.header
+  errorh_panel.placeholder = new_lang.errorHistory.placeholder
 
   /* INFO: Translate variables */
   switch (rezygisk_state.innerHTML.replace(/(\r\n|\n|\r)/gm,"").trim()) {

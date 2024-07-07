@@ -167,6 +167,8 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/kernelsu.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/theme.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/language.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/light.icon.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/restoreError.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/list/module.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/list/settings.js").asFile, null))
@@ -180,6 +182,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/lang/vi_VN.json").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/modal/language.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/modal/errorHistory.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/css/index.css").asFile, null))
                     
@@ -193,6 +196,8 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/assets/settings.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/close.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/lang.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/content.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/error.svg").asFile, null))
                     sig.initSign(privKey)
                     set.forEach { it.first.sha(it.second) }
                     val signFile = root.file(name).asFile

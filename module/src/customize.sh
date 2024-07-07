@@ -113,6 +113,8 @@ extract "$ZIPFILE" 'webroot/js/language.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/language.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/list/light.icon.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/list/restoreError.js' "$MODPATH/webroot/js/list" true
 
 extract "$ZIPFILE" 'webroot/lang/en_US.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/ja_JP.json' "$MODPATH/webroot/lang" true
@@ -122,6 +124,7 @@ extract "$ZIPFILE" 'webroot/lang/ru_RU.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/vi_VN.json' "$MODPATH/webroot/lang" true
 
 extract "$ZIPFILE" 'webroot/js/modal/language.js' "$MODPATH/webroot/js/modal" true
+extract "$ZIPFILE" 'webroot/js/modal/errorHistory.js' "$MODPATH/webroot/js/modal" true
 
 extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
 
@@ -135,6 +138,8 @@ extract "$ZIPFILE" 'webroot/assets/expand.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/settings.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/close.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/lang.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/content.svg' "$MODPATH/webroot/assets" true
+extract "$ZIPFILE" 'webroot/assets/error.svg' "$MODPATH/webroot/assets" true
 
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then
   ui_print "- Extracting x86 libraries"

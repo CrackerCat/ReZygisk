@@ -39,5 +39,9 @@
   },
   "global": {
     "unknown": "不明"
+  },
+  "errorHistory": {
+    "header": "Error History",
+    "placeholder": "No error log recorded here!"
   }
 }

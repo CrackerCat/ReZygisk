@@ -137,7 +137,7 @@ a {
   padding-top: 1em;
   padding-bottom: 1em;
   border-radius: 30px;
-  transition: transform 0.07s ease-in-out;
+  transition: transform 0.05s ease-in-out;
   background-color: var(--button);
 }
 
@@ -172,11 +172,30 @@ a {
 }
 
 .element_animation {
-  transition: transform 0.15 ease-in-out;
+  transition: transform 0.15s ease-in-out;
 }
 
 .element_animation:active {
   transform: scale(95%) 
+}
+
+.card_animation {
+  transition: transform 0.05s ease-in-out;
+}
+
+.card_animation:active {
+  transform: scale(95%) 
+}
+
+.errorh_textarea {
+  resize: none; 
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding-bottom: 25px;
+  font-family: monospace, monospace;
 }
 
 /* Card type */
