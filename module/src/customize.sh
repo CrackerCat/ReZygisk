@@ -115,6 +115,7 @@ extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/language.js' "$MODPATH/webroot/js/list" true
 
 extract "$ZIPFILE" 'webroot/lang/en_US.json' "$MODPATH/webroot/lang" true
+extract "$ZIPFILE" 'webroot/lang/ja_JP.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/pt_BR.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/ro_RO.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/ru_RU.json' "$MODPATH/webroot/lang" true

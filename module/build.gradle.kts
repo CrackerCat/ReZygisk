@@ -173,6 +173,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/list/language.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/lang/en_US.json").asFile, null))
+                    set.add(Pair(root.file("webroot/lang/ja_JP.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/pt_BR.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/ro_RO.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/ru_RU.json").asFile, null))
