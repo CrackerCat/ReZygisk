@@ -136,4 +136,5 @@ export const avaliableLanguages = [
   "ro_RO", /* INFO: Translated by @ExtremeXT */
   "ru_RU", /* INFO: Translated by Emulond Argent (@Emulond) */
   "vi_VN", /* INFO: Translated by @RainyXeon (unexpected unresolved) */
+  "ja_JP", /* INFO: Translated by @Fyphen1223 (Fyphen1223) */
 ]
