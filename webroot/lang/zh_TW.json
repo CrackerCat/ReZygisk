@@ -1,0 +1,49 @@
+
+
+{
+  "langName": "简体中文 (中国)",
+  "langModal": {
+    "header": "选择你的语言"
+  },
+  "infoCard": {
+    "status": {
+      "unknown": "ReZygisk处于未知状态!",
+      "notWorking": "ReZygisk无法运行!",
+      "ok": "ReZygisk正常运行!",
+      "partially": "ReZygisk部分正常运行!"
+    },
+    "version": "版本",
+    "root": "根实现",
+    "zygote": {
+      "injected": "已注入",
+      "notInjected": "注入失败",
+      "unknown": "未知"
+    }
+  },
+  "moduleCard": {
+    "header": "模块",
+    "arch": "架构: "
+  },
+  "settings": {
+    "header": "设置",
+    "daemonButton": {
+      "start": "开启",
+      "stop": "停止",
+      "exit": "退出"
+    }
+  },
+  "cmdErrors": {
+    "ptrace64": "执行zygisk-ptrace64时出现错误",
+    "ptrace32": "执行zygisk-ptrace32时出现错误",
+    "ls": "列出模块zygisk文件夹中的文件时出现错误",
+    "cat": "读取模块module.prop时出现错误",
+    "find": "查找zygisk模块时出现错误"
+  },
+  "global": {
+    "unknown": "未知"
+  },
+  "errorHistory": {
+    "header": "错误记录",
+    "placeholder": "未发现任何错误！"
+  }
+}
