@@ -6,8 +6,8 @@
 - **ro_RO** by [@ExtremeXT](https://github.com/ExtremeXT)
 - **ru_RU** by [@Emulond](https://github.com/Emulond)
 - **vi_VN** by [@RainyXeon](https://github.com/RainyXeon)
-- **zh_CN** by [@Meltartical](https://github.com/Meltartical)
-- **zh_TW** by [@Meltartical](https://github.com/Meltartical)
+- **zh_CN** by [@Meltartica](https://github.com/Meltartica)
+- **zh_TW** by [@Meltartica](https://github.com/Meltartica)
 
 > [!NOTE]
 > Want to add your translation? Go to [Crowdin](https://crowdin.com/project/rezygisk) and translate!

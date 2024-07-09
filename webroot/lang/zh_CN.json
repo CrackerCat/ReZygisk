@@ -12,7 +12,7 @@
       "partially": "ReZygisk部分正常运行!"
     },
     "version": "版本",
-    "root": "根实现",
+    "root": "Root实现",
     "zygote": {
       "injected": "已注入",
       "notInjected": "注入失败",
@@ -26,7 +26,7 @@
   "settings": {
     "header": "设置",
     "daemonButton": {
-      "start": "开启",
+      "start": "启动",
       "stop": "停止",
       "exit": "退出"
     }
@@ -43,12 +43,12 @@
   },
   "errorHistory": {
     "header": "错误记录",
-    "placeholder": "未发现任何错误！"
+    "placeholder": "未发现任何错误!"
   },
   "switcher": {
     "font": {
-      "header": "Enable system font",
-      "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
+      "header": "使用系统字体",
+      "description": "此选项将在当前界面中使用系统字体。注意：可能与 FlipFont 不兼容"
     }
   }
 }
