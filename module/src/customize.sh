@@ -116,14 +116,9 @@ extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/language.js' "$MODPATH/webroot/js/list" true
 
-extract "$ZIPFILE" 'webroot/lang/en_US.json' "$MODPATH/webroot/lang" true
-extract "$ZIPFILE" 'webroot/lang/ja_JP.json' "$MODPATH/webroot/lang" true
-extract "$ZIPFILE" 'webroot/lang/pt_BR.json' "$MODPATH/webroot/lang" true
-extract "$ZIPFILE" 'webroot/lang/ro_RO.json' "$MODPATH/webroot/lang" true
-extract "$ZIPFILE" 'webroot/lang/ru_RU.json' "$MODPATH/webroot/lang" true
-extract "$ZIPFILE" 'webroot/lang/vi_VN.json' "$MODPATH/webroot/lang" true
-extract "$ZIPFILE" 'webroot/lang/zh_CN.json' "$MODPATH/webroot/lang" true
-extract "$ZIPFILE" 'webroot/lang/zh_TW.json' "$MODPATH/webroot/lang" true
+for lang in en_US ja_JP pt_BR ro_RO ru_RU vi_VN zh_CN zh_TW; do
+  extract "$ZIPFILE" "webroot/lang/${lang}.json" "$MODPATH/webroot/lang" true
+done
 
 extract "$ZIPFILE" 'webroot/js/modal/language.js' "$MODPATH/webroot/js/modal" true
 extract "$ZIPFILE" 'webroot/js/modal/errorHistory.js' "$MODPATH/webroot/js/modal" true
@@ -136,18 +131,9 @@ extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 
-extract "$ZIPFILE" 'webroot/assets/mark.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/tick.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/warn.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/light.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/dark.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/module.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/expand.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/settings.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/close.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/lang.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/content.svg' "$MODPATH/webroot/assets" true
-extract "$ZIPFILE" 'webroot/assets/error.svg' "$MODPATH/webroot/assets" true
+for svg in mark tick warn light dark module expand settings close lang content error; do
+  extract "$ZIPFILE" "webroot/assets/${svg}.svg" "$MODPATH/webroot/assets" true
+done
 
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then
   ui_print "- Extracting x86 libraries"
