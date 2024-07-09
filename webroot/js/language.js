@@ -23,9 +23,11 @@ const errorh_modal_title = document.getElementById('errorh_modal_title')
 const errorh_panel = document.getElementById('errorh_panel')
 /* INFO: lang modal */
 const lang_modal_title = document.getElementById('lang_modal_title')
+/* INFO: lang modal */
+const sys_font_option_title = document.getElementById('sys_font_option_title')
+const sys_font_option_desc = document.getElementById('sys_font_option_desc')
 /* INFO: Variable fields */
 const rezygisk_state = document.getElementById('rezygisk_state')
-
 const zygote32_status_div = document.getElementById('zygote32_status')
 const zygote64_status_div = document.getElementById('zygote64_status')
 
@@ -66,6 +68,10 @@ export async function setNewLanguage(locate, initialize) {
   /* INFO: error history modal */
   errorh_modal_title.innerHTML = new_lang.errorHistory.header
   errorh_panel.placeholder = new_lang.errorHistory.placeholder
+
+  /* INFO: lang modal */
+  sys_font_option_title.innerHTML = new_lang.switcher.font.header
+  sys_font_option_desc.innerHTML = new_lang.switcher.font.description
 
   /* INFO: Translate variables */
   switch (rezygisk_state.innerHTML.replace(/(\r\n|\n|\r)/gm,"").trim()) {

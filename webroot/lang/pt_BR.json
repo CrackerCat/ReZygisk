@@ -43,5 +43,11 @@
   "errorHistory": {
     "header": "Error History",
     "placeholder": "No error log recorded here!"
+  },
+  "switcher": {
+    "font": {
+      "header": "Enable system font",
+      "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
+    }
   }
 }

@@ -9,10 +9,12 @@
     <script src="js/list/module.js" type="module"></script>
     <script src="js/list/settings.js" type="module"></script>
     <script src="js/list/language.js" type="module"></script>
+    <script src="js/switcher/fontChanger.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
     <script src="js/modal/language.js" type="module"></script>
     <script src="js/modal/errorHistory.js" type="module"></script>
     <script src="js/restoreError.js" type="module"></script>
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/index.css">
   </head>
   <body id="main_body">
@@ -159,6 +161,21 @@
           <div id="daemon64_start_button" class="center button">Start</div>
           <div id="daemon64_exit_button" class="center button">Exit</div>
         </div>
+      </div>
+
+      <div class="small_card" style="margin-top: 15px; justify-content: space-between; display: flex; align-items: center;">
+        <div class="small_card_bg" style="display: inline-block; width: 80%;">
+          <div id="sys_font_option_title" class="small_card_bg content" style="font-size: 1.1em; padding-left: 5px; padding-top: 6px; padding-bottom: 2px;">Enable system font</div>
+          <div id="sys_font_option_desc" class="small_card_bg desc" style="font-size: 0.9em; padding-left: 5px; padding-bottom: 6px;">
+            This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont
+          </div>
+        </div>
+
+        <label class="switch small_card_bg">
+          <input id="font_switcher" type="checkbox">
+          <span class="slider round"></span>
+        </label>
+        
       </div>
     </div>
 

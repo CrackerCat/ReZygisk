@@ -43,5 +43,11 @@
   "errorHistory": {
     "header": "Lịch sử lỗi",
     "placeholder": "Không có lỗi nào đã được ghi lại ở đây!"
+  },
+  "switcher": {
+    "font": {
+      "header": "Sử dụng phông chữ hệ thống",
+      "description": "Tuỳ chọn nãy sẽ cho phép người dùng sử dụng phông chữ của hệ thống. LƯU Ý: Có thể sẽ không tương thích với FlipFont"
+    }
   }
 }
