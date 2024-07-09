@@ -122,11 +122,19 @@ extract "$ZIPFILE" 'webroot/lang/pt_BR.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/ro_RO.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/ru_RU.json' "$MODPATH/webroot/lang" true
 extract "$ZIPFILE" 'webroot/lang/vi_VN.json' "$MODPATH/webroot/lang" true
+extract "$ZIPFILE" 'webroot/lang/zh_CN.json' "$MODPATH/webroot/lang" true
+extract "$ZIPFILE" 'webroot/lang/zh_TW.json' "$MODPATH/webroot/lang" true
 
 extract "$ZIPFILE" 'webroot/js/modal/language.js' "$MODPATH/webroot/js/modal" true
 extract "$ZIPFILE" 'webroot/js/modal/errorHistory.js' "$MODPATH/webroot/js/modal" true
 
+extract "$ZIPFILE" 'webroot/js/switcher/fontChanger.js' "$MODPATH/webroot/js/switcher" true
+
 extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
+extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
+
+extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
+extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 
 extract "$ZIPFILE" 'webroot/assets/mark.svg' "$MODPATH/webroot/assets" true
 extract "$ZIPFILE" 'webroot/assets/tick.svg' "$MODPATH/webroot/assets" true

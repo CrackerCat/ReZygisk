@@ -174,17 +174,25 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/list/settings.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/list/language.js").asFile, null))
 
+                    set.add(Pair(root.file("webroot/js/switcher/fontChanger.js").asFile, null))
+
                     set.add(Pair(root.file("webroot/lang/en_US.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/ja_JP.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/pt_BR.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/ro_RO.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/ru_RU.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/vi_VN.json").asFile, null))
+                    set.add(Pair(root.file("webroot/lang/zh_CN.json").asFile, null))
+                    set.add(Pair(root.file("webroot/lang/zh_TW.json").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/modal/language.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/modal/errorHistory.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/css/index.css").asFile, null))
+                    set.add(Pair(root.file("webroot/css/fonts.css").asFile, null))
+
+                    set.add(Pair(root.file("webroot/fonts/ProductSans-Italic.ttf").asFile, null))
+                    set.add(Pair(root.file("webroot/fonts/ProductSans-Regular.ttf").asFile, null))
                     
                     set.add(Pair(root.file("webroot/assets/mark.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/tick.svg").asFile, null))
