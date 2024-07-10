@@ -169,6 +169,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/language.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/light.icon.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/restoreError.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/webuiError.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/list/module.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/list/settings.js").asFile, null))

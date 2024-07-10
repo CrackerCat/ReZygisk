@@ -111,6 +111,7 @@ extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/language.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/light.icon.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/restoreError.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/webuiError.js' "$MODPATH/webroot/js/list" true
 
 extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true

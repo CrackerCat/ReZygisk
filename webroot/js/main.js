@@ -1,5 +1,6 @@
 import { fullScreen, exec, toast } from './kernelsu.js'
 import { setNewLanguage, getTranslations } from './language.js'
+import { sendError } from './webuiError.js'
 
 (async () => {
   const EXPECTED = 1
@@ -156,7 +157,9 @@ import { setNewLanguage, getTranslations } from './language.js'
   } else {
     toast(`${translations.cmdErrors.find}: ${findModulesCmd.stderr}`)
   }
-})()
+})().catch(err => {
+  sendError(err)
+})
 
 function setLangData(mode) {
   localStorage.setItem('/system/language', mode)
