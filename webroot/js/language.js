@@ -8,6 +8,8 @@ const module_card_title = document.getElementById('module_card_title')
 const module_element_arch = document.getElementsByClassName('arch_desc')
 /* INFO: settings card */
 const settings_card_title = document.getElementById('settings_card_title')
+/* INFO: action card */
+const action_card_title = document.getElementById('action_card_title')
 /* INFO: daemon32 small card */
 const daemon32_stop_button = document.getElementById('daemon32_stop_button')
 const daemon32_start_button = document.getElementById('daemon32_start_button')
@@ -47,17 +49,19 @@ export async function setNewLanguage(locate, initialize) {
   module_card_title.innerHTML = new_lang.moduleCard.header
   /* INFO: settings card */
   settings_card_title.innerHTML = new_lang.settings.header
+  /* INFO: action card */
+  action_card_title.innerHTML = new_lang.action.header
   /* INFO: daemon32 small card */
   if (daemon32_stop_button) { /* INFO: Not all devices have 32-bit support */
-    daemon32_stop_button.innerHTML = new_lang.settings.daemonButton.stop
-    daemon32_start_button.innerHTML = new_lang.settings.daemonButton.start
-    daemon32_exit_button.innerHTML = new_lang.settings.daemonButton.exit
+    daemon32_stop_button.innerHTML = new_lang.action.daemonButton.stop
+    daemon32_start_button.innerHTML = new_lang.action.daemonButton.start
+    daemon32_exit_button.innerHTML = new_lang.action.daemonButton.exit
   }
   /* INFO: daemon64 small card */
   if (daemon64_stop_button) { /* INFO: Not all devices have 64-bit support */
-    daemon64_stop_button.innerHTML = new_lang.settings.daemonButton.stop
-    daemon64_start_button.innerHTML = new_lang.settings.daemonButton.start
-    daemon64_exit_button.innerHTML = new_lang.settings.daemonButton.exit
+    daemon64_stop_button.innerHTML = new_lang.action.daemonButton.stop
+    daemon64_start_button.innerHTML = new_lang.action.daemonButton.start
+    daemon64_exit_button.innerHTML = new_lang.action.daemonButton.exit
   }
   /* INFO: lang modal */
   lang_modal_title.innerHTML = new_lang.langModal.header

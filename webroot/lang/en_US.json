@@ -22,13 +22,16 @@
     "header": "Modules",
     "arch": "Arch: "
   },
-  "settings": {
-    "header": "Settings",
+  "action": {
+    "header": "Action",
     "daemonButton": {
       "start": "Start",
       "stop": "Stop",
       "exit": "Exit"
     }
+  },
+  "settings": {
+    "header": "Settings"
   },
   "cmdErrors": {
     "ptrace64": "Error while executing zygisk-ptrace64",

@@ -1,6 +1,14 @@
 import { fullScreen, exec, toast } from './kernelsu.js'
 import { setNewLanguage, getTranslations } from './language.js'
 
+const loading_screen = document.getElementById('loading_screen')
+loading_screen.style.display = 'none'
+
+let sys_lang = localStorage.getItem('/system/language')
+
+if (!sys_lang) sys_lang = setLangData('en_US')
+if (sys_lang !== 'en_US') await setNewLanguage(sys_lang, true)
+
 (async () => {
   const EXPECTED = 1
   const UNEXPECTED_FAIL = 2
@@ -19,7 +27,7 @@ import { setNewLanguage, getTranslations } from './language.js'
   const rootCss = document.querySelector(':root')
 
   const rezygisk_state = document.getElementById('rezygisk_state')
-  const rezygisk_settings = document.getElementById('rezygisk_settings')
+  const rezygisk_action = document.getElementById('rezygisk_action')
   const rezygisk_icon_state = document.getElementById('rezygisk_icon_state')
 
   const code_version = document.getElementById('version_code')
@@ -90,13 +98,13 @@ import { setNewLanguage, getTranslations } from './language.js'
   if (zygote32_status === EXPECTED && zygote64_status === EXPECTED) {
     rezygisk_state.innerHTML = translations.infoCard.status.ok
 
-    rezygisk_settings.removeAttribute('style')
+    rezygisk_action.removeAttribute('style')
     rootCss.style.setProperty('--bright', '#3a4857')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/tick.svg">'
   } else if (zygote64_status === EXPECTED ^ zygote32_status.innerHTML === EXPECTED) {
     rezygisk_state.innerHTML = translations.infoCard.status.partially
 
-    rezygisk_settings.removeAttribute('style')
+    rezygisk_action.removeAttribute('style')
     rootCss.style.setProperty('--bright', '#766000')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/warn.svg">'
   } else {

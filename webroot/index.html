@@ -10,6 +10,7 @@
     <script src="js/list/module.js" type="module"></script>
     <script src="js/list/settings.js" type="module"></script>
     <script src="js/list/language.js" type="module"></script>
+    <script src="js/list/action.js" type="module"></script>
     <script src="js/switcher/fontChanger.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
     <script src="js/modal/language.js" type="module"></script>
@@ -125,21 +126,21 @@
       </div>
     </div>
 
-    <!-- INFO: Settings card -->
-    <div id="rezygisk_settings" class="dim card list" style="display: none;">
-      <!-- INFO: Settings card header -->
-      <div id="settings_header" class="dimc" style="align-items: center; display: flex; justify-content: space-between; padding-bottom: 10px;">
+    <!-- INFO: Action card -->
+    <div id="rezygisk_action" class="dim card list" style="display: none;">
+      <!-- INFO: Action card header -->
+      <div id="action_header" class="dimc" style="align-items: center; display: flex; justify-content: space-between; padding-bottom: 10px;">
         <div class="dimc" style="align-items: center; display: flex;">
-          <div class="dimc" id="setting_icon">
-            <img class="dimc" src="assets/settings.svg">
+          <div class="dimc" id="action_icon">
+            <img class="dimc" src="assets/action.svg">
           </div>
-          <div id="settings_card_title" class="dimc content" style="padding-left: 5px; font-size: 1.2em;">
-            Settings
+          <div id="action_card_title" class="dimc content" style="padding-left: 5px; font-size: 1.2em;">
+            Actions
           </div>
         </div>
 
         <div class="dimc">
-          <div id="settings_expand_icon" class="dimc expander" style="margin-bottom: 4px; max-height: 24px;">
+          <div id="action_expand_icon" class="dimc expander" style="margin-bottom: 4px; max-height: 24px;">
             <img class="dimc" src="assets/expand.svg">
           </div>
         </div>
@@ -162,7 +163,28 @@
           <div id="daemon64_exit_button" class="center button">Exit</div>
         </div>
       </div>
+    </div>
 
+    <!-- INFO: Settings card -->
+    <div id="rezygisk_settings" class="dim card list">
+      <!-- INFO: Settings card header -->
+      <div id="settings_header" class="dimc" style="align-items: center; display: flex; justify-content: space-between; padding-bottom: 10px;">
+        <div class="dimc" style="align-items: center; display: flex;">
+          <div class="dimc" id="setting_icon">
+            <img class="dimc" src="assets/settings.svg">
+          </div>
+          <div id="settings_card_title" class="dimc content" style="padding-left: 5px; font-size: 1.2em;">
+            Settings
+          </div>
+        </div>
+
+        <div class="dimc">
+          <div id="settings_expand_icon" class="dimc expander" style="margin-bottom: 4px; max-height: 24px;">
+            <img class="dimc" src="assets/expand.svg">
+          </div>
+        </div>
+      </div>
+      <!-- INFO: Enable system font option -->
       <div class="small_card" style="margin-top: 15px; justify-content: space-between; display: flex; align-items: center;">
         <div class="small_card_bg" style="display: inline-block; width: 80%;">
           <div id="sys_font_option_title" class="small_card_bg content" style="font-size: 1.1em; padding-left: 5px; padding-top: 6px; padding-bottom: 2px;">Enable system font</div>

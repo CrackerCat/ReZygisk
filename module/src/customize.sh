@@ -115,6 +115,7 @@ extract "$ZIPFILE" 'webroot/js/restoreError.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/list/language.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/list/action.js' "$MODPATH/webroot/js/list" true
 
 for lang in en_US ja_JP pt_BR ro_RO ru_RU vi_VN zh_CN zh_TW; do
   extract "$ZIPFILE" "webroot/lang/${lang}.json" "$MODPATH/webroot/lang" true
@@ -131,7 +132,7 @@ extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 
-for svg in mark tick warn light dark module expand settings close lang content error; do
+for svg in mark tick warn light dark module expand settings close lang content error action; do
   extract "$ZIPFILE" "webroot/assets/${svg}.svg" "$MODPATH/webroot/assets" true
 done
 

@@ -22,13 +22,16 @@
     "header": "Module",
     "arch": "Arhitectură: "
   },
-  "settings": {
-    "header": "Setări",
+  "action": {
+    "header": "Action",
     "daemonButton": {
       "start": "Start",
       "stop": "Stop",
       "exit": "Ieșire"
     }
+  },
+  "settings": {
+    "header": "Setări"
   },
   "cmdErrors": {
     "ptrace64": "Eroare în timpul executării zygisk-ptrace64",

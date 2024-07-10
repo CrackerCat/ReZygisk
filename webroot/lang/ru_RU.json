@@ -22,13 +22,16 @@
     "header": "Модули",
     "arch": "Архи-ра: "
   },
-  "settings": {
-    "header": "Настройки",
+  "action": {
+    "header": "Action",
     "daemonButton": {
       "start": "Старт",
       "stop": "Пауза",
       "exit": "Стоп"
     }
+  },
+  "settings": {
+    "header": "Настройки"
   },
   "cmdErrors": {
     "ptrace64": "Ошибка выполнения zygisk-ptrace64",

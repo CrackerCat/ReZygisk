@@ -24,13 +24,16 @@
     "header": "模塊",
     "arch": "架構: "
   },
-  "settings": {
-    "header": "設定",
+  "action": {
+    "header": "Action",
     "daemonButton": {
       "start": "啟動",
       "stop": "停止",
       "exit": "退出"
     }
+  },
+  "settings": {
+    "header": "設定"
   },
   "cmdErrors": {
     "ptrace64": "執行zygisk-ptrace64時發生錯誤",

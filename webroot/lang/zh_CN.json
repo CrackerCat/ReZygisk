@@ -23,13 +23,16 @@
     "header": "模块",
     "arch": "架构: "
   },
-  "settings": {
-    "header": "设置",
+  "action": {
+    "header": "Action",
     "daemonButton": {
       "start": "启动",
       "stop": "停止",
       "exit": "退出"
     }
+  },
+  "settings": {
+    "header": "设置"
   },
   "cmdErrors": {
     "ptrace64": "执行zygisk-ptrace64时出现错误",

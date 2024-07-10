@@ -22,13 +22,16 @@
     "header": "Mô Đun",
     "arch": "Cấu trúc: "
   },
-  "settings": {
-    "header": "Cài đặt",
+  "action": {
+    "header": "Trình điều khiển",
     "daemonButton": {
       "start": "Chạy",
       "stop": "Dừng",
       "exit": "Thoát"
     }
+  },
+  "settings": {
+    "header": "Cài đặt"
   },
   "cmdErrors": {
     "ptrace64": "Đã xảy ra lỗi khi chạy zygisk-ptrace64",
