@@ -19,7 +19,6 @@ import { setNewLanguage, getTranslations } from './language.js'
   const rootCss = document.querySelector(':root')
 
   const rezygisk_state = document.getElementById('rezygisk_state')
-  const rezygisk_action = document.getElementById('rezygisk_action')
   const rezygisk_icon_state = document.getElementById('rezygisk_icon_state')
 
   const code_version = document.getElementById('version_code')
@@ -47,15 +46,15 @@ import { setNewLanguage, getTranslations } from './language.js'
     root_impl.innerHTML = lines[4].split(': ')[1]
 
     if (lines[5].split(': ')[1] === 'yes') {
-      zygote64_status_div.innerHTML = translations.infoCard.zygote.injected
+      zygote64_status_div.innerHTML = translations.page.home.info.zygote.injected
     } else {
-      zygote64_status_div.innerHTML = translations.infoCard.zygote.notInjected
+      zygote64_status_div.innerHTML = translations.page.home.info.zygote.notInjected
 
       zygote64_status = UNEXPECTED_FAIL
     }
   } else if (ptrace64Cmd.stderr.includes('cannot execute binary file: Exec format error')) {
-    zygote64_div.remove()
-    daemon64_div.remove()
+    zygote64_div.style.display = 'none'
+    daemon64_div.style.display = 'none'
   } else {
     toast(`${translations.cmdErrors.ptrace64} (${ptrace64Cmd.errno}): ${ptrace64Cmd.stderr}`)
 
@@ -72,15 +71,15 @@ import { setNewLanguage, getTranslations } from './language.js'
     root_impl.innerHTML = lines[4].split(': ')[1]
 
     if (lines[5].split(': ')[1] === 'yes') {
-      zygote32_status_div.innerHTML = translations.infoCard.zygote.injected
+      zygote32_status_div.innerHTML = translations.page.home.info.zygote.injected
     } else {
-      zygote32_status_div.innerHTML = translations.infoCard.zygote.notInjected
+      zygote32_status_div.innerHTML = translations.page.home.info.zygote.notInjected
 
       zygote32_status = UNEXPECTED_FAIL
     }
   } else if (ptrace32Cmd.stderr.includes('not executable: 32-bit ELF file')) {
-    zygote32_div.remove()
-    daemon32_div.remove()
+    zygote32_div.style.display = 'none'
+    daemon32_div.style.display = 'none'
   } else {
     toast(`${translations.cmdErrors.ptrace32} (${ptrace32Cmd.errno}): ${ptrace32Cmd.stderr}`)
 
@@ -88,19 +87,17 @@ import { setNewLanguage, getTranslations } from './language.js'
   }
 
   if (zygote32_status === EXPECTED && zygote64_status === EXPECTED) {
-    rezygisk_state.innerHTML = translations.infoCard.status.ok
+    rezygisk_state.innerHTML = translations.page.home.status.ok
 
-    rezygisk_action.removeAttribute('style')
     rootCss.style.setProperty('--bright', '#3a4857')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/tick.svg">'
   } else if (zygote64_status === EXPECTED ^ zygote32_status.innerHTML === EXPECTED) {
-    rezygisk_state.innerHTML = translations.infoCard.status.partially
+    rezygisk_state.innerHTML = translations.page.home.status.partially
 
-    rezygisk_action.removeAttribute('style')
     rootCss.style.setProperty('--bright', '#766000')
     rezygisk_icon_state.innerHTML = '<img class="brightc" src="assets/warn.svg">'
   } else {
-    rezygisk_state.innerHTML = translations.infoCard.status.notWorking
+    rezygisk_state.innerHTML = translations.page.home.status.notWorking
   }
 
   const modules_list = document.getElementById('modules_list')
@@ -142,7 +139,7 @@ import { setNewLanguage, getTranslations } from './language.js'
         `<div class="${index !== modules.length ? 'spliter' : ''}" style="padding-top: 13px; padding-bottom: 13px; padding-left: 10px; padding-right: 10px">
           <div style="font-size: 1.1em;">${name}</div>
           <div class="desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
-            <div class="arch_desc">${translations.moduleCard.arch}</div>
+            <div class="arch_desc">${translations.page.modules.arch}</div>
             <div style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
           </div>
         </div>`
@@ -153,7 +150,7 @@ import { setNewLanguage, getTranslations } from './language.js'
   } else {
     toast(`${translations.cmdErrors.find}: ${findModulesCmd.stderr}`)
   }
-})()
+})().catch(err => toast(err.message))
 
 function setLangData(mode) {
   localStorage.setItem('/system/language', mode)
