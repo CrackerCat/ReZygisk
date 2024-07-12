@@ -1,4 +1,4 @@
-import { setDarkNav } from "./navbar.js"
+import { setDarkNav } from "./darkNavbar.js"
 
 const rootCss = document.querySelector(':root')
 

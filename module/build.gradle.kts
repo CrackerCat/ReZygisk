@@ -175,12 +175,11 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/translate/modules.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/translate/settings.js").asFile, null))
 
-                    set.add(Pair(root.file("webroot/js/themes/dark/index.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/themes/dark/navbar.js").asFile, null))
-
-                    set.add(Pair(root.file("webroot/js/themes/light/index.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/themes/light/navbar.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/themes/light/icon.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/dark.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/darkNavbar.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/light.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/lightNavbar.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/lightIcon.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/list/language.js").asFile, null))
 

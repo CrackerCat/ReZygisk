@@ -1,5 +1,5 @@
-import { setDark } from "./themes/dark/index.js"
-import { setLight } from "./themes/light/index.js"
+import { setDark } from "./themes/dark.js"
+import { setLight } from "./themes/light.js"
 
 const button = document.getElementById('theme_switcher')
 
