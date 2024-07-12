@@ -117,11 +117,11 @@ extract "$ZIPFILE" 'webroot/js/translate/action.js' "$MODPATH/webroot/js/transla
 extract "$ZIPFILE" 'webroot/js/translate/modules.js' "$MODPATH/webroot/js/translate" true
 extract "$ZIPFILE" 'webroot/js/translate/settings.js' "$MODPATH/webroot/js/translate" true
 
-extract "$ZIPFILE" 'webroot/js/theme/dark.js' "$MODPATH/webroot/js/theme" true
-extract "$ZIPFILE" 'webroot/js/theme/darkNavbar.js' "$MODPATH/webroot/js/theme" true
-extract "$ZIPFILE" 'webroot/js/theme/light.js' "$MODPATH/webroot/js/theme" true
-extract "$ZIPFILE" 'webroot/js/theme/lightNavbar.js' "$MODPATH/webroot/js/theme" true
-extract "$ZIPFILE" 'webroot/js/theme/lightIcon.js' "$MODPATH/webroot/js/theme" true
+extract "$ZIPFILE" 'webroot/js/themes/dark.js' "$MODPATH/webroot/js/theme" true
+extract "$ZIPFILE" 'webroot/js/themes/darkNavbar.js' "$MODPATH/webroot/js/theme" true
+extract "$ZIPFILE" 'webroot/js/themes/light.js' "$MODPATH/webroot/js/theme" true
+extract "$ZIPFILE" 'webroot/js/themes/lightNavbar.js' "$MODPATH/webroot/js/theme" true
+extract "$ZIPFILE" 'webroot/js/themes/lightIcon.js' "$MODPATH/webroot/js/theme" true
 
 extract "$ZIPFILE" 'webroot/js/list/language.js' "$MODPATH/webroot/js/list" true
 
