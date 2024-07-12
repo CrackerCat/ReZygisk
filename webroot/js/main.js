@@ -112,10 +112,7 @@ import { setNewLanguage, getTranslations } from './language.js'
 
     if (modules.length === 0) return;
 
-    let index = 0
     for (const module of modules) {
-      index += 1
-
       const lsZygiskCmd = await exec(`ls ${module}/zygisk`)
       if (lsZygiskCmd.errno !== 0) {
         toast(`${translations.cmdErrors.js} ${module} (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
@@ -136,11 +133,11 @@ import { setNewLanguage, getTranslations } from './language.js'
         const name = lines.find(line => line.includes('name=')).split('=')[1]
 
         modules_list.innerHTML += 
-        `<div class="${index !== modules.length ? 'spliter' : ''}" style="padding-top: 13px; padding-bottom: 13px; padding-left: 10px; padding-right: 10px">
-          <div style="font-size: 1.1em;">${name}</div>
-          <div class="desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
-            <div class="arch_desc">${translations.page.modules.arch}</div>
-            <div style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
+        `<div class="dim card">
+          <div class="dimc" style="font-size: 1.1em;">${name}</div>
+          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
+            <div class="dimc arch_desc">${translations.page.modules.arch}</div>
+            <div class="dimc" style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
           </div>
         </div>`
       } else {
