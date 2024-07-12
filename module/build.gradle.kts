@@ -167,13 +167,22 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/kernelsu.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/theme.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/language.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/light.icon.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/restoreError.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/navbar.js").asFile, null))
 
-                    set.add(Pair(root.file("webroot/js/list/module.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/list/settings.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/translate/action.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/translate/home.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/translate/modules.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/translate/settings.js").asFile, null))
+
+                    set.add(Pair(root.file("webroot/js/themes/dark/index.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/dark/navbar.js").asFile, null))
+
+                    set.add(Pair(root.file("webroot/js/themes/light/index.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/light/navbar.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/light/icon.js").asFile, null))
+
                     set.add(Pair(root.file("webroot/js/list/language.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/list/action.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/switcher/fontChanger.js").asFile, null))
 
@@ -198,16 +207,14 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/assets/mark.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/tick.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/warn.svg").asFile, null))
-                    set.add(Pair(root.file("webroot/assets/light.svg").asFile, null))
-                    set.add(Pair(root.file("webroot/assets/dark.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/module.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/expand.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/settings.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/close.svg").asFile, null))
-                    set.add(Pair(root.file("webroot/assets/lang.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/content.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/error.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/action.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/home.svg").asFile, null))
                     sig.initSign(privKey)
                     set.forEach { it.first.sha(it.second) }
                     val signFile = root.file(name).asFile

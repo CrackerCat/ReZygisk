@@ -29,6 +29,5 @@ function setSystemFont() {
 
 function setData(mode) {
   localStorage.setItem('/system/font', mode)
-
-  return localStorage.getItem('/system/font')
+  return mode
 }

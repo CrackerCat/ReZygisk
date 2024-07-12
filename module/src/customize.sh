@@ -109,13 +109,21 @@ extract "$ZIPFILE" 'webroot/js/main.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/kernelsu.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/language.js' "$MODPATH/webroot/js" true
-extract "$ZIPFILE" 'webroot/js/light.icon.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/navbar.js' "$MODPATH/webroot/js/list" true
 extract "$ZIPFILE" 'webroot/js/restoreError.js' "$MODPATH/webroot/js/list" true
 
-extract "$ZIPFILE" 'webroot/js/list/module.js' "$MODPATH/webroot/js/list" true
-extract "$ZIPFILE" 'webroot/js/list/settings.js' "$MODPATH/webroot/js/list" true
+extract "$ZIPFILE" 'webroot/js/translate/home.js' "$MODPATH/webroot/js/translate" true
+extract "$ZIPFILE" 'webroot/js/translate/action.js' "$MODPATH/webroot/js/translate" true
+extract "$ZIPFILE" 'webroot/js/translate/modules.js' "$MODPATH/webroot/js/translate" true
+extract "$ZIPFILE" 'webroot/js/translate/settings.js' "$MODPATH/webroot/js/translate" true
+
+extract "$ZIPFILE" 'webroot/js/theme/dark/index.js' "$MODPATH/webroot/js/theme/dark" true
+extract "$ZIPFILE" 'webroot/js/theme/dark/navbar.js' "$MODPATH/webroot/js/theme/dark" true
+extract "$ZIPFILE" 'webroot/js/theme/light/index.js' "$MODPATH/webroot/js/theme/light" true
+extract "$ZIPFILE" 'webroot/js/theme/light/navbar.js' "$MODPATH/webroot/js/theme/light" true
+extract "$ZIPFILE" 'webroot/js/theme/light/icon.js' "$MODPATH/webroot/js/theme/light" true
+
 extract "$ZIPFILE" 'webroot/js/list/language.js' "$MODPATH/webroot/js/list" true
-extract "$ZIPFILE" 'webroot/js/list/action.js' "$MODPATH/webroot/js/list" true
 
 for lang in en_US ja_JP pt_BR ro_RO ru_RU vi_VN zh_CN zh_TW; do
   extract "$ZIPFILE" "webroot/lang/${lang}.json" "$MODPATH/webroot/lang" true
@@ -132,7 +140,7 @@ extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 
-for svg in mark tick warn light dark module expand settings close lang content error action; do
+for svg in mark tick warn module expand settings close content error action home; do
   extract "$ZIPFILE" "webroot/assets/${svg}.svg" "$MODPATH/webroot/assets" true
 done
 

@@ -1,154 +1,41 @@
-/* INFO: info card */
-const version_info_title = document.getElementById('version_info_title')
-const version_code = document.getElementById('version_code')
-const root_info_title = document.getElementById('root_info_title')
-const root_impl = document.getElementById('root_impl')
-/* INFO: module card */
-const module_card_title = document.getElementById('module_card_title')
-const module_element_arch = document.getElementsByClassName('arch_desc')
-/* INFO: settings card */
-const settings_card_title = document.getElementById('settings_card_title')
-/* INFO: action card */
-const action_card_title = document.getElementById('action_card_title')
-/* INFO: daemon32 small card */
-const daemon32_stop_button = document.getElementById('daemon32_stop_button')
-const daemon32_start_button = document.getElementById('daemon32_start_button')
-const daemon32_exit_button = document.getElementById('daemon32_exit_button')
-/* INFO: daemon64 small card */
-const daemon64_stop_button = document.getElementById('daemon64_stop_button')
-const daemon64_start_button = document.getElementById('daemon64_start_button')
-const daemon64_exit_button = document.getElementById('daemon64_exit_button')
-/* INFO: error history button card */
-const errorh_card_title = document.getElementById('errorh_card_title')
-/* INFO: error history modal */
-const errorh_modal_title = document.getElementById('errorh_modal_title')
-const errorh_panel = document.getElementById('errorh_panel')
-/* INFO: lang modal */
-const lang_modal_title = document.getElementById('lang_modal_title')
-/* INFO: lang modal */
-const sys_font_option_title = document.getElementById('sys_font_option_title')
-const sys_font_option_desc = document.getElementById('sys_font_option_desc')
-/* INFO: Variable fields */
-const rezygisk_state = document.getElementById('rezygisk_state')
-const zygote32_status_div = document.getElementById('zygote32_status')
-const zygote64_status_div = document.getElementById('zygote64_status')
+import { translateActionPage } from "./translate/action.js"
+import { translateHomePage } from "./translate/home.js"
+import { translateModulesPage } from "./translate/modules.js"
+import { translateSettingsPage } from "./translate/settings.js"
 
 export async function setNewLanguage(locate, initialize) {
   const old_translations = await getTranslations(initialize ? 'en_US' : localStorage.getItem('/system/language'))
-  const new_lang = await getTranslations(locate)
+  const new_translations = await getTranslations(locate)
 
-  /* INFO: info card */
-  version_info_title.innerHTML = new_lang.infoCard.version
-  root_info_title.innerHTML = new_lang.infoCard.root
+  translateHomePage(old_translations, new_translations)
+  translateModulesPage(new_translations)
+  translateActionPage(new_translations)
+  translateSettingsPage(new_translations)
 
-  if (version_code.innerHTML.replace(/(\r\n|\n|\r)/gm,"").trim() === old_translations.global.unknown)
-    version_code.innerHTML = new_lang.global.unknown
-  if (root_impl.innerHTML.replace(/(\r\n|\n|\r)/gm,"").trim() === old_translations.global.unknown)
-    root_impl.innerHTML = new_lang.global.unknown
-  /* INFO: module card */
-  module_card_title.innerHTML = new_lang.moduleCard.header
-  /* INFO: settings card */
-  settings_card_title.innerHTML = new_lang.settings.header
-  /* INFO: action card */
-  action_card_title.innerHTML = new_lang.action.header
-  /* INFO: daemon32 small card */
-  if (daemon32_stop_button) { /* INFO: Not all devices have 32-bit support */
-    daemon32_stop_button.innerHTML = new_lang.action.daemonButton.stop
-    daemon32_start_button.innerHTML = new_lang.action.daemonButton.start
-    daemon32_exit_button.innerHTML = new_lang.action.daemonButton.exit
-  }
-  /* INFO: daemon64 small card */
-  if (daemon64_stop_button) { /* INFO: Not all devices have 64-bit support */
-    daemon64_stop_button.innerHTML = new_lang.action.daemonButton.stop
-    daemon64_start_button.innerHTML = new_lang.action.daemonButton.start
-    daemon64_exit_button.innerHTML = new_lang.action.daemonButton.exit
-  }
   /* INFO: lang modal */
-  lang_modal_title.innerHTML = new_lang.langModal.header
-
-  /* INFO: error history button card */
-  errorh_card_title.innerHTML = new_lang.errorHistory.header
+  document.getElementById('lang_modal_title').innerHTML 
+    = new_translations.modal.language.header
 
   /* INFO: error history modal */
-  errorh_modal_title.innerHTML = new_lang.errorHistory.header
-  errorh_panel.placeholder = new_lang.errorHistory.placeholder
+  document.getElementById('errorh_modal_title').innerHTML 
+    = new_translations.modal.logs.header
+  document.getElementById('errorh_panel').placeholder 
+    = new_translations.modal.logs.placeholder
 
-  /* INFO: lang modal */
-  sys_font_option_title.innerHTML = new_lang.switcher.font.header
-  sys_font_option_desc.innerHTML = new_lang.switcher.font.description
-
-  /* INFO: Translate variables */
-  switch (rezygisk_state.innerHTML.replace(/(\r\n|\n|\r)/gm,"").trim()) {
-    case old_translations.infoCard.status.ok: {
-      rezygisk_state.innerHTML = new_lang.infoCard.status.ok
-
-      break
-    }
-    case old_translations.infoCard.status.partially: {
-      rezygisk_state.innerHTML = new_lang.infoCard.status.partially
-
-      break
-    }
-    case old_translations.infoCard.status.notWorking: {
-      rezygisk_state.innerHTML = new_lang.infoCard.status.notWorking
-
-      break
-    }
-    case old_translations.infoCard.status.unknown: {
-      rezygisk_state.innerHTML = new_lang.infoCard.status.unknown
-
-      break
-    }
-  }
-
-  if (zygote32_status_div) {
-    switch (zygote32_status_div.innerHTML.replace(/(\r\n|\n|\r)/gm,"").trim()) {
-      case old_translations.infoCard.zygote.injected: {
-        zygote32_status_div.innerHTML = new_lang.infoCard.zygote.injected
-
-        break
-      }
-      case old_translations.infoCard.zygote.notInjected: {
-        zygote32_status_div.innerHTML = new_lang.infoCard.zygote.notInjected
-
-        break
-      }
-      case old_translations.infoCard.zygote.unknown: {
-        zygote32_status_div.innerHTML = new_lang.infoCard.zygote.unknown
-
-        break
-      }
-    }
-  }
-
-  if (zygote64_status_div) {
-    switch (zygote64_status_div.innerHTML.replace(/(\r\n|\n|\r)/gm,"").trim()) {
-      case old_translations.infoCard.zygote.injected: {
-        zygote64_status_div.innerHTML = new_lang.infoCard.zygote.injected
-
-        break
-      }
-      case old_translations.infoCard.zygote.notInjected: {
-        zygote64_status_div.innerHTML = new_lang.infoCard.zygote.notInjected
-
-        break
-      }
-      case old_translations.infoCard.zygote.unknown: {
-        zygote64_status_div.innerHTML = new_lang.infoCard.zygote.unknown
-
-        break
-      }
-    }
-  }
-
-  for (const module of module_element_arch) {
-    module.innerHTML = new_lang.moduleCard.arch
-  }
+  /* INFO: navbar info */
+  document.getElementById('nav_home_title').innerHTML
+    = new_translations.page.home.header
+  document.getElementById('nav_modules_title').innerHTML
+    = new_translations.page.modules.header
+  document.getElementById('nav_actions_title').innerHTML
+    = new_translations.page.action.header
+  document.getElementById('nav_settings_title').innerHTML
+    = new_translations.page.settings.header
 }
 
 export async function getTranslations(locate) {
   const translateData = await fetch(`./lang/${locate}.json`)
-    .catch(error => reject(error))
+    .catch(() => null)
   return await translateData.json()
 }
 

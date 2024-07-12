@@ -25,6 +25,5 @@ copy_button.addEventListener('click', () => {
 
 function setData(mode) {
   localStorage.setItem('/cache/modal/error_history/state', mode)
-
-  return localStorage.getItem('/cache/modal/error_history/state')
+  return mode
 }

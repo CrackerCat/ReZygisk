@@ -103,7 +103,6 @@ import { setNewLanguage, getTranslations } from './language.js'
     rezygisk_state.innerHTML = translations.infoCard.status.notWorking
   }
 
-  const modules_card = document.getElementById('modules_card')
   const modules_list = document.getElementById('modules_list')
 
   /* INFO: This hides the throbber screen */
@@ -115,8 +114,6 @@ import { setNewLanguage, getTranslations } from './language.js'
     const modules = findModulesCmd.stdout.split('\n')
 
     if (modules.length === 0) return;
-
-    modules_card.removeAttribute('style')
 
     let index = 0
     for (const module of modules) {
@@ -142,11 +139,11 @@ import { setNewLanguage, getTranslations } from './language.js'
         const name = lines.find(line => line.includes('name=')).split('=')[1]
 
         modules_list.innerHTML += 
-        `<div class="dimc ${index !== modules.length ? 'spliter' : ''}" style="padding-top: 13px; padding-bottom: 13px;">
-          <div class="dimc" style="font-size: 1.1em;">${name}</div>
-          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
-            <div class="dimc arch_desc">${translations.moduleCard.arch}</div>
-            <div class="dimc" style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
+        `<div class="${index !== modules.length ? 'spliter' : ''}" style="padding-top: 13px; padding-bottom: 13px; padding-left: 10px; padding-right: 10px">
+          <div style="font-size: 1.1em;">${name}</div>
+          <div class="desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
+            <div class="arch_desc">${translations.moduleCard.arch}</div>
+            <div style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
           </div>
         </div>`
       } else {

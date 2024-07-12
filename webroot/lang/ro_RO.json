@@ -1,38 +1,5 @@
 {
   "langName": "Română (România)",
-  "langModal": {
-    "header": "Alegeți limba prestabilită"
-  },
-  "infoCard": {
-    "status": {
-      "unknown": "ReZygisk este într-o stare necunoscută!",
-      "notWorking": "ReZygisk nu este în funcțiune!",
-      "ok": "ReZygisk funcționează în totalitate!",
-      "partially": "ReZygisk funcționează parțial!"
-    },
-    "version": "Versiune",
-    "root": "Implementare Root",
-    "zygote": {
-      "injected": "Injectat",
-      "notInjected": "Neinjectat",
-      "unknown": "Necunoscut"
-    }
-  },
-  "moduleCard": {
-    "header": "Module",
-    "arch": "Arhitectură: "
-  },
-  "action": {
-    "header": "Action",
-    "daemonButton": {
-      "start": "Start",
-      "stop": "Stop",
-      "exit": "Ieșire"
-    }
-  },
-  "settings": {
-    "header": "Setări"
-  },
   "cmdErrors": {
     "ptrace64": "Eroare în timpul executării zygisk-ptrace64",
     "ptrace32": "Eroare în timpul executării zygisk-ptrace32",
@@ -43,14 +10,64 @@
   "global": {
     "unknown": "Necunoscut"
   },
-  "errorHistory": {
-    "header": "Error History",
-    "placeholder": "No error log recorded here!"
+  "modal": {
+    "logs": {
+      "header": "Historia e xatăripnasqi",
+      "placeholder": "No error log recorded here!"
+    },
+    "language": {
+      "header": "Alegeți limba prestabilită"
+    }
   },
-  "switcher": {
-    "font": {
-      "header": "Enable system font",
-      "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
+  "page": {
+    "home": {
+      "header": "Khere",
+      "status": {
+        "unknown": "Necunoscut",
+        "notWorking": "Na si funkcionalno",
+        "ok": "Funkcionalo",
+        "partially": "Parśialno funkcionalo"
+      },
+      "info": {
+        "version": "Versiune",
+        "root": "Implementare Root",
+        "zygote": {
+          "injected": "Injectat",
+          "notInjected": "Neinjectat",
+          "unknown": "Necunoscut"
+        }
+      }
+    },
+    "modules": {
+      "header": "Module",
+      "arch": "Arhitectură: "
+    },
+    "action": {
+      "header": "Àkcia",
+      "daemonButton": {
+        "start": "Start",
+        "stop": "Stop",
+        "exit": "Ieșire"
+      }
+    },
+    "settings": {
+      "header": "Setări",
+      "font": {
+        "header": "Aktivisar o sistemosqo fonto",
+        "description": "Akaja opcia ka del śajsaripen e sistemosqo fonto anθ-o akanutno WebUI. NOTA: Shaj te na ovel kompatibilno e FlipFont-esa"
+      },
+      "theme": {
+        "header": "Aktivisar e lumjaki tema",
+        "description": "Akaja opcia ka del shaipe e lumiake temake vash o WebUI"
+      },
+      "language": {
+        "header": "Paruv i ćhib",
+        "description": "Paruv ki tiri nevi ćhib"
+      },
+      "logs": {
+        "header": "Historia e xatăripnasqi",
+        "description": "Dikh sa o lil e greśenqo"
+      }
     }
   }
 }
