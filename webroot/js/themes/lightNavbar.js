@@ -1,4 +1,4 @@
-import { light_action_icon, light_home_icon, light_module_icon, light_settings_icon } from "./icon.js"
+import { light_action_icon, light_home_icon, light_module_icon, light_settings_icon } from "./lightIcon.js"
 
 export function setLightNav() {
   document.getElementById('nid_home').innerHTML = light_home_icon()
