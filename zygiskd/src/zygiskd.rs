@@ -44,39 +44,41 @@ pub fn main() -> Result<()> {
     lp_select!("/cp32.sock", "/cp64.sock")
   ));
 
+  let arch = get_arch()?;
+  debug!("Daemon architecture: {arch}");
+
+  let modules = load_modules(arch)?;
 
   let used_impl = root_impl::get_impl();
-  if used_impl != root_impl::RootImpl::Magisk {
-    let arch = get_arch()?;
-    debug!("Daemon architecture: {arch}");
-    let modules = load_modules(arch)?;
+  match used_impl {
+    root_impl::RootImpl::None | root_impl::RootImpl::Multiple => {
+      const ERR_MSG: &str = "Invalid root implementation";
 
-    {
       let mut msg = Vec::<u8>::new();
-      let info = match root_impl::get_impl() {
-        root_impl::RootImpl::KernelSU | root_impl::RootImpl::Magisk | root_impl::RootImpl::APatch => {
-          msg.extend_from_slice(&constants::DAEMON_SET_INFO.to_le_bytes());
+      msg.extend_from_slice(&constants::DAEMON_SET_ERROR_INFO.to_le_bytes());
+      msg.extend_from_slice(&(ERR_MSG.len() as u32 + 1).to_le_bytes());
+      msg.extend_from_slice(ERR_MSG.as_bytes());
+      msg.extend_from_slice(&[0u8]);
+      utils::unix_datagram_sendto(&CONTROLLER_SOCKET, msg.as_slice()).expect("failed to send info");
+    }
+    root_impl::RootImpl::Magisk => {
+      let mut msg = Vec::<u8>::new();
+      msg.extend_from_slice(&constants::DAEMON_SET_INFO.to_le_bytes());
 
-          let module_names: Vec<_> = modules.iter().map(|m| m.name.as_str()).collect();
-
-          format!(
-            "Root: {:?},module({}): {}",
-            root_impl::get_impl(),
-            modules.len(),
-            module_names.join(",")
-          )
-        }
-        _ => {
-          msg.extend_from_slice(&constants::DAEMON_SET_ERROR_INFO.to_le_bytes());
-          format!("Invalid root implementation: {:?}", root_impl::get_impl())
-        }
-      };
-
+      let module_names: Vec<_> = modules.iter().map(|m| m.name.as_str()).collect();
+      let info = format!(
+        "(Root: {:?},module({}): {})",
+        used_impl,
+        modules.len(),
+        module_names.join(",")
+      );
+  
       msg.extend_from_slice(&(info.len() as u32 + 1).to_le_bytes());
       msg.extend_from_slice(info.as_bytes());
       msg.extend_from_slice(&[0u8]);
       utils::unix_datagram_sendto(&CONTROLLER_SOCKET, msg.as_slice()).expect("failed to send info");
     }
+    _ => {}
   }
 
   let context = Context { modules };
