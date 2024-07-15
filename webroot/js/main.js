@@ -1,6 +1,12 @@
 import { fullScreen, exec, toast } from './kernelsu.js'
 import { setNewLanguage, getTranslations } from './language.js'
 
+function setError(place, issue) {
+  toast(`${place}: ${issue}`)
+
+  localStorage.setItem('/system/error', `${place}: ${issue}`)
+}
+
 (async () => {
   const EXPECTED = 1
   const UNEXPECTED_FAIL = 2
@@ -56,7 +62,7 @@ import { setNewLanguage, getTranslations } from './language.js'
     zygote64_div.style.display = 'none'
     daemon64_div.style.display = 'none'
   } else {
-    toast(`${translations.cmdErrors.ptrace64} (${ptrace64Cmd.errno}): ${ptrace64Cmd.stderr}`)
+    setError('ptrace64', `${translations.cmdErrors.ptrace64} (${ptrace64Cmd.errno}): ${ptrace64Cmd.stderr}`)
 
     zygote64_status = UNEXPECTED_FAIL
   }
@@ -81,7 +87,7 @@ import { setNewLanguage, getTranslations } from './language.js'
     zygote32_div.style.display = 'none'
     daemon32_div.style.display = 'none'
   } else {
-    toast(`${translations.cmdErrors.ptrace32} (${ptrace32Cmd.errno}): ${ptrace32Cmd.stderr}`)
+    setError('ptrace32', `${translations.cmdErrors.ptrace32} (${ptrace32Cmd.errno}): ${ptrace32Cmd.stderr}`)
 
     zygote32_status = UNEXPECTED_FAIL
   }
@@ -115,7 +121,7 @@ import { setNewLanguage, getTranslations } from './language.js'
     for (const module of modules) {
       const lsZygiskCmd = await exec(`ls ${module}/zygisk`)
       if (lsZygiskCmd.errno !== 0) {
-        toast(`${translations.cmdErrors.js} ${module} (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
+        setError('ls', `${translations.cmdErrors.ls} ${module} (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
 
         continue
       }
@@ -141,13 +147,13 @@ import { setNewLanguage, getTranslations } from './language.js'
           </div>
         </div>`
       } else {
-        toast(`${translations.cmdErrors.cat} ${module} (${catCmd.errno}): ${catCmd.stderr}`)
+        setError('cat', `${translations.cmdErrors.cat} ${module} (${catCmd.errno}): ${catCmd.stderr}`)
       }
     }
   } else {
-    toast(`${translations.cmdErrors.find}: ${findModulesCmd.stderr}`)
+    setError('find', `${translations.cmdErrors.find} (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
   }
-})().catch(err => toast(err.message))
+})().catch((err) => setError('WebUI', err.message))
 
 function setLangData(mode) {
   localStorage.setItem('/system/language', mode)
