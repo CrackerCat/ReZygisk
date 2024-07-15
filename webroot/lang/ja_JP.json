@@ -1,12 +1,5 @@
 {
   "langName": "日本語 (日本)",
-  "cmdErrors": {
-    "ptrace64": "zygisk-ptrace64を実行している間にエラーが発生しました。",
-    "ptrace32": "zygisk-ptrace32を実行している間にエラーが発生しました。",
-    "ls": "zygiskフォルダ内のモジュールをリストする間にエラーが発生しました。",
-    "cat": "モジュールのmodule.propを読み込んでいる最中にエラーが発生しました。",
-    "find": "zygiskモジュールを検索している間にエラーが発生しました。"
-  },
   "global": {
     "unknown": "不明"
   },

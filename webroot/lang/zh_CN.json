@@ -1,12 +1,5 @@
 {
   "langName": "简体中文 (中国)",
-  "cmdErrors": {
-    "ptrace64": "执行zygisk-ptrace64时出现错误",
-    "ptrace32": "执行zygisk-ptrace32时出现错误",
-    "ls": "列出模块zygisk文件夹中的文件时出现错误",
-    "cat": "读取模块module.prop时出现错误",
-    "find": "查找zygisk模块时出现错误"
-  },
   "global": {
     "unknown": "未知"
   },

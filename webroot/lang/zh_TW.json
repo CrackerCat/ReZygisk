@@ -1,12 +1,5 @@
 {
   "langName": "繁體中文 (中國台灣)",
-  "cmdErrors": {
-    "ptrace64": "執行zygisk-ptrace64時發生錯誤",
-    "ptrace32": "執行zygisk-ptrace32時發生錯誤",
-    "ls": "列出模組zygisk文件夾中的文件時出現錯誤",
-    "cat": "讀取模組module.prop時出現錯誤",
-    "find": "查找zygisk模塊時出現錯誤"
-  },
   "global": {
     "unknown": "未知"
   },

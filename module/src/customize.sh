@@ -111,6 +111,7 @@ extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/language.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/navbar.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/restoreError.js' "$MODPATH/webroot/js" true
+extract "$ZIPFILE" 'webroot/js/daemon_actions.js' "$MODPATH/webroot/js" true
 
 extract "$ZIPFILE" 'webroot/js/translate/home.js' "$MODPATH/webroot/js/translate" true
 extract "$ZIPFILE" 'webroot/js/translate/action.js' "$MODPATH/webroot/js/translate" true

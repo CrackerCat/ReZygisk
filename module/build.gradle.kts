@@ -169,6 +169,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/language.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/restoreError.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/navbar.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/daemon_actions.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/translate/action.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/translate/home.js").asFile, null))

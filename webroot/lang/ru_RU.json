@@ -1,12 +1,5 @@
 {
   "langName": "Русский (Россия)",
-  "cmdErrors": {
-    "ptrace64": "Ошибка выполнения zygisk-ptrace64",
-    "ptrace32": "Ошибка выполнения zygisk-ptrace32",
-    "ls": "Ошибка перечисления файлов в zygisk папке модуля",
-    "cat": "Ошибка чтения module.prop модуля",
-    "find": "Ошибка обнаружения zygisk модулей"
-  },
   "global": {
     "unknown": "Неизвестно"
   },

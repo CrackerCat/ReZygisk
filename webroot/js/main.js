@@ -4,7 +4,9 @@ import { setNewLanguage, getTranslations } from './language.js'
 function setError(place, issue) {
   toast(`${place}: ${issue}`)
 
-  localStorage.setItem('/system/error', `${place}: ${issue}`)
+  const getPrevious = localStorage.getItem('/system/error')
+  const finalLog = getPrevious && getPrevious.length !== 0 ? getPrevious + `\n` + `${place}: ${issue}` : `${place}: ${issue}`
+  localStorage.setItem('/system/error', finalLog)
 }
 
 (async () => {
@@ -62,7 +64,7 @@ function setError(place, issue) {
     zygote64_div.style.display = 'none'
     daemon64_div.style.display = 'none'
   } else {
-    setError('ptrace64', `${translations.cmdErrors.ptrace64} (${ptrace64Cmd.errno}): ${ptrace64Cmd.stderr}`)
+    setError('ptrace64', `Error while executing zygisk-ptrace64 (${ptrace64Cmd.errno}): ${ptrace64Cmd.stderr}`)
 
     zygote64_status = UNEXPECTED_FAIL
   }
@@ -87,7 +89,7 @@ function setError(place, issue) {
     zygote32_div.style.display = 'none'
     daemon32_div.style.display = 'none'
   } else {
-    setError('ptrace32', `${translations.cmdErrors.ptrace32} (${ptrace32Cmd.errno}): ${ptrace32Cmd.stderr}`)
+    setError('ptrace32', `Error while executing zygisk-ptrace32 (${ptrace32Cmd.errno}): ${ptrace32Cmd.stderr}`)
 
     zygote32_status = UNEXPECTED_FAIL
   }
@@ -121,7 +123,7 @@ function setError(place, issue) {
     for (const module of modules) {
       const lsZygiskCmd = await exec(`ls ${module}/zygisk`)
       if (lsZygiskCmd.errno !== 0) {
-        setError('ls', `${translations.cmdErrors.ls} ${module} (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
+        setError('ls', `Error while listing files in zygisk folder of module ${module} (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
 
         continue
       }
@@ -147,13 +149,13 @@ function setError(place, issue) {
           </div>
         </div>`
       } else {
-        setError('cat', `${translations.cmdErrors.cat} ${module} (${catCmd.errno}): ${catCmd.stderr}`)
+        setError('cat', `Error while reading module.prop from module ${module} (${catCmd.errno}): ${catCmd.stderr}`)
       }
     }
   } else {
-    setError('find', `${translations.cmdErrors.find} (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
+    setError('find', `Error while finding zygisk modules (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
   }
-})().catch((err) => setError('WebUI', err.message))
+})().catch((err) => setError('WebUI', err.stack ? err.stack : err.message))
 
 function setLangData(mode) {
   localStorage.setItem('/system/language', mode)

@@ -1,12 +1,5 @@
 {
   "langName": "Tiếng Việt",
-  "cmdErrors": {
-    "ptrace64": "Đã xảy ra lỗi khi chạy zygisk-ptrace64",
-    "ptrace32": "Đã xảy ra lỗi khi chạy zygisk-ptrace32",
-    "ls": "Đã xảy ra lỗi khi liệt kê tệp tin của mô đun trong thư mục zygisk",
-    "cat": "Đã xảy ra lỗi khi đọc tệp tin module.prop từ mô đun",
-    "find": "Đã xảy ra lỗi khi tìm mô đun thuộc zygisk"
-  },
   "global": {
     "unknown": "Không xác định"
   },
@@ -23,10 +16,10 @@
     "home": {
       "header": "Trang Chủ",
       "status": {
-        "unknown": "ReZygisk đang ở trạng thái không xác định!",
-        "notWorking": "ReZygisk không hoạt động!",
-        "ok": "ReZygisk đang hoạt động!",
-        "partially": "ReZygisk đang hoạt động một phần!"
+        "unknown": "Không xác định",
+        "notWorking": "Không hoạt động",
+        "ok": "Đang hoạt động",
+        "partially": "Đang hoạt động một phần"
       },
       "info": {
         "version": "Phiên bản",
