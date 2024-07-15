@@ -1,11 +1,12 @@
 setData('home')
+
 document.getElementById('ni_home').style.display = 'flex'
 document.getElementById('nid_home').style.display = 'none'
 document.getElementById('panel_home').style.display = 'block'
 
 document.querySelectorAll('[name=navbutton]').forEach((element) => {
-  element.addEventListener('click', (e) => {
-    const value = e.target.value
+  element.addEventListener('click', (event) => {
+    const value = event.target.value
     const previous = !localStorage.getItem('/cache/navbar/previous') ? setData('home') : localStorage.getItem('/cache/navbar/previous')
     if (previous === value) return;
 

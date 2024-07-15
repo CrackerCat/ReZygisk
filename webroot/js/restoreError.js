@@ -3,6 +3,7 @@ let sys_error = localStorage.getItem('/system/error')
 
 if (!sys_error) {
   localStorage.setItem('/system/error', '')
+
   sys_error = localStorage.getItem('/system/error')
 }
 

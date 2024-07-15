@@ -20,7 +20,7 @@ close_button.addEventListener('click', () => {
 })
 
 copy_button.addEventListener('click', () => {
-  navigator.clipboard.writeText(panel.innerHTML);
+  navigator.clipboard.writeText(panel.innerHTML)
 })
 
 function setData(mode) {

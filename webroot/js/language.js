@@ -27,9 +27,9 @@ export async function setNewLanguage(locate, initialize) {
 }
 
 export async function getTranslations(locate) {
-  const translateData = await fetch(`./lang/${locate}.json`)
-    .catch(() => null)
-  return await translateData.json()
+  const translateData = await fetch(`./lang/${locate}.json`).catch(() => { /* INFO: noop */ })
+
+  return translateData.json()
 }
 
 /* INFO: This list is in alphabetical order. */

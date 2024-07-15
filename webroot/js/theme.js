@@ -18,5 +18,6 @@ button.addEventListener('click', () => {
 
 function setData(mode) {
   localStorage.setItem('/system/theme', mode)
+
   return mode
 }
