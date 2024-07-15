@@ -40,7 +40,7 @@
     },
     "modules": {
       "header": "Modules",
-      "arch": "Arch: "
+      "arch": "Architecture: "
     },
     "action": {
       "header": "Action",
