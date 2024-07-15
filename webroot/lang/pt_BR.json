@@ -12,8 +12,8 @@
   },
   "modal": {
     "logs": {
-      "header": "Error History",
-      "placeholder": "No error log recorded here!"
+      "header": "Histórico de erros",
+      "placeholder": "Nenhum erro foi salvo aqui!"
     },
     "language": {
       "header": "Escolha sua nova língua"
@@ -21,12 +21,12 @@
   },
   "page": {
     "home": {
-      "header": "Home",
+      "header": "Início",
       "status": {
-        "unknown": "Unknown",
-        "notWorking": "Not Working",
-        "ok": "Working",
-        "partially": "Partially Working"
+        "unknown": "Desconhecido",
+        "notWorking": "Não funcionando",
+        "ok": "Funcionando",
+        "partially": "Funcionando parcialmente"
       },
       "info": {
         "version": "Versão",
@@ -53,20 +53,20 @@
     "settings": {
       "header": "Configurações",
       "font": {
-        "header": "Enable system font",
-        "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
+        "header": "Usar a fonte do sistema",
+        "description": "Esta opção irá usar a fonte do sistema na atual WebUI. Observação: Talvez não seja compatível com o FlipFont"
       },
       "theme": {
-        "header": "Enable light theme",
-        "description": "This option will enable light theme for WebUI"
+        "header": "Usar o tema claro",
+        "description": "Esta opção ira abilitar o tema claro para a WebUI"
       },
       "language": {
-        "header": "Change language",
-        "description": "Change to your new language"
+        "header": "Alterar a língua",
+        "description": "Mude para sua nova língua"
       },
       "logs": {
-        "header": "Error History",
-        "description": "View all of your error log"
+        "header": "Histórico de erros",
+        "description": "Veja o histórico de erros inteiro"
       }
     }
   }
