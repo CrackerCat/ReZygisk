@@ -12,7 +12,7 @@
   },
   "modal": {
     "logs": {
-      "header": "История ошибок",
+      "header": "Error History",
       "placeholder": "No error log recorded here!"
     },
     "language": {
@@ -21,12 +21,12 @@
   },
   "page": {
     "home": {
-      "header": "Дом",
+      "header": "Home",
       "status": {
-        "unknown": "Неизвестно",
-        "notWorking": "Не работает",
-        "ok": "Работающий",
-        "partially": "Частично работает"
+        "unknown": "Unknown",
+        "notWorking": "Not Working",
+        "ok": "Working",
+        "partially": "Partially Working"
       },
       "info": {
         "version": "Версия",
@@ -53,20 +53,20 @@
     "settings": {
       "header": "Настройки",
       "font": {
-        "header": "Включить системный шрифт",
-        "description": "Эта опция включит системный шрифт в текущем WebUI. ПРИМЕЧАНИЕ: Может быть несовместимо с FlipFont"
+        "header": "Enable system font",
+        "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
       },
       "theme": {
-        "header": "Включить светлую тему",
-        "description": "Эта опция включит светлую тему для WebUI."
+        "header": "Enable light theme",
+        "description": "This option will enable light theme for WebUI"
       },
       "language": {
-        "header": "Изменить язык",
-        "description": "Измените на новый язык"
+        "header": "Change language",
+        "description": "Change to your new language"
       },
       "logs": {
-        "header": "История ошибок",
-        "description": "Просмотреть все ваши журналы ошибок"
+        "header": "Error History",
+        "description": "View all of your error log"
       }
     }
   }

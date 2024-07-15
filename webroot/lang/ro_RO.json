@@ -12,7 +12,7 @@
   },
   "modal": {
     "logs": {
-      "header": "Historia e xatăripnasqi",
+      "header": "Error History",
       "placeholder": "No error log recorded here!"
     },
     "language": {
@@ -21,12 +21,12 @@
   },
   "page": {
     "home": {
-      "header": "Khere",
+      "header": "Home",
       "status": {
-        "unknown": "Necunoscut",
-        "notWorking": "Na si funkcionalno",
-        "ok": "Funkcionalo",
-        "partially": "Parśialno funkcionalo"
+        "unknown": "Unknown",
+        "notWorking": "Not Working",
+        "ok": "Working",
+        "partially": "Partially Working"
       },
       "info": {
         "version": "Versiune",
@@ -53,20 +53,20 @@
     "settings": {
       "header": "Setări",
       "font": {
-        "header": "Aktivisar o sistemosqo fonto",
-        "description": "Akaja opcia ka del śajsaripen e sistemosqo fonto anθ-o akanutno WebUI. NOTA: Shaj te na ovel kompatibilno e FlipFont-esa"
+        "header": "Enable system font",
+        "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
       },
       "theme": {
-        "header": "Aktivisar e lumjaki tema",
-        "description": "Akaja opcia ka del shaipe e lumiake temake vash o WebUI"
+        "header": "Enable light theme",
+        "description": "This option will enable light theme for WebUI"
       },
       "language": {
-        "header": "Paruv i ćhib",
-        "description": "Paruv ki tiri nevi ćhib"
+        "header": "Change language",
+        "description": "Change to your new language"
       },
       "logs": {
-        "header": "Historia e xatăripnasqi",
-        "description": "Dikh sa o lil e greśenqo"
+        "header": "Error History",
+        "description": "View all of your error log"
       }
     }
   }

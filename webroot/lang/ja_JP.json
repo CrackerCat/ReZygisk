@@ -4,7 +4,7 @@
     "ptrace64": "zygisk-ptrace64を実行している間にエラーが発生しました。",
     "ptrace32": "zygisk-ptrace32を実行している間にエラーが発生しました。",
     "ls": "zygiskフォルダ内のモジュールをリストする間にエラーが発生しました。",
-    "cat": "モジュールのmoudle.propを読み込んでいる最中にエラーが発生しました。",
+    "cat": "モジュールのmodule.propを読み込んでいる最中にエラーが発生しました。",
     "find": "zygiskモジュールを検索している間にエラーが発生しました。"
   },
   "global": {
@@ -12,8 +12,8 @@
   },
   "modal": {
     "logs": {
-      "header": "エラー履歴",
-      "placeholder": "ここにはエラーログは記録されていません。"
+      "header": "Error History",
+      "placeholder": "No error log recorded here!"
     },
     "language": {
       "header": "言語を選択してください"
@@ -21,13 +21,13 @@
   },
   "page": {
     "home": {
-      "header": "家",
-    "status": {
-      "unknown": "未知",
-      "notWorking": "動作しない",
-      "ok": "働く",
-      "partially": "部分的に動作"
-    },
+      "header": "Home",
+      "status": {
+        "unknown": "Unknown",
+        "notWorking": "Not Working",
+        "ok": "Working",
+        "partially": "Partially Working"
+      },
       "info": {
         "version": "バージョン",
         "root": "root権限実装",
@@ -53,20 +53,20 @@
     "settings": {
       "header": "設定",
       "font": {
-        "header": "システムフォントを有効にする",
-        "description": "このオプションは、現在のWebUIでシステムフォントを有効にします。注意: FlipFontと互換性がない可能性があります"
+        "header": "Enable system font",
+        "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
       },
       "theme": {
-        "header": "ライトテーマを有効にする",
-        "description": "このオプションはWebUIのライトテーマを有効にします"
+        "header": "Enable light theme",
+        "description": "This option will enable light theme for WebUI"
       },
       "language": {
-        "header": "言語を変えてください",
-        "description": "新しい言語に変更する"
+        "header": "Change language",
+        "description": "Change to your new language"
       },
       "logs": {
-        "header": "エラー履歴",
-        "description": "すべてのエラーログを表示する"
+        "header": "Error History",
+        "description": "View all of your error log"
       }
     }
   }

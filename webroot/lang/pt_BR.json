@@ -12,7 +12,7 @@
   },
   "modal": {
     "logs": {
-      "header": "Histórico de erros",
+      "header": "Error History",
       "placeholder": "No error log recorded here!"
     },
     "language": {
@@ -21,12 +21,12 @@
   },
   "page": {
     "home": {
-      "header": "Lar",
+      "header": "Home",
       "status": {
-        "unknown": "Desconhecido",
-        "notWorking": "Não está funcionando",
-        "ok": "Trabalhando",
-        "partially": "Parcialmente funcionando"
+        "unknown": "Unknown",
+        "notWorking": "Not Working",
+        "ok": "Working",
+        "partially": "Partially Working"
       },
       "info": {
         "version": "Versão",
@@ -54,19 +54,19 @@
       "header": "Configurações",
       "font": {
         "header": "Enable system font",
-        "description": "Esta opção habilitará a fonte do sistema na WebUI atual. NOTA: Pode não ser compatível com FlipFont"
+        "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
       },
       "theme": {
-        "header": "Habilitar tema claro",
-        "description": "Esta opção habilitará o tema claro para WebUI"
+        "header": "Enable light theme",
+        "description": "This option will enable light theme for WebUI"
       },
       "language": {
-        "header": "Mudar idioma",
-        "description": "Mude para o seu novo idioma"
+        "header": "Change language",
+        "description": "Change to your new language"
       },
       "logs": {
-        "header": "Histórico de erros",
-        "description": "Veja todo o seu log de erros"
+        "header": "Error History",
+        "description": "View all of your error log"
       }
     }
   }

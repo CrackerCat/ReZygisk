@@ -12,8 +12,8 @@
   },
   "modal": {
     "logs": {
-      "header": "錯誤記錄",
-      "placeholder": "未發現任何錯誤!"
+      "header": "Error History",
+      "placeholder": "No error log recorded here!"
     },
     "language": {
       "header": "選擇你的語言"
@@ -23,10 +23,10 @@
     "home": {
       "header": "Home",
       "status": {
-        "unknown": "ReZygisk處於未知狀態!",
-        "notWorking": "ReZygisk無法運作!",
-        "ok": "ReZygisk正常運作!",
-        "partially": "ReZygisk部分正常運作!"
+        "unknown": "Unknown",
+        "notWorking": "Not Working",
+        "ok": "Working",
+        "partially": "Partially Working"
       },
       "info": {
         "version": "版本",
@@ -53,8 +53,8 @@
     "settings": {
       "header": "設定",
       "font": {
-        "header": "使用系統字體",
-        "description": "此選項將在目前介面中使用系統字體。注意：可能與 FlipFont 不相容"
+        "header": "Enable system font",
+        "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
       },
       "theme": {
         "header": "Enable light theme",
