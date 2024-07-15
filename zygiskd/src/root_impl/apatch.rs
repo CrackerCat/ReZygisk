@@ -1,5 +1,6 @@
 use std::process::{ Command, Stdio };
 use std::fs::File;
+use std::io::{self, BufRead, BufReader};
 use serde::Deserialize;
 use crate::constants::MIN_APATCH_VERSION;
 
@@ -24,23 +25,49 @@ fn parse_version(output: &str) -> i32 {
   version.unwrap_or_default()
 }
 
+fn read_su_path() -> Result<String, io::Error> {
+    let file = File::open("/data/adb/ap/su_path")?;
+    let mut reader = BufReader::new(file);
+    let mut su_path = String::new();
+    reader.read_line(&mut su_path)?;
+    Ok(su_path.trim().to_string())
+}
+
 pub fn get_apatch() -> Option<Version> {
-  let output = Command::new("/data/adb/apd")
-    .arg("-V")
+  let default_su_path = String::from("/system/bin/su");
+  let su_path = read_su_path().ok()?;
+
+  let output = Command::new(&su_path)
+    .arg("-v")
     .stdout(Stdio::piped())
     .stderr(Stdio::null())
     .output()
     .ok()?;
 
   let stdout = String::from_utf8(output.stdout).ok()?;
-  let version = parse_version(&stdout);
-  const MAX_OLD_VERSION: i32 = MIN_APATCH_VERSION - 1;
+  if !stdout.contains("APatch") {
+    return None;
+  }
 
-  match version {
-    0 => Some(Version::Abnormal),
-    v if v >= MIN_APATCH_VERSION && v <= 999999 => Some(Version::Supported),
-    v if v >= 1 && v <= MAX_OLD_VERSION => Some(Version::TooOld),
-    _ => None
+  let output1 = Command::new("/data/adb/apd")
+    .arg("-V")
+    .stdout(Stdio::piped())
+    .stderr(Stdio::null())
+    .output()
+    .ok()?;
+
+  let stdout1 = String::from_utf8(output1.stdout).ok()?;
+  if su_path == default_su_path {
+    let version = parse_version(&stdout1);
+    const MAX_OLD_VERSION: i32 = MIN_APATCH_VERSION - 1;
+    match version {
+      0 => Some(Version::Abnormal),
+      v if v >= MIN_APATCH_VERSION && v <= 999999 => Some(Version::Supported),
+      v if v >= 1 && v <= MAX_OLD_VERSION => Some(Version::TooOld),
+      _ => None,
+    }
+  } else {
+    return None;
   }
 }
 
