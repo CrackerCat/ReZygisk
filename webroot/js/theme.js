@@ -1,5 +1,5 @@
-import { setDark } from "./themes/dark.js"
-import { setLight } from "./themes/light.js"
+import { setDark } from './themes/dark.js'
+import { setLight } from './themes/light.js'
 
 const button = document.getElementById('theme_switcher')
 
@@ -8,13 +8,12 @@ if (!sys_theme) sys_theme = setData('dark')
 
 if (sys_theme === 'light') {
   button.setAttribute('checked', '')
+
   setLight()
 }
 
 button.addEventListener('click', () => {
-  button.checked 
-    ? setLight()
-    : setDark()
+  button.checked ? setLight() : setDark()
 })
 
 function setData(mode) {

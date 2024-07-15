@@ -19,5 +19,6 @@ close_button.addEventListener('click', () => {
 
 function setData(mode) {
   localStorage.setItem('/cache/modal/language/state', mode)
+
   return mode
 }

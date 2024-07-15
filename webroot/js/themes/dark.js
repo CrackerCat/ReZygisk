@@ -1,4 +1,4 @@
-import { setDarkNav } from "./darkNavbar.js"
+import { setDarkNav } from './darkNavbar.js'
 
 const rootCss = document.querySelector(':root')
 
@@ -6,7 +6,6 @@ const rootCss = document.querySelector(':root')
 const close_icons = document.getElementsByClassName('close_icon')
 const expand_icons = document.getElementsByClassName('expander')
 const copy_button = document.getElementById('errorh_copy')
-
 
 export function setDark() {
   rootCss.style.setProperty('--background', '#181c20')
@@ -34,5 +33,6 @@ export function setDark() {
 
 function setData(mode) {
   localStorage.setItem('/system/theme', mode)
+
   return mode
 }

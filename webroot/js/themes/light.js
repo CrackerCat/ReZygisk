@@ -2,8 +2,8 @@ import {
   light_close_icon,
   light_expand_icon,
   light_copy_icon,
-} from "./lightIcon.js"
-import { setLightNav } from "./lightNavbar.js"
+} from './lightIcon.js'
+import { setLightNav } from './lightNavbar.js'
 const rootCss = document.querySelector(':root')
 
 /* INFO: Changes the icons to match the theme */
@@ -37,5 +37,6 @@ export function setLight() {
 
 function setData(mode) {
   localStorage.setItem('/system/theme', mode)
+
   return mode
 }

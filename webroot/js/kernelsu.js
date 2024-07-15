@@ -1,3 +1,5 @@
+/* https://github.com/tiann/KernelSU/tree/main/js / https://www.npmjs.com/package/kernelsu */
+
 let callbackCounter = 0;
 function getUniqueCallbackName(prefix) {
   return `${prefix}_callback_${Date.now()}_${callbackCounter++}`;

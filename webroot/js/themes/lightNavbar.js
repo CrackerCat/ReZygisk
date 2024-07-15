@@ -12,5 +12,4 @@ export function setLightNav() {
 
   document.getElementById('nid_settings').innerHTML = light_settings_icon()
   document.getElementById('ni_settings').innerHTML = light_settings_icon(true)
-  return
 }
