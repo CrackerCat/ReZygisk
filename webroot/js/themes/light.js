@@ -2,6 +2,7 @@ import {
   light_close_icon,
   light_expand_icon,
   light_copy_icon,
+  light_clear_icon,
 } from './lightIcon.js'
 import { setLightNav } from './lightNavbar.js'
 
@@ -11,6 +12,7 @@ const rootCss = document.querySelector(':root')
 const close_icons = document.getElementsByClassName('close_icon')
 const expand_icons = document.getElementsByClassName('expander')
 const copy_button = document.getElementById('errorh_copy')
+const clearall_button = document.getElementById('errorh_clear_all')
 
 export function setLight() {
   rootCss.style.setProperty('--background', '#eff1f6')
@@ -33,6 +35,7 @@ export function setLight() {
   }
 
   copy_button.innerHTML = light_copy_icon
+  clearall_button.innerHTML = light_clear_icon
   setLightNav()
 }
 

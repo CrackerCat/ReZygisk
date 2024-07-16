@@ -12,9 +12,9 @@
     <script src="js/daemon_actions.js" type="module"></script>
     <script src="js/list/language.js" type="module"></script>
     <script src="js/switcher/fontChanger.js" type="module"></script>
-    <script src="js/main.js" type="module"></script>
     <script src="js/modal/language.js" type="module"></script>
     <script src="js/modal/errorHistory.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
 
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/index.css">
@@ -49,14 +49,19 @@
           <img src="assets/close.svg">
         </div>
       </div>
-      <div style="padding-left: 25px; display: flex; align-items: center; justify-content: space-between; padding-right: 25px;">
+      <div style="margin: 0 25px 0 25px; display: flex; align-items: center; justify-content: space-between;">
         <h1 id="errorh_modal_title">Error History</h1>
-        <div class="icon_animation" id="errorh_copy">
-          <img src="assets/content.svg">
-        </div>
+        <div style="display: flex; align-items: center;">
+          <div class="icon_animation" id="errorh_copy">
+            <img src="assets/content.svg">
+          </div>
+          <div class="icon_animation" id="errorh_clear_all">
+            <img src="assets/delete.svg">
+          </div>
+        </div>  
       </div>
-      <div style="margin-left: 25px; margin-right: 25px; height: 100%;">
-        <textarea id="errorh_panel" disabled class="errorh_textarea" placeholder="No error log recorded here!"></textarea>
+      <div style="margin-left: 25px; margin-right: 25px; height: fit-content;">
+        <textarea id="errorh_panel" class="errorh_textarea" placeholder="No error log recorded here!" disabled></textarea>
       </div>
     </div>
 

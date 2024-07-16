@@ -2,6 +2,7 @@ const button = document.getElementById('rezygisk_errorh')
 const copy_button = document.getElementById('errorh_copy')
 const target = document.getElementById('errorh_modal')
 const close_button = document.getElementById('errorh_modal_close')
+const clearall_button = document.getElementById('errorh_clear_all')
 const panel = document.getElementById('errorh_panel')
 
 let sys_module_mode = localStorage.getItem('/cache/modal/error_history/state')
@@ -21,6 +22,11 @@ close_button.addEventListener('click', () => {
 
 copy_button.addEventListener('click', () => {
   navigator.clipboard.writeText(panel.innerHTML)
+})
+
+clearall_button.addEventListener('click', () => {
+  panel.innerHTML = ''
+  localStorage.setItem('/system/error', '')
 })
 
 function setData(mode) {

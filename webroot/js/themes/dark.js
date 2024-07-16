@@ -6,6 +6,7 @@ const rootCss = document.querySelector(':root')
 const close_icons = document.getElementsByClassName('close_icon')
 const expand_icons = document.getElementsByClassName('expander')
 const copy_button = document.getElementById('errorh_copy')
+const clearall_button = document.getElementById('errorh_clear_all')
 
 export function setDark() {
   rootCss.style.setProperty('--background', '#181c20')
@@ -28,6 +29,7 @@ export function setDark() {
   }
 
   copy_button.innerHTML = '<img src="assets/content.svg">'
+  clearall_button.innerHTML = '<img src="assets/delete.svg">'
   setDarkNav()
 }
 

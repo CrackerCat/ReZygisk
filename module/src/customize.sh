@@ -141,7 +141,7 @@ extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 
-for svg in mark tick warn module expand settings close content error action home; do
+for svg in mark tick warn module expand settings close content error action home delete; do
   extract "$ZIPFILE" "webroot/assets/${svg}.svg" "$MODPATH/webroot/assets" true
 done
 

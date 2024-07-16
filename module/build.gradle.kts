@@ -215,6 +215,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/assets/error.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/action.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/home.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/delete.svg").asFile, null))
                     sig.initSign(privKey)
                     set.forEach { it.first.sha(it.second) }
                     val signFile = root.file(name).asFile

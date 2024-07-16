@@ -1,11 +1,18 @@
 import { fullScreen, exec, toast } from './kernelsu.js'
 import { setNewLanguage, getTranslations } from './language.js'
 
-function setError(place, issue) {
-  toast(`${place}: ${issue}`)
+const loading_screen = document.getElementById('loading_screen')
+loading_screen.style.display = 'none'
 
+let sys_lang = localStorage.getItem('/system/language')
+
+if (!sys_lang) sys_lang = setLangData('en_US')
+if (sys_lang !== 'en_US') await setNewLanguage(sys_lang, true)
+
+function setError(place, issue) {
   const fullErrorLog = setErrorData(`${place}: ${issue}`)
   document.getElementById('errorh_panel').innerHTML = fullErrorLog
+  toast(`${place}: ${issue}`)
 }
 
 function setLangData(mode) {
@@ -17,7 +24,7 @@ function setLangData(mode) {
 function setErrorData(errorLog) {
   const getPrevious = localStorage.getItem('/system/error')
   const finalLog = getPrevious && getPrevious.length !== 0 ? getPrevious + `\n` + errorLog : errorLog
-  
+
   localStorage.setItem('/system/error', finalLog)
   return finalLog
 }
@@ -169,3 +176,5 @@ function setErrorData(errorLog) {
     setError('find', `Error while finding zygisk modules (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
   }
 })().catch((err) => setError('WebUI', err.stack ? err.stack : err.message))
+
+if (window.onerror) window.onerror = (err) => setError('WebUI', err.stack ? err.stack : err.message)
