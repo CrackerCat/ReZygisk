@@ -4,9 +4,22 @@ import { setNewLanguage, getTranslations } from './language.js'
 function setError(place, issue) {
   toast(`${place}: ${issue}`)
 
+  const fullErrorLog = setErrorData(`${place}: ${issue}`)
+  document.getElementById('errorh_panel').innerHTML = fullErrorLog
+}
+
+function setLangData(mode) {
+  localStorage.setItem('/system/language', mode)
+
+  return localStorage.getItem('/system/language')
+}
+
+function setErrorData(errorLog) {
   const getPrevious = localStorage.getItem('/system/error')
-  const finalLog = getPrevious && getPrevious.length !== 0 ? getPrevious + `\n` + `${place}: ${issue}` : `${place}: ${issue}`
+  const finalLog = getPrevious && getPrevious.length !== 0 ? getPrevious + `\n` + errorLog : errorLog
+  
   localStorage.setItem('/system/error', finalLog)
+  return finalLog
 }
 
 (async () => {
@@ -156,9 +169,3 @@ function setError(place, issue) {
     setError('find', `Error while finding zygisk modules (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
   }
 })().catch((err) => setError('WebUI', err.stack ? err.stack : err.message))
-
-function setLangData(mode) {
-  localStorage.setItem('/system/language', mode)
-
-  return localStorage.getItem('/system/language')
-}
