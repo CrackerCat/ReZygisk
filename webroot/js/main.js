@@ -21,8 +21,6 @@ function setErrorData(errorLog) {
   return finalLog
 }
 
-if (window.onerror) window.onerror = (err) => setError('WebUI', err.stack ? err.stack : err.message)
-
 (async () => {
   const EXPECTED = 1
   const UNEXPECTED_FAIL = 2

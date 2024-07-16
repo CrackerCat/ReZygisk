@@ -1,4 +1,5 @@
 const button = document.getElementById('rezygisk_errorh')
+const backport = document.getElementById('backport_errorh')
 const copy_button = document.getElementById('errorh_copy')
 const target = document.getElementById('errorh_modal')
 const close_button = document.getElementById('errorh_modal_close')
@@ -13,6 +14,18 @@ button.addEventListener('click', () => {
 
   sys_module_mode = setData('opened')
 })
+
+backport.addEventListener('click', () => {
+  if (sys_module_mode == 'opened') {
+    target.style.top = '100%'
+    sys_module_mode = setData('closed')
+    return
+  }
+
+  target.style.top = '0%'
+  sys_module_mode = setData('opened')
+})
+
 
 close_button.addEventListener('click', () => {
   target.style.top = '100%'
