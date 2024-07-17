@@ -153,11 +153,11 @@ function setErrorData(errorLog) {
         const name = lines.find(line => line.includes('name=')).split('=')[1]
 
         modules_list.innerHTML += 
-        `<div class="small_card" style="padding: 25px 15px;">
-          <div class="small_card_bg" style="font-size: 1.1em;">${name}</div>
-          <div class="small_card_bg desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
-            <div class="small_card_bg arch_desc">${translations.page.modules.arch}</div>
-            <div class="small_card_bg" style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
+        `<div class="dim card" style="padding: 25px 15px;">
+          <div class="dimc" style="font-size: 1.1em;">${name}</div>
+          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
+            <div class="dimc arch_desc">${translations.page.modules.arch}</div>
+            <div class="dimc" style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
           </div>
         </div>`
       } else {
