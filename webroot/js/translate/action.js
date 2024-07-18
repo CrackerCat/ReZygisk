@@ -1,4 +1,4 @@
-export function translateActionPage(new_translations) {
+export function translateActionPage(old_translations, new_translations) {
   /* INFO: action card */
   document.getElementById('panel_actions_header').innerHTML = new_translations.page.action.header
 
@@ -14,5 +14,45 @@ export function translateActionPage(new_translations) {
     document.getElementById('daemon64_stop_button').innerHTML = new_translations.page.action.daemonButton.stop
     document.getElementById('daemon64_start_button').innerHTML = new_translations.page.action.daemonButton.start
     document.getElementById('daemon64_exit_button').innerHTML = new_translations.page.action.daemonButton.exit
+  }
+
+  /* INFO: daemon32 status card */
+  const daemon32_status = document.getElementById('daemon32_status')
+  switch (daemon32_status.innerHTML.replace(/(\r\n|\n|\r)/gm, '').trim()) {
+    case old_translations.page.action.status.unknown: {
+      daemon32_status.innerHTML = new_translations.page.action.status.unknown
+
+      break
+    }
+    case old_translations.page.action.status.notWorking: {
+      daemon32_status.innerHTML = new_translations.page.action.status.notWorking
+
+      break
+    }
+    case old_translations.page.action.status.ok: {
+      daemon32_status.innerHTML = new_translations.page.action.status.ok
+
+      break
+    }
+  }
+
+  /* INFO: daemon64 status card */
+  const daemon64_status = document.getElementById('daemon64_status')
+  switch (daemon64_status.innerHTML.replace(/(\r\n|\n|\r)/gm, '').trim()) {
+    case old_translations.page.action.status.unknown: {
+      daemon64_status.innerHTML = new_translations.page.action.status.unknown
+
+      break
+    }
+    case old_translations.page.action.status.notWorking: {
+      daemon64_status.innerHTML = new_translations.page.action.status.notWorking
+
+      break
+    }
+    case old_translations.page.action.status.ok: {
+      daemon64_status.innerHTML = new_translations.page.action.status.ok
+
+      break
+    }
   }
 }

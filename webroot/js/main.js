@@ -1,19 +1,19 @@
 import { fullScreen, exec, toast } from './kernelsu.js'
 import { setNewLanguage, getTranslations } from './language.js'
 
-function setError(place, issue) {
+export function setError(place, issue) {
   const fullErrorLog = setErrorData(`${place}: ${issue}`)
   document.getElementById('errorh_panel').innerHTML = fullErrorLog
   toast(`${place}: ${issue}`)
 }
 
-function setLangData(mode) {
+export function setLangData(mode) {
   localStorage.setItem('/system/language', mode)
 
   return localStorage.getItem('/system/language')
 }
 
-function setErrorData(errorLog) {
+export function setErrorData(errorLog) {
   const getPrevious = localStorage.getItem('/system/error')
   const finalLog = getPrevious && getPrevious.length !== 0 ? getPrevious + `\n` + errorLog : errorLog
 

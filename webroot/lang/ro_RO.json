@@ -41,6 +41,11 @@
         "start": "Start",
         "stop": "Stop",
         "exit": "Ieșire"
+      },
+      "status": {
+        "unknown": "Unknown",
+        "notWorking": "Not Working",
+        "ok": "Working"
       }
     },
     "settings": {

@@ -1,3 +1,4 @@
+import { setError } from './main.js'
 import { translateActionPage } from './translate/action.js'
 import { translateHomePage } from './translate/home.js'
 import { translateModulesPage } from './translate/modules.js'
@@ -9,7 +10,7 @@ export async function setNewLanguage(locate, initialize) {
 
   translateHomePage(old_translations, new_translations)
   translateModulesPage(new_translations)
-  translateActionPage(new_translations)
+  translateActionPage(old_translations, new_translations)
   translateSettingsPage(new_translations)
 
   /* INFO: lang modal */
@@ -27,7 +28,8 @@ export async function setNewLanguage(locate, initialize) {
 }
 
 export async function getTranslations(locate) {
-  const translateData = await fetch(`./lang/${locate}.json`).catch(() => { /* INFO: noop */ })
+  const translateData = await fetch(`./lang/${locate}.json`)
+    .catch((err) => setError('WebUI', err.stack ? err.stack : err.message))
 
   return translateData.json()
 }

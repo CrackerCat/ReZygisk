@@ -41,6 +41,11 @@
         "start": "Chạy",
         "stop": "Dừng",
         "exit": "Thoát"
+      },
+      "status": {
+        "unknown": "Không xác định",
+        "notWorking": "Không hoạt động",
+        "ok": "Đang hoạt động"
       }
     },
     "settings": {

@@ -41,6 +41,11 @@
         "start": "スタート",
         "stop": "ストップ",
         "exit": "終了"
+      },
+      "status": {
+        "unknown": "Unknown",
+        "notWorking": "Not Working",
+        "ok": "Working"
       }
     },
     "settings": {

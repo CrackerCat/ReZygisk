@@ -41,6 +41,11 @@
         "start": "Iniciar",
         "stop": "Parar",
         "exit": "Sair"
+      },
+      "status": {
+        "unknown": "Desconhecido",
+        "notWorking": "Não funcionando",
+        "ok": "Funcionando"
       }
     },
     "settings": {

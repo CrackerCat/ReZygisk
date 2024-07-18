@@ -41,6 +41,11 @@
         "start": "启动",
         "stop": "停止",
         "exit": "退出"
+      },
+      "status": {
+        "unknown": "Unknown",
+        "notWorking": "Not Working",
+        "ok": "Working"
       }
     },
     "settings": {
