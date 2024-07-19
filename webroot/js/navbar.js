@@ -1,8 +1,7 @@
 setData('home')
 
-document.getElementById('ni_home').style.display = 'flex'
-document.getElementById('nid_home').style.display = 'none'
-document.getElementById('panel_home').style.display = 'block'
+document.getElementById('panel_home').classList.toggle('show')
+document.getElementById(`nibg_home`).classList.toggle('show')
 
 document.querySelectorAll('[name=navbutton]').forEach((element) => {
   element.addEventListener('click', (event) => {
@@ -12,23 +11,19 @@ document.querySelectorAll('[name=navbutton]').forEach((element) => {
 
     /* INFO: Disable icon on old state */
     const pre_input = document.getElementById(`n_${previous}`)
-    const pre_icon = document.getElementById(`ni_${previous}`)
-    const pre_icon_disabled = document.getElementById(`nid_${previous}`)
+    const pre_background = document.getElementById(`nibg_${previous}`)
 
-    document.getElementById(`panel_${previous}`).style.display = 'none'
+    document.getElementById(`panel_${previous}`).classList.remove('show')
     pre_input.removeAttribute('checked')
-    pre_icon.style.display = 'none'
-    pre_icon_disabled.style.display = 'flex'
+    pre_background.classList.remove('show')
 
     /* INFO: Enable icon on new state */
     const curr_input = document.getElementById(`n_${value}`)
-    const icon = document.getElementById(`ni_${value}`)
-    const icon_disabled = document.getElementById(`nid_${value}`)
+    const i_background = document.getElementById(`nibg_${value}`)
 
-    document.getElementById(`panel_${value}`).style.display = 'block'
+    document.getElementById(`panel_${value}`).classList.toggle('show')
     curr_input.setAttribute('checked', '')
-    icon.style.display = 'flex'
-    icon_disabled.style.display = 'none'
+    i_background.classList.toggle('show')
 
     setData(value)
   })

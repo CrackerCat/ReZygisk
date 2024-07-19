@@ -138,12 +138,17 @@ extract "$ZIPFILE" 'webroot/js/switcher/fontChanger.js' "$MODPATH/webroot/js/swi
 
 extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
+extract "$ZIPFILE" 'webroot/css/icons.css' "$MODPATH/webroot/css" true
 
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 
 for svg in mark tick warn module expand settings close content error action home delete; do
   extract "$ZIPFILE" "webroot/assets/${svg}.svg" "$MODPATH/webroot/assets" true
+done
+
+for svg in module settings action home; do
+  extract "$ZIPFILE" "webroot/assets_light/${svg}.svg" "$MODPATH/webroot/assets_light" true
 done
 
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then

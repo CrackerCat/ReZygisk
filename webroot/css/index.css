@@ -16,16 +16,6 @@
   --font-family: 'ProductSans Regular', 'ProductSans Italic', sans-serif;
 }
 
-.radios input[type=radio] {
-  display: none;
-}
-
-.radio input[type=radio] {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 * {
   background-color: var(--background);
   color: var(--font);
@@ -38,6 +28,17 @@ body {
 
 a {
   text-decoration: none !important;
+}
+
+/* Components */
+.radios input[type=radio] {
+  display: none;
+}
+
+.radio input[type=radio] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .load_screen {
@@ -73,12 +74,6 @@ a {
   animation: spin 0.8s linear infinite;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Components */
 .header {
   display: flex;
   position: fixed;
@@ -92,7 +87,8 @@ a {
 }
 
 .panel {
-  margin-bottom: 7em;
+  display: none;
+  animation: fade-out 0.2s;
 }
 
 .navbar {
@@ -122,22 +118,14 @@ a {
 }
 
 .navicon {
-  background-color: var(--small-card);
+  background: var(--small-card);
   display: flex;
-  width: 65px;
+  width: 0;
   height: 30px;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-}
-
-.navicon_disable {
-  display: flex;
-  width: 65px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
+  animation: closeNav 0.15s;
 }
 
 .card {
@@ -353,5 +341,65 @@ input:checked + .slider:before {
     margin: 0.6em 0 0.6em;
     transition: transform 0.15s ease-in-out;
     background-color: var(--button);
+  }
+}
+
+/* Show set */
+.panel.show {
+  margin-bottom: 7em;
+  display: block;
+  animation: fade-in 0.2s;
+}
+
+.navicon.show {
+  width: 65px;
+  animation: openNav 0.15s;
+}
+
+/* Animation KeyFrames */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes closeNav {
+  0% {
+    width: 65px;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    width: 0px;
+  }
+}
+
+@keyframes openNav {
+  0% {
+    width: 0px;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    width: 65px;
   }
 }

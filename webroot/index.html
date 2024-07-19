@@ -17,6 +17,7 @@
     <script src="js/modal/errorHistory.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
 
+    <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/index.css">
   </head>
@@ -67,7 +68,7 @@
     </div>
 
     <!-- INFO: Home page -->
-    <div id="panel_home" class="panel" style="display: none;">
+    <div id="panel_home" class="panel">
       <div class="header">ReZygisk</div>
       <div style="padding: 40px 0px;"></div>
 
@@ -104,7 +105,7 @@
       </div>
     </div>
 
-    <div id="panel_modules" class="panel" style="display: none;">
+    <div id="panel_modules" class="panel">
       <div id="panel_modules_header" class="header">Modules</div>
       <div style="padding: 40px 0px;"></div>
       <div id="modules_list" style="width: 100%; height: fit-content;">
@@ -113,7 +114,7 @@
     </div>
 
     <!-- INFO: Action page -->
-    <div id="panel_actions" class="panel" style="display: none;">
+    <div id="panel_actions" class="panel">
       <div id="panel_actions_header" class="header">Actions</div>
       <div style="padding: 40px 0px;"></div>
       <!-- INFO: Settings card body (Daemon32) -->
@@ -149,7 +150,7 @@
     </div>
 
     <!-- INFO: Settings page -->
-    <div id="panel_settings" class="panel" style="display: none;">
+    <div id="panel_settings" class="panel">
       <div id="panel_settings_header" class="header">Settings</div>
       <div style="padding: 40px 0px;"></div>
       <!-- INFO: Enable system font option -->
@@ -218,11 +219,9 @@
         <label class="radio dimc" for="n_home">
 
           <div class="dimc" style="display: grid; place-items: center;">
-            <div id="nid_home" class="dimc navicon_disable">
-              <img class="dimc" style="width: 24px; height: 24px" src="assets/home.svg">
-            </div>
-            <div id="ni_home" class="navicon" style="display: none;">
-              <img style="width: 24px; height: 24px; background-color: var(--small-card);" src="assets/home.svg">
+            <div class="dimc" style="display: grid; place-items: center; width: 65px;">
+              <div style="grid-area: 1 / 1;" id="ni_home"></div>
+              <div style="grid-area: 1 / 1;" id="nibg_home" class="navicon"></div>
             </div>
             <div id="nav_home_title" class="navtitle dimc">Home</div>
           </div>
@@ -235,11 +234,9 @@
         <label class="radio dimc" for="n_modules">
 
           <div class="dimc" style="display: grid; place-items: center;">
-            <div id="nid_modules" class="dimc navicon_disable">
-              <img class="dimc" style="width: 24px; height: 24px" src="assets/module.svg">
-            </div>
-            <div id="ni_modules" class="navicon" style="display: none;">
-              <img style="width: 24px; height: 24px; background-color: var(--small-card);" src="assets/module.svg">
+            <div class="dimc" style="display: grid; place-items: center; width: 65px;">
+              <div style="grid-area: 1 / 1;" id="ni_modules"></div>
+              <div style="grid-area: 1 / 1;" id="nibg_modules" class="navicon"></div>
             </div>
             <div id="nav_modules_title" class="navtitle dimc">Modules</div>
           </div>
@@ -252,11 +249,9 @@
         <label class="radio dimc" for="n_actions">
 
           <div class="dimc" style="display: grid; place-items: center;">
-            <div id="nid_actions" class="dimc navicon_disable">
-              <img class="dimc" style="width: 24px; height: 24px" src="assets/action.svg">
-            </div>
-            <div id="ni_actions" class="navicon" style="display: none;">
-              <img style="width: 24px; height: 24px; background-color: var(--small-card);" src="assets/action.svg">
+            <div class="dimc" style="display: grid; place-items: center; width: 65px;">
+              <div style="grid-area: 1 / 1;" id="ni_actions"></div>
+              <div style="grid-area: 1 / 1;" id="nibg_actions" class="navicon"></div>
             </div>
             <div id="nav_actions_title" class="navtitle dimc">Actions</div>
           </div>
@@ -269,11 +264,9 @@
         <label class="radio dimc" for="n_settings">
 
           <div class="dimc" style="display: grid; place-items: center;">
-            <div id="nid_settings" class="dimc navicon_disable">
-              <img class="dimc" style="width: 24px; height: 24px" src="assets/settings.svg">
-            </div>
-            <div id="ni_settings" class="navicon" style="display: none;">
-              <img style="width: 24px; height: 24px; background-color: var(--small-card);" src="assets/settings.svg">
+            <div class="dimc" style="display: grid; place-items: center; width: 65px;">
+              <div style="grid-area: 1 / 1;" id="ni_settings"></div>
+              <div style="grid-area: 1 / 1;" id="nibg_settings" class="navicon"></div>
             </div>
             <div id="nav_settings_title" class="navtitle dimc">Settings</div>
           </div>
