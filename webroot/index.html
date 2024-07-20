@@ -6,11 +6,6 @@
     <meta name="viewport" content="viewport-fit=cover" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script type="application/javascript">
-      function openNewSession(url) {
-        window.open(`https://${url}`, "_blank", 'toolbar=0,location=0,menubar=0')
-      }
-    </script>
     <script src="js/errorCatcher.js" type="module"></script>
     <script src="js/theme.js" type="module"></script>
     <script src="js/restoreError.js" type="module"></script>
@@ -220,7 +215,7 @@
       <div class="dim card" style="margin-top: 15px;">
         <div class="dimc content">
           <div id="mcre_title" class="dimc" style="font-size: 1.1em">Module Developer</div>
-          <div onclick="openNewSession('github.com/PerformanC')" class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">
+          <div  credit-link="github.com/PerformanC" class="dimc desc" style="font-size: 0.9em; margin-top: 3px; cursor: pointer;">
             The PerformanC Organization
           </div>
         </div>
@@ -228,11 +223,11 @@
         <div class="dimc content" style="margin-top: 6px;">
           <div id="omcre_title" class="dimc" style="font-size: 1.1em">Original Module Developer</div>
           <div class="dimc" style="font-size: 0.9em; margin-top: 3px; align-items: center; display: flex;">
-            <div onclick="openNewSession('github.com/Dr-TSNG')" class="dimc desc">
+            <div credit-link="github.com/Dr-TSNG" class="dimc desc" style="cursor: pointer;">
               Nullptr
             </div>
             <div class="dimc desc">,</div>
-            <div onclick="openNewSession('github.com/5ec1cff')" class="dimc desc" style="margin-left: 2px;">
+            <div credit-link="github.com/5ec1cff" class="dimc desc" style="margin-left: 2px; cursor: pointer;">
               5ec1cff
             </div>
           </div>
@@ -240,7 +235,7 @@
 
         <div class="dimc" style="margin-top: 6px;">
           <div id="webcre_title" class="dimc" style="font-size: 1.1em">WebUI Developer</div>
-          <div onclick="openNewSession('github.com/RainyXeon')" class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">
+          <div credit-link="github.com/RainyXeon" class="dimc desc" style="font-size: 0.9em; margin-top: 3px; cursor: pointer;">
             RainyXeon
           </div>
         </div>
