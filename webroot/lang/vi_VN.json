@@ -65,6 +65,15 @@
       "logs": {
         "header": "Lịch sử lỗi",
         "description": "Xem tất cả các lỗi"
+      },
+      "credits": {
+        "module": "Nhà phát triển mô-đun",
+        "original": "Nhà phát triển mô-đun gốc",
+        "web": "Nhà phát triển WebUI"
+      },
+      "license": {
+        "module": "Giấy phép bản quyền mô-đun",
+        "web": "Giấy phép bản quyền WebUI"
       }
     }
   }

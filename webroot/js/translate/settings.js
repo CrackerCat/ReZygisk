@@ -16,4 +16,12 @@ export function translateSettingsPage(new_translations) {
   /* INFO: Change font option */
   document.getElementById('sys_errorh_title').innerHTML = new_translations.page.settings.logs.header
   document.getElementById('sys_errorh_desc').innerHTML = new_translations.page.settings.logs.description
+
+  /* INFO: Credit card */
+  document.getElementById('mcre_title').innerHTML = new_translations.page.settings.credits.module
+  document.getElementById('omcre_title').innerHTML = new_translations.page.settings.credits.original
+  document.getElementById('webcre_title').innerHTML = new_translations.page.settings.credits.web
+  /* INFO: License card */
+  document.getElementById('mlic_title').innerHTML = new_translations.page.settings.license.module
+  document.getElementById('mweb_title').innerHTML = new_translations.page.settings.license.web
 }

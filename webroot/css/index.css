@@ -183,7 +183,7 @@ a {
 .button {
   padding: 1em 0 1em 0;
   border-radius: 30px;
-  transition: transform 0.15s ease-in-out;
+  transition: transform 0.1s ease-in-out;
   background-color: var(--button);
 }
 
@@ -192,11 +192,10 @@ a {
 }
 
 .small_card {
-  margin-top: 10px;
   background: var(--small-card);
   border-radius: 15px;
   padding: 5px 10px 0 10px;
-  margin: 0 10px 0 10px;
+  margin: 15px 15px 0 15px;
   padding-bottom: 5px;
 }
 
@@ -346,7 +345,7 @@ input:checked + .slider:before {
 
 /* Show set */
 .panel.show {
-  margin-bottom: 7em;
+  margin-bottom: 119px;
   display: block;
   animation: fade-in 0.2s;
 }

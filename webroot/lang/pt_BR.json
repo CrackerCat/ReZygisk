@@ -65,6 +65,15 @@
       "logs": {
         "header": "Histórico de erros",
         "description": "Veja o histórico de erros inteiro"
+      },
+      "credits": {
+        "module": "Module Developer",
+        "original": "Original Module Developer",
+        "web": "WebUI Developer"
+      },
+      "license": {
+        "module": "Module License",
+        "web": "WebUI License"
       }
     }
   }

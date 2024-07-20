@@ -36,7 +36,7 @@
     "arch": "アーキテクチャー: "
     },
     "action": {
-      "header": "設定",
+      "header": "Action",
       "daemonButton": {
         "start": "スタート",
         "stop": "ストップ",
@@ -65,6 +65,15 @@
       "logs": {
         "header": "Error History",
         "description": "View all of your error log"
+      },
+      "credits": {
+        "module": "Module Developer",
+        "original": "Original Module Developer",
+        "web": "WebUI Developer"
+      },
+      "license": {
+        "module": "Module License",
+        "web": "WebUI License"
       }
     }
   }
