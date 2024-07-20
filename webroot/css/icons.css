@@ -27,13 +27,6 @@
   z-index: 10;
 }
 
-.link_github {
-  background: url(../assets_light/github.svg);
-  width: 50px;
-  height: 50px;
-  z-index: 10;
-}
-
 /* Light */
 #ni_home.light {
   background: url(../assets_light/home.svg);
@@ -60,12 +53,5 @@
   background: url(../assets_light/settings.svg);
   width: 24px;
   height: 24px;
-  z-index: 10;
-}
-
-.link_github.light {
-  background: url(../assets_light/github.svg);
-  width: 35px;
-  height: 35px;
   z-index: 10;
 }
