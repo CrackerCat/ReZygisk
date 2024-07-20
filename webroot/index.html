@@ -6,6 +6,11 @@
     <meta name="viewport" content="viewport-fit=cover" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <script type="application/javascript">
+      function openNewSession(url) {
+        window.open(`https://${url}`, "_blank", 'toolbar=0,location=0,menubar=0')
+      }
+    </script>
     <script src="js/errorCatcher.js" type="module"></script>
     <script src="js/theme.js" type="module"></script>
     <script src="js/restoreError.js" type="module"></script>
@@ -215,25 +220,29 @@
       <div class="dim card" style="margin-top: 15px;">
         <div class="dimc content">
           <div id="mcre_title" class="dimc" style="font-size: 1.1em">Module Developer</div>
-          <a href="https://github.com/PerformanC" target="_blank">
-            <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">The PerformanC Organization</div>
-          </a>
+          <div onclick="openNewSession('github.com/PerformanC')" class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">
+            The PerformanC Organization
+          </div>
         </div>
 
         <div class="dimc content" style="margin-top: 6px;">
           <div id="omcre_title" class="dimc" style="font-size: 1.1em">Original Module Developer</div>
           <div class="dimc" style="font-size: 0.9em; margin-top: 3px; align-items: center; display: flex;">
-            <a class="dimc desc" href="https://github.com/Dr-TSNG" target="_blank">Nullptr</a>
+            <div onclick="openNewSession('github.com/Dr-TSNG')" class="dimc desc">
+              Nullptr
+            </div>
             <div class="dimc desc">,</div>
-            <a class="dimc desc" style="margin-left: 2px;" href="https://github.com/5ec1cff" target="_blank">5ec1cff</a>
+            <div onclick="openNewSession('github.com/5ec1cff')" class="dimc desc" style="margin-left: 2px;">
+              5ec1cff
+            </div>
           </div>
         </div>
 
         <div class="dimc" style="margin-top: 6px;">
           <div id="webcre_title" class="dimc" style="font-size: 1.1em">WebUI Developer</div>
-          <a href="https://github.com/RainyXeon" target="_blank">
-            <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">RainyXeon</div>
-          </a>
+          <div onclick="openNewSession('github.com/RainyXeon')" class="dimc desc" style="font-size: 0.9em; margin-top: 3px;">
+            RainyXeon
+          </div>
         </div>
       </div>
 
