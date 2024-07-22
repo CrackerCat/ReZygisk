@@ -169,8 +169,10 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/language.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/restoreError.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/navbar.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/daemon_actions.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/daemonActions.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/errorCatcher.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/browserRedirect.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/errorScreen.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/translate/action.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/translate/home.js").asFile, null))
@@ -202,6 +204,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/css/index.css").asFile, null))
                     set.add(Pair(root.file("webroot/css/icons.css").asFile, null))
                     set.add(Pair(root.file("webroot/css/fonts.css").asFile, null))
+                    set.add(Pair(root.file("webroot/css/error.css").asFile, null))
 
                     set.add(Pair(root.file("webroot/fonts/ProductSans-Italic.ttf").asFile, null))
                     set.add(Pair(root.file("webroot/fonts/ProductSans-Regular.ttf").asFile, null))
@@ -218,6 +221,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/assets/action.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/home.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/delete.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/ec-icon.svg").asFile, null))
 
                     set.add(Pair(root.file("webroot/assets_light/action.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets_light/home.svg").asFile, null))

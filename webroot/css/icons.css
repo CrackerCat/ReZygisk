@@ -27,6 +27,11 @@
   z-index: 10;
 }
 
+#ec_icon {
+  background: url(../assets/ec-icon.svg);
+  z-index: 40;
+}
+
 /* Light */
 #ni_home.light {
   background: url(../assets_light/home.svg);

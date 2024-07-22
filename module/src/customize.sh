@@ -111,8 +111,10 @@ extract "$ZIPFILE" 'webroot/js/theme.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/language.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/navbar.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/restoreError.js' "$MODPATH/webroot/js" true
-extract "$ZIPFILE" 'webroot/js/daemon_actions.js' "$MODPATH/webroot/js" true
+extract "$ZIPFILE" 'webroot/js/daemonActions.js' "$MODPATH/webroot/js" true
 extract "$ZIPFILE" 'webroot/js/errorCatcher.js' "$MODPATH/webroot/js" true
+extract "$ZIPFILE" 'webroot/js/browserRedirect.js' "$MODPATH/webroot/js" true
+extract "$ZIPFILE" 'webroot/js/errorScreen.js' "$MODPATH/webroot/js" true
 
 extract "$ZIPFILE" 'webroot/js/translate/home.js' "$MODPATH/webroot/js/translate" true
 extract "$ZIPFILE" 'webroot/js/translate/action.js' "$MODPATH/webroot/js/translate" true
@@ -139,11 +141,12 @@ extract "$ZIPFILE" 'webroot/js/switcher/fontChanger.js' "$MODPATH/webroot/js/swi
 extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/css/icons.css' "$MODPATH/webroot/css" true
+extract "$ZIPFILE" 'webroot/css/error.css' "$MODPATH/webroot/css" true
 
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
 extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
 
-for svg in mark tick warn module expand settings close content error action home delete; do
+for svg in mark tick warn module expand settings close content error action home delete ec-icon; do
   extract "$ZIPFILE" "webroot/assets/${svg}.svg" "$MODPATH/webroot/assets" true
 done
 
