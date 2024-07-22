@@ -6,6 +6,11 @@
     <meta name="viewport" content="viewport-fit=cover" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/error.css">
+    <link rel="stylesheet" href="css/icons.css">
+
     <script src="js/errorCatcher.js" type="module"></script>
     <script src="js/errorScreen.js" type="module"></script>
     <script src="js/browserRedirect.js" type="module"></script>
@@ -18,29 +23,26 @@
     <script src="js/modal/language.js" type="module"></script>
     <script src="js/modal/errorHistory.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
-
-    <link rel="stylesheet" href="css/error.css">
-    <link rel="stylesheet" href="css/icons.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/index.css">
   </head>
   <body id="main_body">
     <!-- INFO: Error screen -->
     <div id="fatal-error-screen" class="e-container" style="display: none;">
-      <div class="e-bg e-card e-main">
-        <img class="e-bg" src="./assets/ec-icon.svg" style="margin-bottom: 5px;"/>
-        <div class="e-bg">
-          Your WebUI is corrupt. It can't be trusted and may not work properly.
+      <div class="e-bg e-wrap">
+        <div class="e-bg e-card e-main">
+          <img class="e-bg" src="./assets/ec-icon.svg" style="margin-bottom: 10px;"/>
+          <div class="e-bg">
+            Your WebUI is corrupt. It can't be trusted and may not work properly.
+          </div>
+  
+          <div class="e-bg" style="margin-top: 15px;">
+            Please click the copy log button below and visit
+            <div class="e-bg e-font" credit-link="t.me/performancorg">t.me/performancorg</div>
+            for support.
+          </div>
+  
+          <div id="esc-copy-button" class="e-button" style="margin-top: 25px;">COPY LOG</div>
+          <textarea id="esc-log" style="display: none;"></textarea>
         </div>
-
-        <div class="e-bg" style="margin-top: 15px;">
-          Please click the copy log button below and visit
-          <div class="e-bg e-font" credit-link="t.me/performancorg">t.me/performancorg</div>
-          for support.
-        </div>
-
-        <div id="esc-copy-button" class="e-button" style="margin-top: 15px;">COPY LOG</div>
-        <textarea id="esc-log" style="display: none;"></textarea>
       </div>
     </div>
 
