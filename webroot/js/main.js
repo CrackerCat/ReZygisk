@@ -129,6 +129,7 @@ export function setErrorData(errorLog) {
 
   if (findModulesCmd.errno === 0) {
     const modules = findModulesCmd.stdout.split('\n')
+    modules.pop()
 
     if (modules.length === 0) return;
       
