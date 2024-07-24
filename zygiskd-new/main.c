@@ -31,11 +31,7 @@ int main(int argc, char *argv[]) {
         return 1;
       }
 
-        LOGI("Previous error{3}: %s\n", strerror(errno));
-
       int fd = atoi(argv[2]);
-        LOGI("Previous error(4): %s\n", strerror(errno));
-
       entry(fd);
 
       return 0;
@@ -82,11 +78,8 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  LOGI("Previous error{27}: %s\n", strerror(errno));
   switch_mount_namespace((pid_t)1);
-  LOGI("Previous error{28}: %s\n", strerror(errno));
   root_impls_setup();
-  LOGI("Previous error{29}: %s\n", strerror(errno));
   zygiskd_start();
 
   return 0;

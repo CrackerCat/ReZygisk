@@ -67,14 +67,9 @@ void *ExecuteNew(void *arg) {
 
 
 void entry(int fd) {
-  LOGI("Previous error (2): %s\n", strerror(errno));
-
   LOGI("companion entry fd: |%d|\n", fd);
 
-  LOGI("Reading name length\n");
-
   char name[256 + 1];
-  LOGI("Previous error(6): %s\n", strerror(errno));
 
   /* INFO: Getting stuck here */
   ssize_t ret = read_string(fd, name, sizeof(name) - 1);
@@ -84,47 +79,47 @@ void entry(int fd) {
 
   LOGI("Companion process requested for `%s`\n", name);
 
-  // int library_fd;
-  // recv_fd(fd, &library_fd);
+  int library_fd;
+  recv_fd(fd, &library_fd);
 
-  // LOGI("Library fd: %d\n", library_fd);
+  LOGI("Library fd: %d\n", library_fd);
 
-  // ZygiskCompanionEntryFn entry = load_module(library_fd);
+  ZygiskCompanionEntryFn entry = load_module(library_fd);
 
-  // LOGI("Library loaded\n");
+  LOGI("Library loaded\n");
 
-  // close(library_fd);
+  close(library_fd);
 
-  // LOGI("Library closed\n");
+  LOGI("Library closed\n");
 
-  // if (entry == NULL) {
-  //   LOGI("No companion entry for: %s\n", name);
+  if (entry == NULL) {
+    LOGI("No companion entry for: %s\n", name);
 
-  //   write(fd, (void *)0, 1);
+    write(fd, (void *)0, 1);
 
-  //   return;
-  // }
+    return;
+  }
 
-  // LOGI("Companion process created for: %s\n", name);
+  LOGI("Companion process created for: %s\n", name);
 
-  // write(fd, (void *)1, 1);
+  uint8_t response = 1;
+  write(fd, &response, sizeof(response));
 
-  // while (1) {
-  //   int client_fd;
-  //   recv_fd(fd, &client_fd);
+  while (1) {
+    int client_fd;
+    recv_fd(fd, &client_fd);
 
-  //   LOGI("New companion request from module \"%s\" with fd \"%d\"\n", name, client_fd);
+    LOGI("New companion request from module \"%s\" with fd \"%d\"\n", name, client_fd);
 
-  //   int response = 1;
-  //   write(fd, (void *)&response, sizeof(response));
+    write(fd, &response, sizeof(response));
     
-  //   int *client_fd_ptr = malloc(sizeof(int));
-  //   *client_fd_ptr = client_fd;
+    int *client_fd_ptr = malloc(sizeof(int));
+    *client_fd_ptr = client_fd;
 
-  //   LOGI("Creating new thread for companion request\n");
+    LOGI("Creating new thread for companion request\n");
 
-  //   pthread_t thread;
-  //   pthread_create(&thread, NULL, ExecuteNew, (void *)client_fd_ptr);
-  //   pthread_detach(thread);
-  // }
+    pthread_t thread;
+    pthread_create(&thread, NULL, ExecuteNew, (void *)client_fd_ptr);
+    pthread_detach(thread);
+  }
 }

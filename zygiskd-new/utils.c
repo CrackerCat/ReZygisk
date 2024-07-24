@@ -269,12 +269,7 @@ ssize_t write_string(int fd, const char *str) {
 ssize_t read_string(int fd, char *str, size_t len) {
   size_t str_len_buf[1];
 
-  LOGI("Reading string length from fd %d\n", fd);
-  LOGI("Previous error: %s\n", strerror(errno));
-
   ssize_t read_bytes = read(fd, &str_len_buf, sizeof(str_len_buf));
-
-  LOGI("Read %zd bytes\n", read_bytes);
   if (read_bytes != (ssize_t)sizeof(str_len_buf)) {
     LOGE("Failed to read string length: %s\n", strerror(errno));
 

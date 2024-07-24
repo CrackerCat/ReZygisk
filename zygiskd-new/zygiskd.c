@@ -148,16 +148,12 @@ static void load_modules(enum Architecture arch, struct Context *context) {
   context->len = 0;
   context->modules = malloc(1);
 
-  // LOGI("Previous error{25}: %s\n", strerror(errno));
-
   DIR *dir = opendir(PATH_MODULES_DIR);
   if (dir == NULL) {
     LOGE("Failed opening modules directory: %s.", PATH_MODULES_DIR);
 
     return;
   }
-
-  // LOGI("Previous error{27}: %s\n", strerror(errno));
 
   char arch_str[32];
   switch (arch) {
@@ -184,11 +180,9 @@ static void load_modules(enum Architecture arch, struct Context *context) {
   }
 
   LOGI("Loading modules for architecture: %s\n", arch_str);
-  // LOGI("Previous error{28}: %s\n", strerror(errno));
 
   struct dirent *entry;
   while ((entry = readdir(dir)) != NULL) {
-    // LOGI("Previous error{29}: %s\n", strerror(errno));
     if (entry->d_type != DT_DIR) continue; /* INFO: Only directories */
     if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0 || strcmp(entry->d_name, "zygisksu") == 0) continue;
 
@@ -244,8 +238,6 @@ static int create_daemon_socket(void) {
 }
 
 static int spawn_companion(char *name, int lib_fd) {
-  // LOGI("Previous error{15}: %s\n", strerror(errno));
-
   int sockets[2];
   if (socketpair(AF_UNIX, SOCK_STREAM, 0, sockets) == -1) {
     LOGE("Failed creating socket pair.\n");
@@ -259,8 +251,6 @@ static int spawn_companion(char *name, int lib_fd) {
   LOGI("Companion fd: %d\n", companion_fd);
   LOGI("Daemon fd: %d\n", daemon_fd);
 
-  // LOGI("Previous error{13}: %s\n", strerror(errno));
-
   pid_t pid = fork();
   LOGI("Forked: %d\n", pid);
   if (pid < 0) {
@@ -271,20 +261,16 @@ static int spawn_companion(char *name, int lib_fd) {
 
     exit(1);
   } else if (pid > 0) {
-    // LOGI("Previous error{11}: %s\n", strerror(errno));
-
     close(companion_fd);
 
     LOGI("Waiting for companion to start (%d)\n", pid);
-    //  LOGI("Previous error{8}: %s\n", strerror(errno));
 
-    int status;
-    waitpid(pid, &status, 0);
+    int status = 0;
+    // waitpid(pid, &status, 0);
 
     LOGI("Companion exited with status %d\n", status);
-    //  LOGI("Previous error{9}: %s\n", strerror(errno));
 
-    if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
+    // if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
       if (write_string(daemon_fd, name) == -1) return -1;
 
       if (send_fd(daemon_fd, lib_fd) == -1) return -1;
@@ -302,13 +288,13 @@ static int spawn_companion(char *name, int lib_fd) {
       if (response == 0) return -2;
       else if (response == 1) return daemon_fd;
       else return -2;
-    } else {
-      LOGE("Exited with status %d\n", status);
+    // } else {
+    //   LOGE("Exited with status %d\n", status);
 
-      close(daemon_fd);
+    //   close(daemon_fd);
 
-      return -1;
-    }
+    //   return -1;
+    // }
   /* INFO: if pid == 0: */
   } else {
     LOGI("Companion started (%d)\n", pid);
@@ -320,7 +306,6 @@ static int spawn_companion(char *name, int lib_fd) {
   snprintf(companion_fd_str, 32, "%d", companion_fd);
 
   LOGI("Executing companion...\n");
-  //  LOGI("Previous error{10}: %s\n", strerror(errno));
 
   char *argv[] = { ZYGISKD_FILE, "companion", companion_fd_str, NULL };
   if (execv(ZYGISKD_PATH, argv) == -1) {
@@ -344,19 +329,13 @@ struct __attribute__((__packed__)) MsgHead {
 void zygiskd_start(void) {
   LOGI("Welcome to ReZygisk %s!", ZKSU_VERSION);
 
-  // LOGI("Previous error{26}: %s\n", strerror(errno));
-
   enum Architecture arch = get_arch();
-
-  // LOGI("Previous error{25}: %s\n", strerror(errno));
 
   struct Context context;
   load_modules(arch, &context);
 
   struct MsgHead *msg = NULL;
   size_t msg_sz = 0;
-
-  // LOGI("Previous error{24}: %s\n", strerror(errno));
 
   switch (get_impl()) {
     case None: {
@@ -425,13 +404,9 @@ void zygiskd_start(void) {
     }
   }
 
-  // LOGI("Previous error{22}: %s\n", strerror(errno));
-
   unix_datagram_sendto(CONTROLLER_SOCKET, (void *)msg, msg_sz);
 
   free(msg);
-
-  // LOGI("Previous error{21}: %s\n", strerror(errno));
 
   int socket_fd = create_daemon_socket();
   if (socket_fd == -1) {
@@ -441,7 +416,6 @@ void zygiskd_start(void) {
   }
 
   while (1) {
-    // LOGI("Previous error{20}: %s\n", strerror(errno));
     int client_fd = accept(socket_fd, NULL, NULL);
     if (client_fd == -1) {
       LOGE("accept: %s\n", strerror(errno));
@@ -450,8 +424,6 @@ void zygiskd_start(void) {
     }
 
     LOGI("Accepted client: %d\n", client_fd);
-
-    // LOGI("Previous error{19}: %s\n", strerror(errno));
 
     unsigned char buf[1];
     ssize_t len = read(client_fd, buf, sizeof(buf));
@@ -627,14 +599,10 @@ void zygiskd_start(void) {
       }
       case RequestCompanionSocket: {
         LOGI("Requesting companion socket\n");
-
-        // LOGI("Previous error{17}: %s\n", strerror(errno));
       
         size_t index_buf[1];
         ssize_t ret = read(client_fd, &index_buf, sizeof(index_buf));
         ASSURE_SIZE_READ_BREAK("RequestCompanionSocket", "index", ret, sizeof(index_buf));
-
-        // LOGI("Previous error{16}: %s\n", strerror(errno));
 
         size_t index = index_buf[0];
 
