@@ -12,6 +12,17 @@
       "header": "Choose your new language"
     }
   },
+  "smallPage": {
+    "language": {
+      "header": "Choose your new language"
+    },
+    "theme": {
+      "header": "Choose your new theme",
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System Based"
+    }
+  },
   "page": {
     "home": {
       "header": "Home",
@@ -40,7 +51,11 @@
       "daemonButton": {
         "start": "Start",
         "stop": "Stop",
-        "exit": "Exit"
+        "pause": "Pause"
+      },
+      "monitor": {
+        "32": "Monitor (32 bit)",
+        "64": "Monitor (64 bit)"
       },
       "status": {
         "unknown": "Unknown",
@@ -55,8 +70,8 @@
         "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
       },
       "theme": {
-        "header": "Enable light theme",
-        "description": "This option will enable light theme for WebUI"
+        "header": "System theme",
+        "description": "Choose your system theme for current WebUI"
       },
       "language": {
         "header": "Change language",

@@ -129,7 +129,6 @@ export function setErrorData(errorLog) {
 
   if (findModulesCmd.errno === 0) {
     const modules = findModulesCmd.stdout.split('\n')
-    modules.pop()
 
     if (modules.length === 0) return;
       
@@ -154,7 +153,7 @@ export function setErrorData(errorLog) {
         const name = lines.find(line => line.includes('name=')).split('=')[1]
 
         modules_list.innerHTML += 
-        `<div class="dim card" style="padding: 25px 15px;">
+        `<div class="dim card" style="padding: 25px 15px; cursor: pointer;">
           <div class="dimc" style="font-size: 1.1em;">${name}</div>
           <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
             <div class="dimc arch_desc">${translations.page.modules.arch}</div>

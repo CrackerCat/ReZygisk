@@ -13,8 +13,6 @@ export async function setNewLanguage(locate, initialize) {
   translateActionPage(old_translations, new_translations)
   translateSettingsPage(new_translations)
 
-  /* INFO: lang modal */
-  document.getElementById('lang_modal_title').innerHTML = new_translations.modal.language.header
 
   /* INFO: error history modal */
   document.getElementById('errorh_modal_title').innerHTML = new_translations.modal.logs.header
@@ -25,6 +23,15 @@ export async function setNewLanguage(locate, initialize) {
   document.getElementById('nav_modules_title').innerHTML = new_translations.page.modules.header
   document.getElementById('nav_actions_title').innerHTML = new_translations.page.action.header
   document.getElementById('nav_settings_title').innerHTML = new_translations.page.settings.header
+
+  /* INFO: Language small page */
+  document.getElementById('small_panel_lang_title').innerHTML = new_translations.smallPage.language.header
+
+  /* INFO: Theme small page */
+  document.getElementById('small_panel_theme_title').innerHTML = new_translations.smallPage.theme.header
+  document.getElementById('small_panel_theme_dark_option').innerHTML = new_translations.smallPage.theme.dark
+  document.getElementById('small_panel_theme_light_option').innerHTML = new_translations.smallPage.theme.light
+  document.getElementById('small_panel_theme_system_option').innerHTML = new_translations.smallPage.theme.system
 }
 
 export async function getTranslations(locate) {

@@ -14,13 +14,14 @@
     <script src="js/errorCatcher.js" type="module"></script>
     <script src="js/errorScreen.js" type="module"></script>
     <script src="js/browserRedirect.js" type="module"></script>
-    <script src="js/theme.js" type="module"></script>
+    <script src="js/smallPage/theme.js" type="module"></script>
     <script src="js/restoreError.js" type="module"></script>
     <script src="js/navbar.js" type="module"></script>
     <script src="js/daemonActions.js" type="module"></script>
-    <script src="js/list/language.js" type="module"></script>
+    <!-- <script src="js/list/language.js" type="module"></script> -->
     <script src="js/switcher/fontChanger.js" type="module"></script>
-    <script src="js/modal/language.js" type="module"></script>
+    <!-- <script src="js/modal/language.js" type="module"></script> -->
+    <script src="js/smallPage/language.js" type="module"></script>
     <script src="js/modal/errorHistory.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
   </head>
@@ -49,22 +50,6 @@
     <!-- INFO: Loading screen -->
     <div id="loading_screen" class="load_screen">
       <div id="backport_errorh" class="loader"></div>
-    </div>
-    
-    <!-- INFO: Language Modal -->
-    <div id="lang_modal" class="full_screen" style="top: 100%;">
-      <div class="liste" style="margin-top: 20px; margin-left: 20px;">
-        <div style="margin-left: 20px;"></div>
-        <div id="lang_modal_close" class="close_icon icon_animation" style="margin-right: 20px; width: 40px; height: 40px;">
-          <img src="assets/close.svg">
-        </div>
-      </div>
-      <div style="padding-left: 25px;">
-        <h1 id="lang_modal_title">Choose your new language</h1>
-      </div>
-      <div id="lang_modal_list" style="padding-left: 25px; padding-right: 25px;">
-        <!-- N/A -->
-      </div>
     </div>
 
     <!-- INFO: Error History Modal -->
@@ -129,6 +114,7 @@
       </div>
     </div>
 
+    <!-- INFO: Module page -->
     <div id="panel_modules" class="panel">
       <div id="panel_modules_header" class="header">Modules</div>
       <div style="padding: 40px 0px;"></div>
@@ -144,7 +130,7 @@
       <!-- INFO: Settings card body (Daemon32) -->
       <div id="daemon32" class="dimc" style="display: block; margin: 0 15px 0 15px; border-radius: 20px;">
         <div class="dimc liste" style="padding: 30px 22px 30px; border-radius: 20px;">
-          <div class="dimc" style="font-size: 1.22em;">Daemon (32 bit)</div>
+          <div id="daemon32_title" class="dimc" style="font-size: 1.22em;">Monitor (32 bit)</div>
           <div id="daemon32_status" class="dimc" style="font-size: 1.1em;">Unknown</div>
         </div>
 
@@ -152,14 +138,14 @@
           <div class="small_card_bg button_list">
             <div id="daemon32_stop_button" class="center button">Stop</div>
             <div id="daemon32_start_button" class="center button">Start</div>
-            <div id="daemon32_exit_button" class="center button">Exit</div>
+            <div id="daemon32_pause_button" class="center button">Pause</div>
           </div>
         </div>
       </div>
       <!-- INFO: Settings card body (Daemon64) -->
       <div id="daemon64" class="dimc" style="display: block; margin: 15px 15px 0 15px; border-radius: 20px;">
         <div class="dimc liste" style="padding: 30px 22px 30px; border-radius: 20px;">
-          <div class="dimc" style="font-size: 1.22em;">Daemon (64 bit)</div>
+          <div id="daemon64_title" class="dimc" style="font-size: 1.22em;">Monitor (64 bit)</div>
           <div id="daemon64_status" class="dimc" style="font-size: 1.1em;">Unknown</div>
         </div>
 
@@ -167,7 +153,7 @@
           <div class="small_card_bg button_list">
             <div id="daemon64_stop_button" class="center button">Stop</div>
             <div id="daemon64_start_button" class="center button">Start</div>
-            <div id="daemon64_exit_button" class="center button">Exit</div>
+            <div id="daemon64_pause_button" class="center button">Pause</div>
           </div>
         </div>
       </div>
@@ -195,24 +181,19 @@
       </div>
 
       <!-- INFO: Enable light theme option -->
-      <div class="small_card dimc" style="margin-top: 15px; justify-content: space-between; display: flex; align-items: center;">
-        <div class="dimc" style="display: inline-block; width: 80%;">
+      <div id="theme_page_toggle" class="small_card dimc card_animation" style="margin-top: 15px; justify-content: space-between; display: flex; align-items: center;">
+        <div class="dimc" style="display: inline-block;">
           <div id="sys_theme_option_title" class="dimc content" style="font-size: 1.1em; padding-left: 5px; padding-top: 6px; padding-bottom: 2px;">
-            Enable light theme
+            System theme
           </div>
           <div id="sys_theme_option_desc" class="dimc desc" style="font-size: 0.9em; padding-left: 5px; padding-bottom: 6px;">
-            This option will enable light theme for WebUI
+            Choose your system theme for current WebUI
           </div>
         </div>
-
-        <label class="switch dimc">
-          <input id="theme_switcher" type="checkbox">
-          <span class="slider round"></span>
-        </label>
       </div>
 
       <!-- INFO: Change language -->
-      <div id="lang_switcher" class="small_card dimc card_animation" style="margin-top: 15px; justify-content: space-between; display: flex; align-items: center;">
+      <div id="lang_page_toggle" class="small_card dimc card_animation" style="margin-top: 15px; justify-content: space-between; display: flex; align-items: center;">
         <div class="dimc" style="display: inline-block;">
           <div id="sys_lang_option_title" class="dimc content" style="font-size: 1.1em; padding-left: 5px; padding-top: 6px; padding-bottom: 2px;">
             Change language
@@ -280,6 +261,42 @@
 
     </div>
 
+    <!-- INFO: System theme small page -->
+    <div id="small_panel_theme" class="panel">
+      <div class="header" style="display: flex; align-items: center; justify-content: initial;">
+        <div id="sp_theme_close" style="width: 36px; height: 36px; margin-right: 6px;">
+          <img src="./assets/back.svg"/>
+        </div>
+        <div id="small_panel_theme_title">Theme</div>
+      </div>
+      <div style="padding: 47px 0px;"></div>
+      <div style="width: 100%; height: fit-content;">
+        <div theme-data="dark" class="dim card card_animation" style="padding: 25px 15px; cursor: pointer;">
+          <div theme-data="dark" id="small_panel_theme_dark_option" class="dimc" style="font-size: 1.1em;">Dark</div>
+        </div>
+        <div theme-data="light" class="dim card card_animation" style="padding: 25px 15px; cursor: pointer;">
+          <div theme-data="light" id="small_panel_theme_light_option" class="dimc" style="font-size: 1.1em;">Light</div>
+        </div>
+        <div theme-data="system" class="dim card card_animation" style="padding: 25px 15px; cursor: pointer;">
+          <div theme-data="system" id="small_panel_theme_system_option" class="dimc" style="font-size: 1.1em;">System Based</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO: Language small page -->
+    <div id="small_panel_language" class="panel">
+      <div class="header" style="display: flex; align-items: center; justify-content: initial;">
+        <div id="sp_lang_close" style="width: 36px; height: 36px; margin-right: 6px;">
+          <img src="./assets/back.svg"/>
+        </div>
+        <div id="small_panel_lang_title">Choose your new language</div>
+      </div>
+      <div style="padding: 47px 0px;"></div>
+      <div id="lang_modal_list" style="width: 100%; height: fit-content;">
+        <!-- N/A -->
+      </div>
+    </div>
+    
     <!-- INFO: Bottom navbar -->
     <div id="navbar" class="navbar radios">
       <div class="dimc">

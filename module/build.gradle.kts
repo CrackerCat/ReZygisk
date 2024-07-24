@@ -165,7 +165,6 @@ androidComponents.onVariants { variant ->
 
                     set.add(Pair(root.file("webroot/js/main.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/kernelsu.js").asFile, null))
-                    set.add(Pair(root.file("webroot/js/theme.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/language.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/restoreError.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/navbar.js").asFile, null))
@@ -173,6 +172,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/errorCatcher.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/browserRedirect.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/errorScreen.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/smallPageDesabler.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/translate/action.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/translate/home.js").asFile, null))
@@ -185,8 +185,6 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/themes/lightNavbar.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/themes/lightIcon.js").asFile, null))
 
-                    set.add(Pair(root.file("webroot/js/list/language.js").asFile, null))
-
                     set.add(Pair(root.file("webroot/js/switcher/fontChanger.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/lang/en_US.json").asFile, null))
@@ -198,7 +196,9 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/lang/zh_CN.json").asFile, null))
                     set.add(Pair(root.file("webroot/lang/zh_TW.json").asFile, null))
 
-                    set.add(Pair(root.file("webroot/js/modal/language.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/smallPage/language.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/smallPage/theme.js").asFile, null))
+
                     set.add(Pair(root.file("webroot/js/modal/errorHistory.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/css/index.css").asFile, null))
@@ -222,6 +222,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/assets/home.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/delete.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/ec-icon.svg").asFile, null))
+                    set.add(Pair(root.file("webroot/assets/back.svg").asFile, null))
 
                     set.add(Pair(root.file("webroot/assets_light/action.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets_light/home.svg").asFile, null))

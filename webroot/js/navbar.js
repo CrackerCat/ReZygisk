@@ -5,9 +5,19 @@ document.getElementById(`nibg_home`).classList.toggle('show')
 
 document.querySelectorAll('[name=navbutton]').forEach((element) => {
   element.addEventListener('click', (event) => {
+    let smallPagePass = false
     const value = event.target.value
     const previous = !localStorage.getItem('/cache/navbar/previous') ? setData('home') : localStorage.getItem('/cache/navbar/previous')
-    if (previous === value) return;
+
+    const small_panel = localStorage.getItem('/cache/page/small/previous')
+
+    if (small_panel && small_panel.length !== 0) {
+      document.getElementById(`small_panel_${small_panel}`).classList.remove('show')
+      localStorage.removeItem('/cache/page/small/previous')
+      smallPagePass = true
+    }
+
+    if (previous === value && !smallPagePass) return;
 
     /* INFO: Disable icon on old state */
     const pre_input = document.getElementById(`n_${previous}`)

@@ -1,5 +1,5 @@
 {
-  "langName": "Português (Brasil)",
+  "langName": "🇧🇷 Português (Brasil)",
   "global": {
     "unknown": "Desconhecido"
   },
@@ -7,9 +7,17 @@
     "logs": {
       "header": "Histórico de erros",
       "placeholder": "Nenhum erro foi salvo aqui!"
-    },
+    }
+  },
+  "smallPage": {
     "language": {
       "header": "Escolha sua nova língua"
+    },
+    "theme": {
+      "header": "Choose your new theme",
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System Based"
     }
   },
   "page": {
@@ -40,7 +48,11 @@
       "daemonButton": {
         "start": "Iniciar",
         "stop": "Parar",
-        "exit": "Sair"
+        "pause": "Pausar"
+      },
+      "monitor": {
+        "32": "Monitor (32 bit)",
+        "64": "Monitor (64 bit)"
       },
       "status": {
         "unknown": "Desconhecido",
@@ -55,8 +67,8 @@
         "description": "Esta opção irá usar a fonte do sistema na atual WebUI. Observação: Talvez não seja compatível com o FlipFont"
       },
       "theme": {
-        "header": "Usar o tema claro",
-        "description": "Esta opção ira abilitar o tema claro para a WebUI"
+        "header": "System theme",
+        "description": "Choose your system theme for current WebUI"
       },
       "language": {
         "header": "Alterar a língua",
