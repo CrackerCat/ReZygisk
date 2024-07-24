@@ -130,7 +130,9 @@ export function setErrorData(errorLog) {
   if (findModulesCmd.errno === 0) {
     const modules = findModulesCmd.stdout.split('\n')
 
-    if (modules.length === 0) return;
+    if (modules.length === 0 || !findModulesCmd.stdout.replace(/\s/g, '').length) return;
+
+    document.getElementById('modules_list_not_avaliable').style.display = 'none'
       
     for (const module of modules) {
       const lsZygiskCmd = await exec(`ls ${module}/zygisk`)

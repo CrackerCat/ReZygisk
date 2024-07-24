@@ -41,6 +41,7 @@
     },
     "modules": {
       "header": "模塊",
+      "notAvaliable": "No modules using Zygisk here.",
       "arch": "架構: "
     },
     "action": {

@@ -44,6 +44,7 @@
     },
     "modules": {
       "header": "Modules",
+      "notAvaliable": "No modules using Zygisk here.",
       "arch": "Architecture: "
     },
     "action": {

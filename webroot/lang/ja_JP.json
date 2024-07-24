@@ -40,8 +40,9 @@
       }
     },
     "modules": {
-    "header": "モジュール",
-    "arch": "アーキテクチャー: "
+      "header": "モジュール",
+      "notAvaliable": "No modules using Zygisk here.",
+      "arch": "アーキテクチャー: "
     },
     "action": {
       "header": "Action",

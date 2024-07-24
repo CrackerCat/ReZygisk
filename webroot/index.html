@@ -18,9 +18,7 @@
     <script src="js/restoreError.js" type="module"></script>
     <script src="js/navbar.js" type="module"></script>
     <script src="js/daemonActions.js" type="module"></script>
-    <!-- <script src="js/list/language.js" type="module"></script> -->
     <script src="js/switcher/fontChanger.js" type="module"></script>
-    <!-- <script src="js/modal/language.js" type="module"></script> -->
     <script src="js/smallPage/language.js" type="module"></script>
     <script src="js/modal/errorHistory.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
@@ -118,7 +116,10 @@
     <div id="panel_modules" class="panel">
       <div id="panel_modules_header" class="header">Modules</div>
       <div style="padding: 40px 0px;"></div>
-      <div id="modules_list" style="width: 100%; height: fit-content;">
+      <div id="modules_list" style="width: 100%; height: fit-content; display: grid;">
+        <div id="modules_list_not_avaliable" class="not_avaliable">
+          No modules using Zygisk here.
+        </div>
         <!-- N/A -->
       </div>
     </div>

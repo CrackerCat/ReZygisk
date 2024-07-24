@@ -41,6 +41,15 @@ a {
   justify-content: center;
 }
 
+.not_avaliable {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+
 .load_screen {
   position: fixed;
   width: 100%;
@@ -58,10 +67,7 @@ a {
   position: fixed;
   overflow-y: scroll;
   z-index: 10;
-  top: 0;
-  bottom: 0; 
-  left: 0; 
-  right: 0; 
+  top: 0; bottom: 0; left: 0; right: 0;
   transition: top 0.35s ease-in-out;
 }
 
@@ -97,9 +103,7 @@ a {
   align-items: center;
   justify-content: space-between;
   background-color: var(--dim);
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 0; right: 0; bottom: 0;
   padding: 25px 25px;
   font-size: 20px;
 }
@@ -291,10 +295,7 @@ a {
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background-color: var(--button);
   -webkit-transition: .4s;
   transition: .4s;

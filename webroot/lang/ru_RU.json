@@ -41,6 +41,7 @@
     },
     "modules": {
       "header": "Модули",
+      "notAvaliable": "No modules using Zygisk here.",
       "arch": "Архи-ра: "
     },
     "action": {
