@@ -28,15 +28,14 @@
 #endif
 
 #if (defined(__LP64__) || defined(_LP64))
-  #define lp_select(a, b) a
-#else
   #define lp_select(a, b) b
+#else
+  #define lp_select(a, b) a
 #endif
 
-#define PATH_MODULES_DIR ".."
-#define ZYGOTE_INJECTED (lp_select(5, 4))
-#define DAEMON_SET_INFO (lp_select(7, 6))
-#define DAEMON_SET_ERROR_INFO (lp_select(9, 8))
+#define ZYGOTE_INJECTED lp_select(5, 4)
+#define DAEMON_SET_INFO lp_select(7, 6)
+#define DAEMON_SET_ERROR_INFO lp_select(9, 8)
 #define SYSTEM_SERVER_STARTED 10
 
 enum DaemonSocketAction {
@@ -51,14 +50,15 @@ enum DaemonSocketAction {
   SystemServerStarted
 };
 
-enum ProcessFlags {
-  PROCESS_GRANTED_ROOT = 1 << 0,
-  PROCESS_ON_DENYLIST = 1 << 1,
-  PROCESS_IS_MANAGER = 1 << 28,
-  PROCESS_ROOT_IS_APATCH = 1 << 27,
-  PROCESS_ROOT_IS_KSU = 1 << 29,
-  PROCESS_ROOT_IS_MAGISK = 1 << 30,
-  PROCESS_IS_SYSUI = 1 << 31
+enum ProcessFlags: uint32_t {
+  PROCESS_GRANTED_ROOT = (1u << 0),
+  PROCESS_ON_DENYLIST = (1u << 1),
+  PROCESS_IS_MANAGER = (1u << 28),
+  PROCESS_ROOT_IS_APATCH = (1u << 27),
+  PROCESS_ROOT_IS_KSU = (1u << 29),
+  PROCESS_ROOT_IS_MAGISK = (1u << 30),
+  PROCESS_IS_SYS_UI = (1u << 31),
+  PROCESS_IS_SYSUI = (1u << 31)
 };
 
 enum RootImplState {

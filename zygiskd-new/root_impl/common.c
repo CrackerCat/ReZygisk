@@ -1,10 +1,12 @@
+#include <sys/types.h>
+
 #include "kernelsu.h"
 
 #include "common.h"
 
 static enum RootImpl ROOT_IMPL = None;
 
-void root_impls_setup() {
+void root_impls_setup(void) {
   enum RootImplState ksu_version = ksu_get_kernel_su();
 
   enum RootImpl impl = None;
@@ -14,11 +16,11 @@ void root_impls_setup() {
   ROOT_IMPL = impl;
 }
 
-enum RootImpl get_impl() {
+enum RootImpl get_impl(void) {
   return ROOT_IMPL;
 }
 
-bool uid_granted_root(int uid) {
+bool uid_granted_root(uid_t uid) {
   switch (get_impl()) {
     case KernelSU: {
       return ksu_uid_granted_root(uid);
@@ -29,7 +31,7 @@ bool uid_granted_root(int uid) {
   }
 }
 
-bool uid_should_umount(int uid) {
+bool uid_should_umount(uid_t uid) {
   switch (get_impl()) {
     case KernelSU: {
       return ksu_uid_should_umount(uid);
@@ -40,7 +42,7 @@ bool uid_should_umount(int uid) {
   }
 }
 
-bool uid_is_manager(int uid) {
+bool uid_is_manager(uid_t uid) {
   switch (get_impl()) {
     case KernelSU: {
       return ksu_uid_is_manager(uid);

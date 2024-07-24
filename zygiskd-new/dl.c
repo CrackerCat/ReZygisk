@@ -17,7 +17,7 @@ struct AndroidDlextinfo {
   size_t reserved_size;
   int relro_fd;
   int library_fd;
-  __off64_t library_fd_offset;
+  off64_t library_fd_offset;
   struct AndroidNamespace *library_namespace;
 };
 
@@ -45,7 +45,7 @@ void *android_dlopen(char *path, u_int32_t flags) {
       ANDROID_NAMESPACE_TYPE_SHARED,
       NULL,
       NULL,
-      &android_dlopen
+      (void *)&android_dlopen
     );
 
     if (ns != NULL) {
