@@ -7,9 +7,6 @@
     "logs": {
       "header": "Error History",
       "placeholder": "No error log recorded here!"
-    },
-    "language": {
-      "header": "Choose your new language"
     }
   },
   "smallPage": {
