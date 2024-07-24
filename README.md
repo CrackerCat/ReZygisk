@@ -18,15 +18,15 @@ ReZygisk is a fork of Zygisk Next, a standalone implementation of Zygisk, provid
 It aims to modernize and re-write the codebase to C (from C++ and Rust), allowing a more efficient and faster implementation of the Zygisk API with a more permissive license.
 
 > [!NOTE]
-> This module/fork is WIP (Work In Progress); only use .zip from the Releases.
+> This module/fork is WIP (Work In Progress); Please wait for the stable version to be released on [Releases](https://github.com/PerformanC/ReZygisk/releases/latest) page.
 >
 > Although you may install the .zip from the [Actions](https://github.com/PerformanC/ReZygisk/actions) page, it is only at your discretion to install it since your device might enter bootloop.
 
 ## Why?
 
-The latest releases of Zygisk Next are not open-source, reserving entirely the code for its developers. Not only that limits our ability to contribute to the project, but also impossibilitates the audit of the code, which is a major concern for security, as Zygisk Next is a module that runs with superuser (root) privileges, having access to the entire system.
+The latest releases of Zygisk Next are not open-source, reserving entirely the code for its developers. Not only does that limit our ability to contribute to the project, but it also makes it impossible to audit the code, which is a major security concern, as Zygisk Next is a module that runs with superuser (root) privileges, having access to the entire system.
 
-The Zygisk Next developers are famous and trusted in the Android community, however this doesn't mean that the code is not malicious or vulnerable. We (PerformanC) understand they have their reasons to keep the code closed-source, but we believe that contrary.
+The Zygisk Next developers are famous and trusted in the Android community, however this doesn't mean that the code is not malicious or vulnerable. We (PerformanC) understand they have their reasons for keeping the code closed-source, but we believe the contrary.
 
 ## Advantages
 
@@ -66,7 +66,7 @@ The Zygisk Next developers are famous and trusted in the Android community, howe
 
 ## Usage
 
-We're currently on the process of cooking. (Coming Soon)
+We're currently in the process of cooking. (Coming Soon)
 
 ## Installation
 
@@ -81,8 +81,8 @@ For any question related to ReZygisk or other PerformanC projects, feel free to 
 
 ## Contribution
 
-It is mandatory to follow the PerformanC's [Contribution Guidelines](https://github.com/PerformanC/contributing) to contribute to ReZygisk. Following its Security Policy, Code of Conduct and syntax standard.
+It is mandatory to follow PerformanC's [Contribution Guidelines](https://github.com/PerformanC/contributing) to contribute to ReZygisk. Following its Security Policy, Code of Conduct, and syntax standard.
 
 ## License
 
-ReZygisk is licensed majoritaly under GPL, by Dr-TSNG, but also BSD 2-Clause License for re-written code. You can read more about it on [Open Source Initiative](https://opensource.org/licenses/BSD-2-Clause).
+ReZygisk is licensed, primarily under GPL by Dr-TSNG, but also by BSD 2-Clause License for re-written code. You can read more about it on [Open Source Initiative](https://opensource.org/licenses/BSD-2-Clause).
