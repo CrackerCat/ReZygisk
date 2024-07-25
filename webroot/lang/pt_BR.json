@@ -15,9 +15,9 @@
     },
     "theme": {
       "header": "Choose your new theme",
-      "dark": "Dark",
-      "light": "Light",
-      "system": "System Based"
+      "dark": "Escuro",
+      "light": "Claro",
+      "system": "Baseado no do sistema"
     }
   },
   "page": {
@@ -41,7 +41,7 @@
     },
     "modules": {
       "header": "Módulos",
-      "notAvaliable": "No modules using Zygisk here.",
+      "notAvaliable": "Nenhum módulo está usando Zygisk aqui.",
       "arch": "Arquitetura: "
     },
     "action": {
@@ -68,8 +68,8 @@
         "description": "Esta opção irá usar a fonte do sistema na atual WebUI. Observação: Talvez não seja compatível com o FlipFont"
       },
       "theme": {
-        "header": "System theme",
-        "description": "Choose your system theme for current WebUI"
+        "header": "Tema do sistema",
+        "description": "Escolha o tema do seu sistema para o WebUI atual"
       },
       "language": {
         "header": "Alterar a língua",
@@ -80,13 +80,13 @@
         "description": "Veja o histórico de erros inteiro"
       },
       "credits": {
-        "module": "Module Developer",
-        "original": "Original Module Developer",
-        "web": "WebUI Developer"
+        "module": "Desenvolvedora do módulo",
+        "original": "Desenvolvedor original do módulo",
+        "web": "Desenvolvedor do WebUI"
       },
       "license": {
-        "module": "Module License",
-        "web": "WebUI License"
+        "module": "Licença do módulo",
+        "web": "Licença da WebUI"
       }
     }
   }
