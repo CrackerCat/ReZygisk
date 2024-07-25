@@ -91,12 +91,10 @@ int main(int argc, char **argv) {
 
     return 0;
   } else if (argc >= 2 && strcmp(argv[1], "version") == 0) {
-    printf("ReZygisk Tracer %s\n", ZKSU_VERSION);
+    /* INFO: Noop*/
 
     return 0;
   } else if (argc >= 2 && strcmp(argv[1], "info") == 0) {
-    printf("ReZygisk Tracer %s\n", ZKSU_VERSION);
-    
     struct zygote_info info;
     zygiskd::GetInfo(&info);
 
@@ -124,7 +122,6 @@ int main(int argc, char **argv) {
 
     return 0;
   } else {
-    printf("ReZygisk Tracer %s\n", ZKSU_VERSION);
     printf(
       "Available commands:\n"
       " - monitor\n"
