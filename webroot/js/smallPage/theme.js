@@ -24,7 +24,6 @@ page_toggle.addEventListener('click', () => {
 document.addEventListener('click', async (event) => {
   const getSystemTheme = event.target.getAttribute('theme-data')
   if (!getSystemTheme || typeof getSystemTheme !== 'string') return
-  if (getSystemTheme === sys_thene) return
 
   switch (getSystemTheme) {
     case 'dark': 
