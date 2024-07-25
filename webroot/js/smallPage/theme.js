@@ -24,6 +24,7 @@ page_toggle.addEventListener('click', () => {
 document.addEventListener('click', async (event) => {
   const getSystemTheme = event.target.getAttribute('theme-data')
   if (!getSystemTheme || typeof getSystemTheme !== 'string') return
+  if (getSystemTheme === sys_thene) return
 
   switch (getSystemTheme) {
     case 'dark': 
@@ -41,7 +42,7 @@ document.addEventListener('click', async (event) => {
 
   smallPageDisabler('theme', 'settings')
 
-  localStorage.setItem('/system/theme', getSystemTheme)
+  sys_theme = setData(getSystemTheme)
 }, false)
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
