@@ -63,9 +63,9 @@ export function setErrorData(errorLog) {
 
     /* INFO: Root implementation and ReZygisk version parsing */
     code_version.innerHTML = lines[0].split('Tracer ')[1].split('-')[0]
-    root_impl.innerHTML = lines[4].split(': ')[1]
+    root_impl.innerHTML = lines[3].split(': ')[1]
 
-    if (lines[5].split(': ')[1] === 'yes') {
+    if (lines[4].split(': ')[1] === 'yes') {
       zygote64_status_div.innerHTML = translations.page.home.info.zygote.injected
     } else {
       zygote64_status_div.innerHTML = translations.page.home.info.zygote.notInjected
@@ -88,9 +88,9 @@ export function setErrorData(errorLog) {
 
     /* INFO: Root implementation and ReZygisk version parsing -- Necessary if 64-bit fails */
     code_version.innerHTML = lines[0].split('Tracer ')[1].split('-')[0]
-    root_impl.innerHTML = lines[4].split(': ')[1]
+    root_impl.innerHTML = lines[3].split(': ')[1]
 
-    if (lines[5].split(': ')[1] === 'yes') {
+    if (lines[4].split(': ')[1] === 'yes') {
       zygote32_status_div.innerHTML = translations.page.home.info.zygote.injected
     } else {
       zygote32_status_div.innerHTML = translations.page.home.info.zygote.notInjected
