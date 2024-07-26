@@ -29,13 +29,15 @@ val commitHash: String by rootProject.extra
 val CFlagsRelease = arrayOf(
   "-D_GNU_SOURCE", "-std=c99", "-Wpedantic", "-Wall", "-Wextra", "-Werror",
   "-Wformat", "-Wuninitialized", "-Wshadow", "-Wno-zero-length-array", 
-  "-Wno-fixed-enum-extension", "-Iroot_impl", "-llog"
+  "-Wno-fixed-enum-extension", "-Iroot_impl", "-llog",
+  "-Wl,--strip-all", "-flto=thin", "-Ofast"
 )
 
 val CFlagsDebug = arrayOf(
   "-D_GNU_SOURCE", "-std=c99", "-Wpedantic", "-Wall", "-Wextra", "-Werror",
   "-Wformat", "-Wuninitialized", "-Wshadow", "-Wno-zero-length-array", 
-  "-Wno-fixed-enum-extension", "-Iroot_impl", "-llog", "-g"
+  "-Wno-fixed-enum-extension", "-Iroot_impl", "-llog",
+  "-g", "-O0"
 )
 
 val Files = arrayOf(

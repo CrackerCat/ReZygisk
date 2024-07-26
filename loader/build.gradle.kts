@@ -35,11 +35,11 @@ val defaultCFlags = arrayOf(
 )
 
 val releaseFlags = arrayOf(
-    "-Oz", "-flto",
     "-Wno-unused", "-Wno-unused-parameter",
     "-fvisibility=hidden", "-fvisibility-inlines-hidden",
     "-fno-unwind-tables", "-fno-asynchronous-unwind-tables",
-    "-Wl,--exclude-libs,ALL", "-Wl,--gc-sections", "-Wl,--strip-all"
+    "-Wl,--exclude-libs,ALL", "-Wl,--gc-sections",
+    "-Wl,--strip-all", "-Ofast", "-flto=thin",
 )
 
 android {
