@@ -28,8 +28,10 @@ val ccachePath by lazy {
 val defaultCFlags = arrayOf(
     "-Wall", "-Wextra",
     "-fno-rtti", "-fno-exceptions",
+    "-fvisibility=hidden", "-fvisibility-inlines-hidden",
     "-fno-stack-protector", "-fomit-frame-pointer",
-    "-Wno-builtin-macro-redefined", "-D__FILE__=__FILE_NAME__"
+    "-Wno-builtin-macro-redefined", "-D__FILE__=__FILE_NAME__",
+    "-O0", "-g"
 )
 
 val releaseFlags = arrayOf(
