@@ -59,14 +59,20 @@ export function setErrorData(errorLog) {
   const ptrace64Cmd = await exec('/data/adb/modules/zygisksu/bin/zygisk-ptrace64 info')
 
   if (ptrace64Cmd.errno === 0) {
-    const lines = ptrace64Cmd.stdout.split('\n')
+    const [ version_line, _, process_line, daemon_running_or_root_impl_line, daemon_running_line ] = ptrace64Cmd.stdout.split('\n')
 
     /* INFO: Root implementation and ReZygisk version parsing */
-    code_version.innerHTML = lines[0].split('Tracer ')[1].split('-')[0]
-    root_impl.innerHTML = lines[3].split(': ')[1]
+    if (daemon_running_line) {
+      code_version.innerHTML = version_line.split('Tracer ')[1].split('-')[0]
+      root_impl.innerHTML = daemon_running_or_root_impl_line.split(': ')[1]
 
-    if (lines[4].split(': ')[1] === 'yes') {
-      zygote64_status_div.innerHTML = translations.page.home.info.zygote.injected
+      if (daemon_running_line.split(': ')[1] === 'yes') {
+        zygote64_status_div.innerHTML = translations.page.home.info.zygote.injected
+      } else {
+        zygote64_status_div.innerHTML = translations.page.home.info.zygote.notInjected
+
+        zygote64_status = UNEXPECTED_FAIL
+      }
     } else {
       zygote64_status_div.innerHTML = translations.page.home.info.zygote.notInjected
 
@@ -84,14 +90,20 @@ export function setErrorData(errorLog) {
   const ptrace32Cmd = await exec('/data/adb/modules/zygisksu/bin/zygisk-ptrace32 info')
 
   if (ptrace32Cmd.errno === 0) {
-    const lines = ptrace32Cmd.stdout.split('\n')
+    const [ version_line, _, process_line, daemon_running_or_root_impl_line, daemon_running_line ] = ptrace32Cmd.stdout.split('\n')
 
     /* INFO: Root implementation and ReZygisk version parsing -- Necessary if 64-bit fails */
-    code_version.innerHTML = lines[0].split('Tracer ')[1].split('-')[0]
-    root_impl.innerHTML = lines[3].split(': ')[1]
+    if (daemon_running_line) {
+      code_version.innerHTML = version_line.split('Tracer ')[1].split('-')[0]
+      root_impl.innerHTML = daemon_running_or_root_impl_line.split(': ')[1]
 
-    if (lines[4].split(': ')[1] === 'yes') {
-      zygote32_status_div.innerHTML = translations.page.home.info.zygote.injected
+      if (daemon_running_line.split(': ')[1] === 'yes') {
+        zygote32_status_div.innerHTML = translations.page.home.info.zygote.injected
+      } else {
+        zygote32_status_div.innerHTML = translations.page.home.info.zygote.notInjected
+
+        zygote32_status = UNEXPECTED_FAIL
+      }
     } else {
       zygote32_status_div.innerHTML = translations.page.home.info.zygote.notInjected
 
