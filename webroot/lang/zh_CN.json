@@ -5,29 +5,29 @@
   },
   "modal": {
     "logs": {
-      "header": "Error History",
-      "placeholder": "No error log recorded here!"
+      "header": "错误日志",
+      "placeholder": "暂时没有错误日志"
     }
   },
   "smallPage": {
     "language": {
-      "header": "选择你的语言"
+      "header": "选择语言"
     },
     "theme": {
-      "header": "Choose your new theme",
-      "dark": "Dark",
-      "light": "Light",
-      "system": "System Based"
+      "header": "选择主题风格",
+      "dark": "暗色",
+      "light": "浅色",
+      "system": "跟随系统设置"
     }
   },
   "page": {
     "home": {
-      "header": "Home",
+      "header": "主页",
       "status": {
-        "unknown": "Unknown",
-        "notWorking": "Not Working",
-        "ok": "Working",
-        "partially": "Partially Working"
+        "unknown": "未知",
+        "notWorking": "未运行",
+        "ok": "运行中",
+        "partially": "部分运行"
       },
       "info": {
         "version": "版本",
@@ -41,52 +41,52 @@
     },
     "modules": {
       "header": "模块",
-      "notAvaliable": "No modules using Zygisk here.",
+      "notAvaliable": "目前没有模块使用Zygisk",
       "arch": "架构: "
     },
     "action": {
-      "header": "Action",
+      "header": "操作",
       "daemonButton": {
         "start": "启动",
         "stop": "停止",
-        "pause": "Pause"
+        "pause": "暂停"
       },
       "monitor": {
-        "32": "Monitor (32 bit)",
-        "64": "Monitor (64 bit)"
+        "32": "监视器 (32位)",
+        "64": "监视器 (64位)"
       },
       "status": {
-        "unknown": "Unknown",
-        "notWorking": "Not Working",
-        "ok": "Working"
+        "unknown": "未知",
+        "notWorking": "未运行",
+        "ok": "运行中"
       }
     },
     "settings": {
       "header": "设置",
       "font": {
-        "header": "Enable system font",
-        "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
+        "header": "使用系统字体",
+        "description": "此选项将在此应用中启用系统字体。可能与FlipFont不兼容。"
       },
       "theme": {
-        "header": "System theme",
-        "description": "Choose your system theme for current WebUI"
+        "header": "主题",
+        "description": "选择Web界面的主题风格"
       },
       "language": {
-        "header": "Change language",
-        "description": "Change to your new language"
+        "header": "语言",
+        "description": "切换不同的语言"
       },
       "logs": {
-        "header": "Error History",
-        "description": "View all of your error log"
+        "header": "错误日志",
+        "description": "浏览记录下来的所有错误日志"
       },
       "credits": {
-        "module": "Module Developer",
-        "original": "Original Module Developer",
-        "web": "WebUI Developer"
+        "module": "模块开发者",
+        "original": "源模块开发者",
+        "web": "Web界面开发者"
       },
       "license": {
-        "module": "Module License",
-        "web": "WebUI License"
+        "module": "模块开源许可",
+        "web": "Web界面开源许可"
       }
     }
   }
