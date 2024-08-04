@@ -53,6 +53,9 @@ export function setErrorData(errorLog) {
   const zygote32_status_div = document.getElementById('zygote32_status')
   const zygote64_status_div = document.getElementById('zygote64_status')
 
+  const modules_32 = []
+  const modules_64 = []
+
   let zygote64_status = EXPECTED
   let zygote32_status = EXPECTED
 
@@ -77,6 +80,20 @@ export function setErrorData(errorLog) {
       zygote64_status_div.innerHTML = translations.page.home.info.zygote.notInjected
 
       zygote64_status = UNEXPECTED_FAIL
+    }
+
+    let modules_amount = lines[5].split(': ')[1]
+
+    if (modules_amount !== 'N/A') {
+      modules_amount = parseInt(modules_amount)
+
+      for (let i = 0; i < modules_amount; i++) {
+        const module = lines[6 + i].split(' - ')[1]
+
+        modules_32.push(module)
+      }
+
+      document.getElementById('modules_list_not_avaliable').style.display = 'none'
     }
   } else if (ptrace64Cmd.stderr.includes('cannot execute binary file: Exec format error')) {
     zygote64_div.style.display = 'none'
@@ -109,6 +126,20 @@ export function setErrorData(errorLog) {
 
       zygote32_status = UNEXPECTED_FAIL
     }
+
+    let modules_amount = lines[5].split(': ')[1]
+
+    if (modules_amount !== 'N/A') {
+      modules_amount = parseInt(modules_amount)
+
+      for (let i = 0; i < modules_amount; i++) {
+        const module = lines[6 + i].split(' - ')[1]
+
+        modules_64.push(module)
+      }
+
+      document.getElementById('modules_list_not_avaliable').style.display = 'none'
+    }
   } else if (ptrace32Cmd.stderr.includes('not executable: 32-bit ELF file')) {
     zygote32_div.style.display = 'none'
     daemon32_div.style.display = 'none'
@@ -132,53 +163,36 @@ export function setErrorData(errorLog) {
     rezygisk_state.innerHTML = translations.page.home.status.notWorking
   }
 
+  const modules_64_32 = []
+
+  modules_64.forEach((module) => modules_64_32.push({
+    name: module,
+    bitsUsed: [ '64 bit' ]
+  }))
+
+  modules_32.forEach((module) => {
+    const module_index = modules_64_32.findIndex((module_64_32) => module_64_32.name === module)
+
+    if (module_index !== -1) modules_64_32[module_index].bitsUsed.push('32 bit')
+    else modules_64_32.push({
+      name: module,
+      bitsUsed: [ '32 bit' ]
+    })
+  })
+
   const modules_list = document.getElementById('modules_list')
 
   /* INFO: This hides the throbber screen */
   loading_screen.style.display = 'none'
 
-  const findModulesCmd = await exec('find /data/adb/modules -type d -name zygisk -exec dirname {} \\;')
-
-  if (findModulesCmd.errno === 0) {
-    const modules = findModulesCmd.stdout.split('\n')
-
-    if (modules.length === 0 || !findModulesCmd.stdout.replace(/\s/g, '').length) return;
-
-    document.getElementById('modules_list_not_avaliable').style.display = 'none'
-      
-    for (const module of modules) {
-      const lsZygiskCmd = await exec(`ls ${module}/zygisk`)
-      if (lsZygiskCmd.errno !== 0) {
-        setError('ls', `Error while listing files in zygisk folder of module ${module} (${lsZygiskCmd.errno}): ${lsZygiskCmd.stderr}`)
-
-        continue
-      }
-
-      const bitsUsed = []
-      if (zygote32_status === EXPECTED && lsZygiskCmd.stdout.split('\n').find((line) => [ 'armeabi-v7a.so', 'x86.so' ].includes(line))) bitsUsed.push('32 bit')
-      if (zygote64_status === EXPECTED && lsZygiskCmd.stdout.split('\n').find((line) => [ 'arm64-v8a.so', 'x86_64.so' ].includes(line))) bitsUsed.push('64 bit')
-
-      if (bitsUsed.length === 0) bitsUsed.push('N/A')
-
-      const catCmd = await exec(`cat ${module}/module.prop`)
-
-      if (catCmd.errno === 0) {
-        const lines = catCmd.stdout.split('\n')
-        const name = lines.find(line => line.includes('name=')).split('=')[1]
-
-        modules_list.innerHTML += 
-        `<div class="dim card" style="padding: 25px 15px; cursor: pointer;">
-          <div class="dimc" style="font-size: 1.1em;">${name}</div>
-          <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
-            <div class="dimc arch_desc">${translations.page.modules.arch}</div>
-            <div class="dimc" style="margin-left: 5px;">${bitsUsed.join(' / ')}</div>
-          </div>
-        </div>`
-      } else {
-        setError('cat', `Error while reading module.prop from module ${module} (${catCmd.errno}): ${catCmd.stderr}`)
-      }
-    }
-  } else {
-    setError('find', `Error while finding zygisk modules (${findModulesCmd.errno}): ${findModulesCmd.stderr}`)
-  }
+  modules_64_32.forEach((module) => {
+    modules_list.innerHTML += 
+      `<div class="dim card" style="padding: 25px 15px; cursor: pointer;">
+        <div class="dimc" style="font-size: 1.1em;">${module.name}</div>
+        <div class="dimc desc" style="font-size: 0.9em; margin-top: 3px; white-space: nowrap; align-items: center; display: flex;">
+          <div class="dimc arch_desc">${translations.page.modules.arch}</div>
+          <div class="dimc" style="margin-left: 5px;">${module.bitsUsed.join(' / ')}</div>
+        </div>
+      </div>`
+  })
 })().catch((err) => setError('WebUI', err.stack ? err.stack : err.message))
