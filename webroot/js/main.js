@@ -129,7 +129,7 @@ export function setErrorData(errorLog) {
       zygote32_status = UNEXPECTED_FAIL
     }
 
-    let lines = ptrace32Cmd.stdout.split('\n')
+    const lines = ptrace32Cmd.stdout.split('\n')
 
     if (modules_amount !== 'N/A') {
       modules_amount = parseInt(modules_amount)
