@@ -62,7 +62,8 @@ export function setErrorData(errorLog) {
   const ptrace64Cmd = await exec('/data/adb/modules/zygisksu/bin/zygisk-ptrace64 info')
 
   if (ptrace64Cmd.errno === 0) {
-    const [ version_line, _, process_line, daemon_running_or_root_impl_line, daemon_running_line ] = ptrace64Cmd.stdout.split('\n')
+    const [ version_line, _, process_line, daemon_running_or_root_impl_line, daemon_running_line, module_amount_line] = ptrace64Cmd.stdout.split('\n')
+    let modules_amount = module_amount_line.split(': ')[1]
 
     /* INFO: Root implementation and ReZygisk version parsing */
     if (daemon_running_line) {
@@ -83,7 +84,6 @@ export function setErrorData(errorLog) {
     }
 
     let lines = ptrace64Cmd.stdout.split('\n')
-    let modules_amount = lines[5].split(': ')[1]
 
     if (modules_amount !== 'N/A') {
       modules_amount = parseInt(modules_amount)
@@ -108,7 +108,8 @@ export function setErrorData(errorLog) {
   const ptrace32Cmd = await exec('/data/adb/modules/zygisksu/bin/zygisk-ptrace32 info')
 
   if (ptrace32Cmd.errno === 0) {
-    const [ version_line, _, process_line, daemon_running_or_root_impl_line, daemon_running_line ] = ptrace32Cmd.stdout.split('\n')
+    const [ version_line, _, process_line, daemon_running_or_root_impl_line, daemon_running_line, module_amount_line] = ptrace32Cmd.stdout.split('\n')
+    let modules_amount = module_amount_line.split(': ')[1]
 
     /* INFO: Root implementation and ReZygisk version parsing -- Necessary if 64-bit fails */
     if (daemon_running_line) {
@@ -129,7 +130,6 @@ export function setErrorData(errorLog) {
     }
 
     let lines = ptrace32Cmd.stdout.split('\n')
-    let modules_amount = lines[5].split(': ')[1]
 
     if (modules_amount !== 'N/A') {
       modules_amount = parseInt(modules_amount)
