@@ -108,7 +108,7 @@ export function setErrorData(errorLog) {
   const ptrace32Cmd = await exec('/data/adb/modules/zygisksu/bin/zygisk-ptrace32 info')
 
   if (ptrace32Cmd.errno === 0) {
-    const [ version_line, _, process_line, daemon_running_or_root_impl_line, daemon_running_line, module_amount_line] = ptrace32Cmd.stdout.split('\n')
+    const [ version_line, _, process_line, daemon_running_or_root_impl_line, daemon_running_line, module_amount_line ] = ptrace32Cmd.stdout.split('\n')
     let modules_amount = module_amount_line.split(': ')[1]
 
     /* INFO: Root implementation and ReZygisk version parsing -- Necessary if 64-bit fails */
