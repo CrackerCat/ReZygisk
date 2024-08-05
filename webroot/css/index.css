@@ -88,8 +88,9 @@ a {
   justify-content: space-between;
   left: 0;
   right: 0;
-  padding: 25px 15px;
+  padding: 20px 35px;
   font-size: 20px;
+  border-bottom: #585b5d solid 1px;
   z-index: 5;
 }
 
@@ -199,7 +200,7 @@ a {
 .small_card {
   background: var(--small-card);
   border-radius: 15px;
-  padding: 5px 10px 0 10px;
+  padding: 5px 15px 0 15px;
   margin: 15px 15px 0 15px;
   padding-bottom: 5px;
 }
