@@ -5,29 +5,29 @@
   },
   "modal": {
     "logs": {
-      "header": "Error History",
-      "placeholder": "No error log recorded here!"
+      "header": "Журнал ошибок",
+      "placeholder": "Журнал ошибок пуст!"
     }
   },
   "smallPage": {
     "language": {
-      "header": "Выберите Ваш новый язык"
+      "header": "Выберите ваш язык"
     },
     "theme": {
-      "header": "Choose your new theme",
-      "dark": "Dark",
-      "light": "Light",
-      "system": "System Based"
+      "header": "Выберите тему",
+      "dark": "Темная",
+      "light": "Светлая",
+      "system": "Системная тема"
     }
   },
   "page": {
     "home": {
-      "header": "Home",
+      "header": "Главная",
       "status": {
-        "unknown": "Unknown",
-        "notWorking": "Not Working",
-        "ok": "Working",
-        "partially": "Partially Working"
+        "unknown": "Неизвестен",
+        "notWorking": "Не работает",
+        "ok": "Работает",
+        "partially": "Работает частично"
       },
       "info": {
         "version": "Версия",
@@ -35,58 +35,58 @@
         "zygote": {
           "injected": "Инъецирован",
           "notInjected": "Не инъецирован",
-          "unknown": "Неизвестно"
+          "unknown": "Неизвестен"
         }
       }
     },
     "modules": {
       "header": "Модули",
-      "notAvaliable": "No modules using Zygisk here.",
-      "arch": "Архи-ра: "
+      "notAvaliable": "Нет модулей, использующих Zygisk.",
+      "arch": "Архитектура: "
     },
     "action": {
       "header": "Действие",
       "daemonButton": {
         "start": "Старт",
-        "stop": "Пауза",
-        "pause": "Pause"
+        "stop": "Стоп",
+        "pause": "Пауза"
       },
       "monitor": {
-        "32": "Monitor (32 bit)",
-        "64": "Monitor (64 bit)"
+        "32": "Контроль (32 bit)",
+        "64": "Контроль (64 bit)"
       },
       "status": {
-        "unknown": "Unknown",
-        "notWorking": "Not Working",
-        "ok": "Working"
+        "unknown": "Неизвестен",
+        "notWorking": "Не работает",
+        "ok": "Работает"
       }
     },
     "settings": {
       "header": "Настройки",
       "font": {
-        "header": "Enable system font",
-        "description": "This option will enable system font in current WebUI. NOTE: May not be compatible with FlipFont"
+        "header": "Использовать системный шрифт",
+        "description": "Эта опция включает системный шрифт в текущем WebUI. ПРИМЕЧАНИЕ: Может быть несовместим с FlipFont"
       },
       "theme": {
-        "header": "System theme",
-        "description": "Choose your system theme for current WebUI"
+        "header": "Системная тема",
+        "description": "Использовать системную тему для текущего WebUI"
       },
       "language": {
-        "header": "Change language",
-        "description": "Change to your new language"
+        "header": "Выбрать язык",
+        "description": "Выберите ваш язык"
       },
       "logs": {
-        "header": "Error History",
-        "description": "View all of your error log"
+        "header": "Журнал ошибок",
+        "description": "Просмотреть журнал ошибок"
       },
       "credits": {
-        "module": "Module Developer",
-        "original": "Original Module Developer",
-        "web": "WebUI Developer"
+        "module": "Разработчик модуля",
+        "original": "Разработчик оригинального модуля",
+        "web": "Разработчик WebUI"
       },
       "license": {
-        "module": "Module License",
-        "web": "WebUI License"
+        "module": "Лицензия модуля",
+        "web": "Лицензия WebUI"
       }
     }
   }
