@@ -47,8 +47,8 @@ export const avaliableLanguages = [
   'ja_JP', /* INFO: Translated by @Fyphen1223 */
   'pt_BR', /* INFO: Translated by @ThePedroo */
   'ro_RO', /* INFO: Translated by @ExtremeXT */
-  'ru_RU', /* INFO: Translated by @Emulond (Emulond Argent) */
-  'vi_VN', /* INFO: Translated by @RainyXeon (unexpected unresolved) */
+  'ru_RU', /* INFO: Translated by @Emulond & @AJleKcAHgP68 */
+  'vi_VN', /* INFO: Translated by @RainyXeon */
   'zh_CN', /* INFO: Translated by @Meltartica & @SheepChef */
   'zh_TW'  /* INFO: Translated by @Meltartica */
 ]
