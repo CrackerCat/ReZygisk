@@ -10,6 +10,8 @@
   --icon-bc: #2b3338;
   --small-card: var(--icon-bc);
   --button: var(--background);
+  --desktop-navbar: #252b31;
+  --desktop-navicon: #333d42;
   /* Locked Color */
   --lock-desc: #c9c9c9;
   --lock: #fff;
@@ -270,6 +272,11 @@ a {
   word-break: break-word;
 }
 
+.nav_dimc {
+  background: var(--dim);
+  word-break: break-word;
+}
+
 /* Locked */
 .lock {
   color: var(--lock);
@@ -358,6 +365,40 @@ input:checked + .slider:before {
   animation: openNav 0.15s;
 }
 
+@media only screen and (min-width: 600px) {
+  .navbar {
+    background-color: var(--desktop-navbar);
+    transform: scale(0.9);
+    left: auto; 
+    right: auto;
+    margin-bottom: 15px;
+    border-radius: 60px;
+    padding: 10px 10px;
+  }
+  .navtitle {
+    display: none;
+  }
+  .navicon_support {
+    border-radius: 60px;
+  }
+  #navbar_support_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navicon {
+    background: var(--desktop-navicon);
+    height: 65px;
+    animation: closeNavDesktop 0.15s;
+  }
+  .navicon.show {
+    animation: openNavDesktop 0.15s;
+  }
+  .nav_dimc {
+    background: var(--desktop-navbar);
+  }
+}
+
 /* Animation KeyFrames */
 @keyframes fade-in {
   from {
@@ -403,5 +444,28 @@ input:checked + .slider:before {
   }
   100% {
     width: 65px;
+  }
+}
+
+@keyframes closeNavDesktop {
+  0% {
+    transform: scale(1);
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes openNavDesktop {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
   }
 }

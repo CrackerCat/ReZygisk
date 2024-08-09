@@ -18,12 +18,14 @@ const sp_lang_close = document.getElementById('sp_lang_close')
 const sp_theme_close = document.getElementById('sp_theme_close')
 
 export function setLight(chooseSet) {
-  rootCss.style.setProperty('--background', '#eff1f6')
+  rootCss.style.setProperty('--background', '#f2f2f2')
   rootCss.style.setProperty('--font', '#181c20')
   rootCss.style.setProperty('--desc', '#484d53')
   rootCss.style.setProperty('--spliter', '#4f6069')
   rootCss.style.setProperty('--dim', '#e0e0e0')
   rootCss.style.setProperty('--icon', '#acacac')
+  rootCss.style.setProperty('--desktop-navbar', '#fefefe')
+  rootCss.style.setProperty('--desktop-navicon', '#eeeeee')
   rootCss.style.setProperty('--icon-bc', '#c9c9c9')
   rootCss.style.setProperty('--button', '#b3b3b3')
 

@@ -18,6 +18,8 @@ export function setDark(chooseSet) {
   rootCss.style.setProperty('--dim', '#1d2327')
   rootCss.style.setProperty('--icon', '#48565e')
   rootCss.style.setProperty('--icon-bc', '#313a3f')
+  rootCss.style.setProperty('--desktop-navbar', '#252b31')
+  rootCss.style.setProperty('--desktop-navicon', '#333d42')
   rootCss.style.setProperty('--button', 'var(--background)')
 
   if (chooseSet) setData('dark')
