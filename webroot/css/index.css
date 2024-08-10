@@ -368,7 +368,7 @@ input:checked + .slider:before {
 @media only screen and (min-width: 600px) {
   .navbar {
     background-color: var(--desktop-navbar);
-    transform: scale(0.9);
+    transform: scale(0.85);
     left: auto; 
     right: auto;
     margin-bottom: 15px;
