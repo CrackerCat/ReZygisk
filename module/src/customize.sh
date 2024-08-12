@@ -135,12 +135,11 @@ extract "$ZIPFILE" 'webroot/js/smallPage/theme.js' "$MODPATH/webroot/js/smallPag
 extract "$ZIPFILE" 'webroot/js/switcher/fontChanger.js' "$MODPATH/webroot/js/switcher" true
 
 extract "$ZIPFILE" 'webroot/css/index.css' "$MODPATH/webroot/css" true
-extract "$ZIPFILE" 'webroot/css/fonts.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/css/icons.css' "$MODPATH/webroot/css" true
 extract "$ZIPFILE" 'webroot/css/error.css' "$MODPATH/webroot/css" true
 
-extract "$ZIPFILE" 'webroot/fonts/ProductSans-Italic.ttf' "$MODPATH/webroot/fonts" true
-extract "$ZIPFILE" 'webroot/fonts/ProductSans-Regular.ttf' "$MODPATH/webroot/fonts" true
+extract "$ZIPFILE" 'webroot/fonts/font.ttf' "$MODPATH/webroot/fonts" true
+extract "$ZIPFILE" 'webroot/fonts/outfit.css' "$MODPATH/webroot/fonts" true
 
 for lang in en_US ja_JP pt_BR ro_RO ru_RU vi_VN zh_CN zh_TW; do
   extract "$ZIPFILE" "webroot/lang/${lang}.json" "$MODPATH/webroot/lang" true

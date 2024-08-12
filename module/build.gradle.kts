@@ -203,11 +203,10 @@ androidComponents.onVariants { variant ->
 
                     set.add(Pair(root.file("webroot/css/index.css").asFile, null))
                     set.add(Pair(root.file("webroot/css/icons.css").asFile, null))
-                    set.add(Pair(root.file("webroot/css/fonts.css").asFile, null))
                     set.add(Pair(root.file("webroot/css/error.css").asFile, null))
 
-                    set.add(Pair(root.file("webroot/fonts/ProductSans-Italic.ttf").asFile, null))
-                    set.add(Pair(root.file("webroot/fonts/ProductSans-Regular.ttf").asFile, null))
+                    set.add(Pair(root.file("webroot/fonts/font.ttf").asFile, null))
+                    set.add(Pair(root.file("webroot/fonts/outfit.ttf").asFile, null))
                     
                     set.add(Pair(root.file("webroot/assets/mark.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/tick.svg").asFile, null))
