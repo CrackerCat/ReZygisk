@@ -1,32 +1,19 @@
 # ReZygisk
 
-[![Latest Releases](https://img.shields.io/github/v/release/PerformanC/ReZygisk?label=Releases&logo=github)](https://github.com/PerformanC/ReZygisk/releases/latest)
-[![Repo_License](https://img.shields.io/badge/License-GPL_3.0-orange?logo=gnu)](LICENSE)
-[![Localization](https://img.shields.io/badge/Localization-Coming%20Soon-purple)](https://github.com/PerformanC/ReZygisk/blob/02ffcea7d87b98f231ea86979c5ccebfe8502c90/TRANSLATOR.md)
-
-[![GitHub_Build_Status](https://img.shields.io/github/actions/workflow/status/PerformanC/ReZygisk/ci.yml?logo=github&label=Night%20Release)](https://github.com/PerformanC/ReZygisk/actions)
-[![GitHub_Issues](https://img.shields.io/github/issues/PerformanC/ReZygisk?logo=github&label=Issues
-)](https://github.com/PerformanC/ReZygisk/issues)
-[![GitHub_Pull_Requests](https://img.shields.io/github/issues-pr/PerformanC/ReZygisk?logo=github&label=Pull%20Requests&color=pink)](https://github.com/PerformanC/ReZygisk/issues)
-
-[![PerformanC_Discord](https://img.shields.io/discord/1036045973039890522?logo=discord&logoColor=%23FFFFFF&label=Discord&color=%235865F2)](https://discord.gg/uPveNfTuCJ)
-[![PerformanC_Telegram](https://img.shields.io/badge/Telegram-PerformanC-%2326A5E4?logo=telegram)](https://t.me/performancorg)
-[![ReZygisk_Telegram](https://img.shields.io/badge/Telegram-ReZygisk-%2326A5E4?logo=telegram)](https://t.me/rezygiskchat)
-
 ReZygisk is a fork of Zygisk Next, a standalone implementation of Zygisk, providing Zygisk API support for KernelSU, Magisk (besides built-in), and APatch (Work In Progress).
 
 It aims to modernize and re-write the codebase to C (from C++ and Rust), allowing a more efficient and faster implementation of the Zygisk API with a more permissive license.
 
 > [!NOTE]
-> This module/fork is WIP (Work In Progress); Please wait for the stable version to be released on [Releases](https://github.com/PerformanC/ReZygisk/releases/latest) page.
+> This module/fork is WIP (Work In Progress); only use .zip from the Releases.
 >
 > Although you may install the .zip from the [Actions](https://github.com/PerformanC/ReZygisk/actions) page, it is only at your discretion to install it since your device might enter bootloop.
 
 ## Why?
 
-The latest releases of Zygisk Next are not open-source, reserving entirely the code for its developers. Not only does that limit our ability to contribute to the project, but it also makes it impossible to audit the code, which is a major security concern, as Zygisk Next is a module that runs with superuser (root) privileges, having access to the entire system.
+The latest releases of Zygisk Next are not open-source, reserving entirely the code for its developers. Not only does that limit our ability to contribute to the project, but also impossibilities the audit of the code, which is a major security concern, as Zygisk Next is a module that runs with superuser (root) privileges, having access to the entire system.
 
-The Zygisk Next developers are famous and trusted in the Android community, however this doesn't mean that the code is not malicious or vulnerable. We (PerformanC) understand they have their reasons for keeping the code closed-source, but we believe the contrary.
+The Zygisk Next developers are famous and trusted in the Android community, however, this doesn't mean that the code is not malicious or vulnerable. We (PerformanC) understand they have their reasons to keep the code closed-source, but we believe the contrary.
 
 ## Advantages
 
@@ -72,6 +59,10 @@ We're currently in the process of cooking. (Coming Soon)
 
 There are currently no available stable releases. (Coming Soon)
 
+## Translation
+
+As of now, we don't have integration with another platform for translations but you may contribute to the [add/webui](https://github.com/PerformanC/ReZygisk/tree/add/webui) branch. Please don't forget to include your GitHub profile in [TRANSLATOR.md](https://github.com/PerformanC/ReZygisk/blob/add/webui/TRANSLATOR.md) so that people can see your contribution.
+
 ## Support
 For any question related to ReZygisk or other PerformanC projects, feel free to join any of the following channels below:
 
@@ -85,4 +76,4 @@ It is mandatory to follow PerformanC's [Contribution Guidelines](https://github.
 
 ## License
 
-ReZygisk is licensed, primarily under GPL by Dr-TSNG, but also by BSD 2-Clause License for re-written code. You can read more about it on [Open Source Initiative](https://opensource.org/licenses/BSD-2-Clause).
+ReZygisk is licensed majority under GPL, by Dr-TSNG, but also by BSD 2-Clause License for re-written code. You can read more about it on [Open Source Initiative](https://opensource.org/licenses/BSD-2-Clause).
