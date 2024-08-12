@@ -206,7 +206,7 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/css/error.css").asFile, null))
 
                     set.add(Pair(root.file("webroot/fonts/font.ttf").asFile, null))
-                    set.add(Pair(root.file("webroot/fonts/outfit.ttf").asFile, null))
+                    set.add(Pair(root.file("webroot/fonts/outfit.css").asFile, null))
                     
                     set.add(Pair(root.file("webroot/assets/mark.svg").asFile, null))
                     set.add(Pair(root.file("webroot/assets/tick.svg").asFile, null))
