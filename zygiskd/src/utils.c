@@ -58,7 +58,7 @@ void set_socket_create_context(const char *context) {
     return;
   }
 
-  if (write(context, 1, strlen(context), sockcreate) != strlen(context)) {
+  if (write(sockcreate, context, strlen(context)) != (ssize_t)strlen(context)) {
     LOGE("fwrite: %s\n", strerror(errno));
     errno = 0;
 
@@ -72,15 +72,15 @@ static void get_current_attr(char *output) {
   char path[PATH_MAX];
   snprintf(path, PATH_MAX, "/proc/self/attr/current");
 
-  int current = open(path, O_RDONLY | O_CLOEXEC);
-  if (current == -1) {
+  FILE *current = fopen(path, "r");
+  if (current == NULL) {
     LOGE("Failed to open current: %s\n", strerror(errno));
     errno = 0;
 
     return;
   }
 
-  if (fgets(output, PATH_MAX, fileno(current)) == NULL) {
+  if (fgets(output, PATH_MAX, current) == NULL) {
     LOGE("fgets: %s\n", strerror(errno));
     errno = 0;
 
