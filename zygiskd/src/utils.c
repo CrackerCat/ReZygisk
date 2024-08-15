@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -15,42 +16,28 @@
 
 #include "utils.h"
 
-void switch_mount_namespace(pid_t pid) {
-  char current_path[PATH_MAX];
-  if (getcwd(current_path, PATH_MAX) == NULL) {
-    /* TODO: Improve error messages */
-    LOGE("getcwd: %s\n", strerror(errno));
-
-    return;
-  }
-
-  /* INFO: We will NEVER achieve PATH_MAX value, but this is for ensurance. */
+bool switch_mount_namespace(pid_t pid) {
   char path[PATH_MAX];
-  snprintf(path, PATH_MAX, "/proc/%d/ns/mnt", pid);
+  snprintf(path, sizeof(path), "/proc/%d/ns/mnt", pid);
 
-  FILE *mnt_ns = fopen(path, "r");
-  if (mnt_ns == NULL) {
-    /* TODO: Improve error messages */
-    LOGE("fopen: %s\n", strerror(errno));
+  int nsfd = open(path, O_RDONLY | O_CLOEXEC);
+  if (nsfd == -1) {
+    LOGE("Failed to open nsfd: %s\n", strerror(errno));
 
-    return;
+    return false;
   }
 
-  if (setns(fileno(mnt_ns), 0) == -1) {
-    /* TODO: Improve error messages */
-    LOGE("setns: %s\n", strerror(errno));
+  if (setns(nsfd, CLONE_NEWNS) == -1) {
+    LOGE("Failed to setns: %s\n", strerror(errno));
 
-    return;
+    close(nsfd);
+
+    return false;
   }
 
-  fclose(mnt_ns);
+  close(nsfd);
 
-  if (chdir(current_path) == -1) {
-    /* TODO: Improve error messages */
-    LOGE("chdir: %s\n", strerror(errno));
-
-    return;
-  }
+  return true;
 }
 
 int __system_property_get(const char *, char *);
@@ -63,35 +50,39 @@ void set_socket_create_context(const char *context) {
   char path[PATH_MAX];
   snprintf(path, PATH_MAX, "/proc/thread-self/attr/sockcreate");
 
-  FILE *sockcreate = fopen(path, "w");
-  if (sockcreate == NULL) {
-    LOGE("fopen: %s\n", strerror(errno));
+  int sockcreate = open(path, O_CLOEXEC);
+  if (sockcreate == -1) {
+    LOGE("Failed to open sockcreate: %s\n", strerror(errno));
+    errno = 0;
 
     return;
   }
 
-  if (fwrite(context, 1, strlen(context), sockcreate) != strlen(context)) {
+  if (write(context, 1, strlen(context), sockcreate) != strlen(context)) {
     LOGE("fwrite: %s\n", strerror(errno));
+    errno = 0;
 
     return;
   }
 
-  fclose(sockcreate);
+  close(sockcreate);
 }
 
 static void get_current_attr(char *output) {
   char path[PATH_MAX];
   snprintf(path, PATH_MAX, "/proc/self/attr/current");
 
-  FILE *current = fopen(path, "r");
-  if (current == NULL) {
-    LOGE("fopen: %s\n", strerror(errno));
+  int current = open(path, O_RDONLY | O_CLOEXEC);
+  if (current == -1) {
+    LOGE("Failed to open current: %s\n", strerror(errno));
+    errno = 0;
 
     return;
   }
 
-  if (fgets(output, PATH_MAX, current) == NULL) {
+  if (fgets(output, PATH_MAX, fileno(current)) == NULL) {
     LOGE("fgets: %s\n", strerror(errno));
+    errno = 0;
 
     return;
   }
