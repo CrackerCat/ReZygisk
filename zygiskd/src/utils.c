@@ -50,22 +50,20 @@ void set_socket_create_context(const char *context) {
   char path[PATH_MAX];
   snprintf(path, PATH_MAX, "/proc/thread-self/attr/sockcreate");
 
-  int sockcreate = open(path, O_CLOEXEC);
-  if (sockcreate == -1) {
-    LOGE("Failed to open sockcreate: %s\n", strerror(errno));
-    errno = 0;
+  FILE *sockcreate = fopen(path, "w");
+  if (sockcreate == NULL) {
+    LOGE("Failed to open /proc/thread-self/attr/sockcreate: %s\n", strerror(errno));
 
     return;
   }
 
-  if (write(sockcreate, context, strlen(context)) != (ssize_t)strlen(context)) {
-    LOGE("fwrite: %s\n", strerror(errno));
-    errno = 0;
+  if (fwrite(context, 1, strlen(context), sockcreate) != strlen(context)) {
+    LOGE("Failed to write to /proc/thread-self/attr/sockcreate: %s\n", strerror(errno));
 
     return;
   }
 
-  close(sockcreate);
+  fclose(sockcreate);
 }
 
 static void get_current_attr(char *output) {
@@ -74,15 +72,13 @@ static void get_current_attr(char *output) {
 
   FILE *current = fopen(path, "r");
   if (current == NULL) {
-    LOGE("Failed to open current: %s\n", strerror(errno));
-    errno = 0;
+    LOGE("fopen: %s\n", strerror(errno));
 
     return;
   }
 
   if (fgets(output, PATH_MAX, current) == NULL) {
     LOGE("fgets: %s\n", strerror(errno));
-    errno = 0;
 
     return;
   }
