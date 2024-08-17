@@ -121,11 +121,13 @@ extract "$ZIPFILE" 'webroot/js/translate/action.js' "$MODPATH/webroot/js/transla
 extract "$ZIPFILE" 'webroot/js/translate/modules.js' "$MODPATH/webroot/js/translate" true
 extract "$ZIPFILE" 'webroot/js/translate/settings.js' "$MODPATH/webroot/js/translate" true
 
+extract "$ZIPFILE" 'webroot/js/themes/amoled.js' "$MODPATH/webroot/js/themes" true
 extract "$ZIPFILE" 'webroot/js/themes/dark.js' "$MODPATH/webroot/js/themes" true
 extract "$ZIPFILE" 'webroot/js/themes/darkNavbar.js' "$MODPATH/webroot/js/themes" true
 extract "$ZIPFILE" 'webroot/js/themes/light.js' "$MODPATH/webroot/js/themes" true
 extract "$ZIPFILE" 'webroot/js/themes/lightNavbar.js' "$MODPATH/webroot/js/themes" true
 extract "$ZIPFILE" 'webroot/js/themes/lightIcon.js' "$MODPATH/webroot/js/themes" true
+extract "$ZIPFILE" 'webroot/js/themes/monochrome.js' "$MODPATH/webroot/js/themes" true
 
 extract "$ZIPFILE" 'webroot/js/modal/errorHistory.js' "$MODPATH/webroot/js/modal" true
 

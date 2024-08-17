@@ -2,7 +2,6 @@
   --background: #181c20;
   --font: #fff;
   --desc: #c9c9c9;
-  --spliter: #283136;
   --bright: #8d1d19;
   --dim: #1d2327;
   --error: #8d1d19;
@@ -147,10 +146,6 @@ a {
   padding-bottom: 5px;
 }
 
-.spliter {
-  border-bottom: 1px solid var(--spliter); 
-}
-
 .desc {
   color: var(--desc);
 }
@@ -209,10 +204,6 @@ a {
 
 .small_card_bg {
   background: var(--small-card);
-}
-
-.small_card_bg_in {
-  background: var(--icon);
 }
 
 .icon_animation {

@@ -21,6 +21,14 @@ export function setErrorData(errorLog) {
   return finalLog
 }
 
+const loading_screen = document.getElementById('loading_screen')
+loading_screen.style.display = 'none'
+
+let sys_lang = localStorage.getItem('/system/language')
+
+if (!sys_lang) sys_lang = setLangData('en_US')
+if (sys_lang !== 'en_US') await setNewLanguage(sys_lang, true);
+
 (async () => {
   const EXPECTED = 1
   const UNEXPECTED_FAIL = 2

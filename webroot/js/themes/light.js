@@ -21,7 +21,6 @@ export function setLight(chooseSet) {
   rootCss.style.setProperty('--background', '#f2f2f2')
   rootCss.style.setProperty('--font', '#181c20')
   rootCss.style.setProperty('--desc', '#484d53')
-  rootCss.style.setProperty('--spliter', '#4f6069')
   rootCss.style.setProperty('--dim', '#e0e0e0')
   rootCss.style.setProperty('--icon', '#acacac')
   rootCss.style.setProperty('--desktop-navbar', '#fefefe')

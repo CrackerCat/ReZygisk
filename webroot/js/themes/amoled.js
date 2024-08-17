@@ -10,18 +10,18 @@ const clearall_button = document.getElementById('errorh_clear_all')
 const sp_lang_close = document.getElementById('sp_lang_close')
 const sp_theme_close = document.getElementById('sp_theme_close')
 
-export function setDark(chooseSet) {
-  rootCss.style.setProperty('--background', '#181c20')
-  rootCss.style.setProperty('--font', '#ffffff')
-  rootCss.style.setProperty('--desc', '#c9c9c9')
-  rootCss.style.setProperty('--dim', '#1d2327')
-  rootCss.style.setProperty('--icon', '#48565e')
-  rootCss.style.setProperty('--icon-bc', '#313a3f')
-  rootCss.style.setProperty('--desktop-navbar', '#252b31')
-  rootCss.style.setProperty('--desktop-navicon', '#333d42')
+export function setAmoled(chooseSet) {
+  rootCss.style.setProperty('--background', '#000000')
+  rootCss.style.setProperty('--font', '#d9d9d9')
+  rootCss.style.setProperty('--desc', '#a9a9a9')
+  rootCss.style.setProperty('--dim', '#0b0d0f')
+  rootCss.style.setProperty('--icon', '#22292d')
+  rootCss.style.setProperty('--icon-bc', '#171b1d')
+  rootCss.style.setProperty('--desktop-navbar', '#111417')
+  rootCss.style.setProperty('--desktop-navicon', '#1c2225')
   rootCss.style.setProperty('--button', 'var(--background)')
 
-  if (chooseSet) setData('dark')
+  if (chooseSet) setData('amoled')
 
   for (const close_icon of close_icons) {
     close_icon.innerHTML = '<img src="assets/close.svg">'

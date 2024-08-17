@@ -179,11 +179,13 @@ androidComponents.onVariants { variant ->
                     set.add(Pair(root.file("webroot/js/translate/modules.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/translate/settings.js").asFile, null))
 
+                    set.add(Pair(root.file("webroot/js/themes/amoled.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/themes/dark.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/themes/darkNavbar.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/themes/light.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/themes/lightNavbar.js").asFile, null))
                     set.add(Pair(root.file("webroot/js/themes/lightIcon.js").asFile, null))
+                    set.add(Pair(root.file("webroot/js/themes/monochrome.js").asFile, null))
 
                     set.add(Pair(root.file("webroot/js/switcher/fontChanger.js").asFile, null))
 

@@ -10,18 +10,18 @@ const clearall_button = document.getElementById('errorh_clear_all')
 const sp_lang_close = document.getElementById('sp_lang_close')
 const sp_theme_close = document.getElementById('sp_theme_close')
 
-export function setDark(chooseSet) {
-  rootCss.style.setProperty('--background', '#181c20')
+export function setMonochrome(chooseSet) {
+  rootCss.style.setProperty('--background', '#141414')
   rootCss.style.setProperty('--font', '#ffffff')
   rootCss.style.setProperty('--desc', '#c9c9c9')
-  rootCss.style.setProperty('--dim', '#1d2327')
-  rootCss.style.setProperty('--icon', '#48565e')
-  rootCss.style.setProperty('--icon-bc', '#313a3f')
-  rootCss.style.setProperty('--desktop-navbar', '#252b31')
-  rootCss.style.setProperty('--desktop-navicon', '#333d42')
+  rootCss.style.setProperty('--dim', '#1c1c1c')
+  rootCss.style.setProperty('--icon', '#494949')
+  rootCss.style.setProperty('--icon-bc', '#292929')
+  rootCss.style.setProperty('--desktop-navbar', '#252525')
+  rootCss.style.setProperty('--desktop-navicon', '#3a3a3a')
   rootCss.style.setProperty('--button', 'var(--background)')
 
-  if (chooseSet) setData('dark')
+  if (chooseSet) setData('monochrome')
 
   for (const close_icon of close_icons) {
     close_icon.innerHTML = '<img src="assets/close.svg">'
